@@ -2,8 +2,7 @@
 ========
 Tutorial
 ========
-
-`Download <https://github.com/ACCLAB/DABEST-python/raw/master/dabest_tutorial.ipynb>`_ this tutorial as a Jupyter notebook.
+`Download <https://github.com/ACCLAB/DABEST-python-docs/ipynb/raw/master/dabest_tutorial.ipynb>`_ this tutorial as a Jupyter notebook.
 
 First, we load the libraries we will be using::
 
