@@ -52,7 +52,7 @@
 either a Cummings hub-and-spoke plot or a Gardner-Altman contrast plot.
 Paired and unpaired options available.</p>
 <dl class="docutils">
-<dt>Keywords:</dt>
+<dt>Keyword arguments:</dt>
 <dd><blockquote class="first">
 <div><p>data: pandas DataFrame</p>
 <dl class="docutils">
@@ -60,8 +60,9 @@ Paired and unpaired options available.</p>
 <dd>List of column names (if ‘x’ is not supplied) or of category names
 (if ‘x’ is supplied). This can be expressed as a tuple of tuples,
 with each individual tuple producing its own contrast plot.</dd>
-<dt>x, y: strings, default None</dt>
-<dd>Column names for data to be plotted on the x-axis and y-axis.</dd>
+</dl>
+<p>x, y: strings, default None</p>
+<dl class="docutils">
 <dt>color_col: list, default None</dt>
 <dd>Column to be used for colors.</dd>
 <dt>swarm_label, contrast_label: strings, default None</dt>
@@ -87,12 +88,15 @@ and <cite>cubehelix_palette</cite> to generate a custom palette.
 <dd>If the data is paired, whether or not to show the raw data as a
 swarmplot, or as paired plot, with a line joining each pair of
 observations.</dd>
-<dt>group_summaries: [‘mean_sd’, ‘median_quartiles’, ‘None’], default ‘mean_sd’</dt>
-<dd>Plots the summary statistics for each group. If ‘mean_sd’, then the
+<dt>group_summaries: [‘mean_sd’, ‘median_quartiles’, ‘None’],</dt>
+<dd><blockquote class="first">
+<div>default ‘mean_sd’</div></blockquote>
+<p class="last">Plots the summary statistics for each group. If ‘mean_sd’, then the
 mean and standard deviation of each group is plotted as a notched
 line beside each group. If ‘median_quantiles’, then the
 median and 25th and 75th percentiles of each group is plotted
-instead. If ‘None’, the summaries are not shown.</dd>
+instead. If ‘None’, the summaries are not shown.</p>
+</dd>
 <dt>swarm_ylim: tuple, default None</dt>
 <dd>The desired y-limits of the raw data swarmplot as a (lower, higher)
 tuple.</dd>
@@ -157,7 +161,7 @@ Description of column headings.</p>
 <em class="property">class </em><code class="descclassname">dabest.</code><code class="descname">bootstrap</code><span class="sig-paren">(</span><em>x1</em>, <em>x2=None</em>, <em>paired=False</em>, <em>statfunction=None</em>, <em>smoothboot=False</em>, <em>alpha_level=0.05</em>, <em>reps=5000</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.bootstrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the summary statistic and a bootstrapped confidence interval.</p>
 <dl class="docutils">
-<dt>Keywords:</dt>
+<dt>Keyword arguments:</dt>
 <dd><dl class="first last docutils">
 <dt>x1, x2: array-like</dt>
 <dd>The data in a one-dimensional array form. Only x1 is required.
@@ -212,33 +216,48 @@ percentage confidence interval bounds.</dd>
 <dd>An array with the indices in <cite>stat_array</cite> corresponding to the BCa
 confidence interval bounds.</dd>
 <dt>pvalue_1samp_ttest: float</dt>
-<dd>P-value obtained from scipy.stats.ttest_1samp. If 2 arrays were
-(x1 and x2), returns ‘NIL’.
-See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_1samp.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_1samp.html</a></dd>
+<dd><p class="first">P-value obtained from scipy.stats.ttest_1samp.
+If 2 arrays were given (x1 and x2), returns ‘NIL’.
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.19.0/">https://docs.scipy.org/doc/scipy-0.19.0/</a></p>
+<blockquote class="last">
+<div>reference/generated/scipy.stats.ttest_1samp.html</div></blockquote>
+</dd>
 <dt>pvalue_2samp_ind_ttest: float</dt>
-<dd>P-value obtained from scipy.stats.ttest_ind.
+<dd><p class="first">P-value obtained from scipy.stats.ttest_ind.
 If a single array was given (x1 only), or if <cite>paired</cite> is True,
 returns ‘NIL’.
-See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_ind.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_ind.html</a></dd>
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.19.0/">https://docs.scipy.org/doc/scipy-0.19.0/</a></p>
+<blockquote class="last">
+<div>reference/generated/scipy.stats.ttest_ind.html</div></blockquote>
+</dd>
 <dt>pvalue_2samp_related_ttest: float</dt>
-<dd>P-value obtained from scipy.stats.ttest_rel.
+<dd><p class="first">P-value obtained from scipy.stats.ttest_rel.
 If a single array was given (x1 only), or if <cite>paired</cite> is False,
 returns ‘NIL’.
-See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_rel.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_rel.html</a></dd>
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.19.0/">https://docs.scipy.org/doc/scipy-0.19.0/</a></p>
+<blockquote class="last">
+<div>reference/generated/scipy.stats.ttest_rel.html</div></blockquote>
+</dd>
 <dt>pvalue_wilcoxon: float</dt>
-<dd>P-value obtained from scipy.stats.wilcoxon.
+<dd><p class="first">P-value obtained from scipy.stats.wilcoxon.
 If a single array was given (x1 only), or if <cite>paired</cite> is False,
 returns ‘NIL’.
 The Wilcoxons signed-rank test is a nonparametric paired test of
 the null hypothesis that the related samples x1 and x2 are from
 the same distribution.
-See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/scipy.stats.wilcoxon.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/scipy.stats.wilcoxon.html</a></dd>
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.19.0/reference/">https://docs.scipy.org/doc/scipy-0.19.0/reference/</a></p>
+<blockquote class="last">
+<div>generated/scipy.stats.wilcoxon.html</div></blockquote>
+</dd>
 <dt>pvalue_mann_whitney: float</dt>
-<dd>Two-sided p-value obtained from scipy.stats.mannwhitneyu.
+<dd><p class="first">Two-sided p-value obtained from scipy.stats.mannwhitneyu.
 If a single array was given (x1 only), returns ‘NIL’.
 The Mann-Whitney U-test is a nonparametric unpaired test of the null
 hypothesis that x1 and x2 are from the same distribution.
-See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.mannwhitneyu.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.mannwhitneyu.html</a></dd>
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.19.0/reference/">https://docs.scipy.org/doc/scipy-0.19.0/reference/</a></p>
+<blockquote class="last">
+<div>generated/scipy.stats.mannwhitneyu.html</div></blockquote>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -257,6 +276,13 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
 
 
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 
@@ -302,7 +328,7 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
       &copy;2017, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
@@ -310,6 +336,10 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
           rel="nofollow">Page source</a>
     </div>
 
+    
+    <a href="https://github.com/ACCLAB/DABEST-python" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
     
 
     
