@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial &#8212; dabest 0.1.0 documentation</title>
+    <title>Tutorial &#8212; dabest 0.1.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.0',
+        VERSION:     '0.1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -55,9 +55,9 @@ This is known as a ‘wide’ dataset. See this <a class="reference external" hr
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">]:</span>
-    <span class="c1"># fix the seed so we get the same numbers each time.</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
+      <span class="c1"># fix the seed so we get the same numbers each time.</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+      <span class="n">dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group1&#39;</span><span class="p">,</span><span class="s1">&#39;Group2&#39;</span><span class="p">,</span><span class="s1">&#39;Group3&#39;</span><span class="p">,</span><span class="s1">&#39;Group4&#39;</span><span class="p">,</span><span class="s1">&#39;Group5&#39;</span><span class="p">]</span>
@@ -78,22 +78,22 @@ This is known as a ‘wide’ dataset. See this <a class="reference external" hr
 <h2>Gardner-Altman comparison plot (two independent groups)<a class="headerlink" href="#gardner-altman-comparison-plot-two-independent-groups" title="Permalink to this headline">¶</a></h2>
 <p>We can easily use <code class="docutils literal"><span class="pre">dabest.plot()</span></code> to create a <strong>Gardner-Altman mean difference plot</strong> to compare and compute the mean difference between two independent samples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
-                   <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group1&#39;</span><span class="p">),</span>
-                   <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
-                   <span class="c1"># Pass the length and width of the image, in inches.</span>
-                   <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-                  <span class="p">)</span>
+               <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group1&#39;</span><span class="p">),</span>
+               <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
+               <span class="c1"># Pass the length and width of the image, in inches.</span>
+               <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+              <span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/f1.png" src="_images/f1.png" />
-<p><em>output table here</em></p>
 <p>A few things to note:</p>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">dabest.plot()</span></code> function will return <strong>two objects</strong>: a matplotlib <code class="docutils literal"><span class="pre">Figure</span></code> and a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code>. (In the Jupyter Notebook, with the <code class="docutils literal"><span class="pre">magic</span></code> command <code class="docutils literal"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>, the figure should automatically appear.)</li>
-<li>Note how the <em>Ns</em> (appended to the group names in the xtick labels) indicate the number of datapoints being plotted, and used to calculate the contrasts.</li>
+<li>The <code class="docutils literal"><span class="pre">dabest.plot()</span></code> function will return <strong>two objects</strong>: a matplotlib <code class="docutils literal"><span class="pre">Figure</span></code> and a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code>. (In the Jupyter Notebook, with the <code class="docutils literal"><span class="pre">magic</span></code> command <code class="docutils literal"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>, the figure should automatically appear.) In the above example, the Figure is assigned to the variable <code class="docutils literal"><span class="pre">f1</span></code>, while the DataFrame is assigned to <code class="docutils literal"><span class="pre">b1</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">dabest.plot()</span></code> will automatically drop any NaNs (aka empty cells) in the data.</li>
-<li>The pandas <code class="docutils literal"><span class="pre">DataFrame</span></code> returned by plot contains the pairwise comparisons made in the course of generating the plot, with confidence intervals (95% by default) and relevant <em>P</em> values.</li>
+<li>The <em>Ns</em> (appended to the group names in the xtick labels) indicate the number of datapoints being plotted, and used to calculate the contrasts.</li>
+<li>The pandas <code class="docutils literal"><span class="pre">DataFrame</span></code> returned by plot contains the pairwise comparisons made in the course of generating the plot, with confidence intervals (95% by default) and relevant <em>P</em> values. The DataFrame produced is shown below, and can be accessed by normal pandas commands.</li>
 </ul>
+<a class="reference internal image-reference" href="_images/dataframe_out.png"><img alt="_images/dataframe_out.png" class="align-center" src="_images/dataframe_out.png" style="width: 900px;" /></a>
 </div>
 <div class="section" id="gardner-altman-comparison-plot-two-paired-groups">
 <h2>Gardner-Altman comparison plot (two paired groups)<a class="headerlink" href="#gardner-altman-comparison-plot-two-paired-groups" title="Permalink to this headline">¶</a></h2>
@@ -256,6 +256,13 @@ This is known as a ‘wide’ dataset. See this <a class="reference external" hr
 
 
 
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
 
 
 <h3>Navigation</h3>
@@ -272,6 +279,7 @@ This is known as a ‘wide’ dataset. See this <a class="reference external" hr
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 </ul>
 
@@ -299,7 +307,7 @@ This is known as a ‘wide’ dataset. See this <a class="reference external" hr
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017, Joses W. Ho.
+      &copy;2018, Joses W. Ho.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
@@ -310,6 +318,10 @@ This is known as a ‘wide’ dataset. See this <a class="reference external" hr
           rel="nofollow">Page source</a>
     </div>
 
+    
+    <a href="https://github.com/ACCLAB/DABEST-python" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
     
 
     
