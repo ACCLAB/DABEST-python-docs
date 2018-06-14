@@ -1,0 +1,279 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Using DABEST in R via the reticulate package &#8212; dabest 0.1.3 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" />
+
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120627927-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120627927-1');
+</script>
+
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-dabest-in-r-via-the-reticulate-package">
+<h1>Using <cite>DABEST</cite> in R via the <cite>reticulate</cite> package<a class="headerlink" href="#using-dabest-in-r-via-the-reticulate-package" title="Permalink to this headline">¶</a></h1>
+<p>If you haven’t already obtained them, install the <code class="docutils literal"><span class="pre">reticulate</span></code>, <code class="docutils literal"><span class="pre">dplyr</span></code>, and
+<code class="docutils literal"><span class="pre">ggplot2</span></code> packages for R. From the R console, enter:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;reticulate&#39;</span><span class="p">,</span> <span class="s">&#39;dplyr&#39;</span><span class="p">,</span> <span class="s">&#39;ggplot2&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You will also need to have installed <code class="docutils literal"><span class="pre">dabest</span></code> for Python.
+You can do so at the command line.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install dabest
+</pre></div>
+</div>
+<div class="section" id="using-python-interactively-from-the-r-console">
+<h2>Using Python Interactively from the R Console<a class="headerlink" href="#using-python-interactively-from-the-r-console" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="load-data">
+<h3>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h3>
+<p>For this demonstration, we will load the <code class="docutils literal"><span class="pre">CO2</span></code> dataset found in the
+<code class="docutils literal"><span class="pre">datasets</span></code> package that is bundled with R. This dataset is described
+in the <a class="reference external" href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/zCO2.html">official documentation</a> as follows:</p>
+<blockquote>
+<div>“The CO<sub>2</sub>. uptake of six plants from Quebec and six plants from Mississippi
+was measured at six levels of ambient CO<sub>2</sub> concentration. Half the plants
+of each type were chilled overnight before the experiment was conducted.”</div></blockquote>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>datasets<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>CO2<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Plant</span>   <span class="n">Type</span>  <span class="n">Treatment</span> <span class="n">conc</span> <span class="n">uptake</span>
+<span class="mi">1</span>   <span class="n">Qn1</span> <span class="n">Quebec</span> <span class="n">nonchilled</span>   <span class="mi">95</span>   <span class="mf">16.0</span>
+<span class="mi">2</span>   <span class="n">Qn1</span> <span class="n">Quebec</span> <span class="n">nonchilled</span>  <span class="mi">175</span>   <span class="mf">30.4</span>
+<span class="mi">3</span>   <span class="n">Qn1</span> <span class="n">Quebec</span> <span class="n">nonchilled</span>  <span class="mi">250</span>   <span class="mf">34.8</span>
+<span class="mi">4</span>   <span class="n">Qn1</span> <span class="n">Quebec</span> <span class="n">nonchilled</span>  <span class="mi">350</span>   <span class="mf">37.2</span>
+<span class="mi">5</span>   <span class="n">Qn1</span> <span class="n">Quebec</span> <span class="n">nonchilled</span>  <span class="mi">500</span>   <span class="mf">35.3</span>
+<span class="mi">6</span>   <span class="n">Qn1</span> <span class="n">Quebec</span> <span class="n">nonchilled</span>  <span class="mi">675</span>   <span class="mf">39.2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter-and-plot-the-data">
+<h3>Filter and plot the data.<a class="headerlink" href="#filter-and-plot-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Select readings taken at a CO<sub>2</sub> concentration of 1000 mL/L.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+
+<span class="o">&gt;</span> df <span class="o">=</span> filter<span class="p">(</span>CO2<span class="p">,</span> conc <span class="o">==</span> <span class="s">&#39;1000&#39;</span><span class="p">)</span>
+
+<span class="o">&gt;</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> Type<span class="p">,</span>
+                 y <span class="o">=</span> uptake<span class="p">,</span>
+                 color <span class="o">=</span> Treatment<span class="p">))</span> <span class="o">+</span>
+    geom_point<span class="p">()</span> <span class="o">+</span>
+    ggtitle<span class="p">(</span><span class="s">&#39;CO2 conc = 1000 mL/L&#39;</span><span class="p">)</span> <span class="o">+</span>
+    xlab<span class="p">(</span><span class="s">&#39;City&#39;</span><span class="p">)</span> <span class="o">+</span> ylab<span class="p">(</span><span class="s">&#39;CO2 uptake&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/ggplot.png" src="_images/ggplot.png" />
+</div>
+<div class="section" id="switch-to-python-and-use-dabest">
+<h3>Switch to Python and use <code class="docutils literal"><span class="pre">DABEST</span></code>.<a class="headerlink" href="#switch-to-python-and-use-dabest" title="Permalink to this headline">¶</a></h3>
+<p>Load the package <code class="docutils literal"><span class="pre">reticulate</span></code>, which will allow us to load Python packages and
+to access Python objects from R. <a class="reference external" href="https://rstudio.github.io/reticulate/#importing-python-modules">Read more</a> about this fantastic piece of work!</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>reticulate<span class="p">)</span>
+</pre></div>
+</div>
+<p>If you are using Anaconda, or are dealing with virtual environments,
+you will need to specify the location of the specific Python environment
+you are using. Use <code class="docutils literal"><span class="pre">which</span> <span class="pre">python</span></code> (Linux/OS X) or <code class="docutils literal"><span class="pre">where</span> <span class="pre">python</span></code> (Windows)
+at the command line to obtain the correct path.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> use_python<span class="p">(</span><span class="s">&#39;/Users/your-username/anaconda3/bin/python&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal"><span class="pre">repl_python()</span></code> command, you can start an interactive Python session
+from within R.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> repl_python<span class="p">()</span>
+Python <span class="m">3.6.4</span> <span class="p">(</span><span class="o">/</span>Users<span class="o">/</span>whho<span class="o">/</span>anaconda3<span class="o">/</span>bin<span class="o">/</span>python<span class="p">)</span>
+Reticulate <span class="m">1.8</span> REPL <span class="o">--</span> A Python interpreter <span class="kr">in</span> R.
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Note the new console prompt <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>.</p>
+<p>From the <code class="docutils literal"><span class="pre">reticulate</span></code> <a class="reference external" href="https://rstudio.github.io/reticulate/#python-in-r-markdown">tutorial</a> :</p>
+<blockquote>
+<div>Access to objects created within R chunks from Python using the r object
+(e.g. r.x would access to x variable created within R from Python)</div></blockquote>
+<p>Thus, whilst in the Python session, use <code class="docutils literal"><span class="pre">r.&lt;variable</span> <span class="pre">in</span> <span class="pre">R&gt;</span></code> to access
+any R object you created above. (This, you have to admit, is pretty cool.)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">df</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;uptake&#39;</span><span class="p">,</span>
+<span class="go">                              swarm_label=&#39;CO2 uptake&#39;, color_col=&#39;Treatment&#39;,</span>
+<span class="go">                              idx=[&#39;Quebec&#39;, &#39;Mississippi&#39;])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;dabest-plot-CO2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">exit</span>
+<span class="go">&gt;</span>
+</pre></div>
+</div>
+<img alt="_images/dabest-plot-CO2.png" src="_images/dabest-plot-CO2.png" />
+<p>A few things to note:</p>
+<ol class="arabic simple">
+<li>It’s best to save the generated <code class="docutils literal"><span class="pre">dabest</span></code> plot from within the Python session.</li>
+<li>You can quickly exit the Python session with (who would have guessed) <code class="docutils literal"><span class="pre">exit</span></code>.</li>
+</ol>
+<p>Now, you are back in the R session. All the objects generated in Python are
+accessible via the <code class="docutils literal"><span class="pre">py</span></code> object; use the <code class="docutils literal"><span class="pre">$</span></code> operator to access named variables.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> py<span class="o">$</span>results
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">reference_group</span> <span class="n">experimental_group</span> <span class="n">stat_summary</span> <span class="n">bca_ci_low</span> <span class="n">bca_ci_high</span> <span class="n">ci</span>
+<span class="mi">1</span>          <span class="n">Quebec</span>        <span class="n">Mississippi</span>    <span class="o">-</span><span class="mf">16.83333</span>  <span class="o">-</span><span class="mf">22.98333</span>       <span class="o">-</span><span class="mf">10.9</span> <span class="mi">95</span>
+<span class="n">is_difference</span> <span class="n">is_paired</span> <span class="n">pvalue_2samp_ind_ttest</span> <span class="n">pvalue_mann_whitney</span>
+<span class="mi">1</span>          <span class="n">TRUE</span>     <span class="n">FALSE</span>           <span class="mf">0.0005511919</span>         <span class="mf">0.005074868</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal"><span class="pre">results</span></code> is a Python <code class="docutils literal"><span class="pre">pandas</span></code> object, <code class="docutils literal"><span class="pre">py$results</span></code> is an
+R <code class="docutils literal"><span class="pre">data.frame</span></code>; its attributes can be accessed easily via the <code class="docutils literal"><span class="pre">$</span></code>
+operator.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> py_results <span class="o">=</span> py<span class="o">$</span>results
+<span class="o">&gt;</span> mean_diff <span class="o">=</span> py_results<span class="o">$</span>stat_summary
+<span class="o">&gt;</span> ci_low <span class="o">=</span> py_results<span class="o">$</span>bca_ci_low
+<span class="o">&gt;</span> ci_high <span class="o">=</span> py_results<span class="o">$</span>bca_ci_high
+</pre></div>
+</div>
+<p>Print results, with all numerical values formatted to 2 decimal places.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kp">sprintf</span><span class="p">(</span><span class="s">&quot;Mean Difference = %.2f [95CI %.2f, %.2f]&quot;</span><span class="p">,</span>
+          mean_diff<span class="p">,</span> ci_low<span class="p">,</span> ci_high<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="s2">&quot;Mean Difference = -16.83 [95CI -22.98, -10.90]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-dabest-in-r-markdown">
+<h2>Using <cite>DABEST</cite> in R Markdown<a class="headerlink" href="#using-dabest-in-r-markdown" title="Permalink to this headline">¶</a></h2>
+<p>R Markdown is able to run code from different languages <a class="reference external" href="https://rmarkdown.rstudio.com/lesson-5.html">in the same document</a>.
+From that last link:</p>
+<blockquote>
+<div>To process a code chunk using an alternate language engine,
+replace the r at the start of your chunk declaration
+with the name of the language.</div></blockquote>
+<p>A minimal example is shown below, and can be downloaded as an <a class="reference download internal" href="_downloads/reticulate_tutorial.Rmd" download=""><code class="xref download docutils literal"><span class="pre">R</span> <span class="pre">Markdown</span> <span class="pre">file</span></code></a>.</p>
+<img alt="_images/dabest-in-r-markdown.png" src="_images/dabest-in-r-markdown.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">dabest</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using <cite>DABEST</cite> in R via the <cite>reticulate</cite> package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-python-interactively-from-the-r-console">Using Python Interactively from the R Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-dabest-in-r-markdown">Using <cite>DABEST</cite> in R Markdown</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
+      <li>Next: <a href="api.html" title="next chapter">API</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Joses W. Ho.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/dabest-r.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/ACCLAB/DABEST-python" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

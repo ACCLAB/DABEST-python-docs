@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Release Notes &#8212; dabest 0.1.2 documentation</title>
+    <title>Release Notes &#8212; dabest 0.1.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.2',
+        VERSION:     '0.1.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -26,11 +26,23 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="About" href="about.html" />
     <link rel="prev" title="API" href="api.html" />
+
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120627927-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120627927-1');
+</script>
+
 
   </head>
   <body>
@@ -45,6 +57,14 @@
 <span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>0.1<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>0.1.3
+Update dependencies to</p>
+<ul class="simple">
+<li>pandas v0.23</li>
+</ul>
+<p>Bugfixes
+* fix bug that did not label <cite>swarm_label</cite> if raw data was in tidy form
+* fix bug that did not dropnans for unpaired diff</p>
 <p>0.1.2
 Update dependencies to</p>
 <ul class="simple">
@@ -85,6 +105,7 @@ Update dependencies to</p>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using <cite>DABEST</cite> in R via the <cite>reticulate</cite> package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">0.1</a></li>
@@ -120,7 +141,7 @@ Update dependencies to</p>
       &copy;2018, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
