@@ -4,20 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Getting Started &#8212; dabest 0.1.3 documentation</title>
+    <title>Getting Started &#8212; dabest 0.1.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1.3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -44,37 +38,38 @@
 </script>
 
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="getting-started">
 <span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>Python 3.6 is strongly recommended. <code class="docutils literal"><span class="pre">dabest</span></code> has also been tested with Python 2.7 and Python 3.5.</p>
+<p>Python 3.6 is strongly recommended. <code class="docutils literal notranslate"><span class="pre">dabest</span></code> has also been tested with Python 2.7, 3.5, and 3.7.</p>
 <p>In addition, the following packages are also required:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.numpy.org">numpy</a> (1.13.x)</li>
-<li><a class="reference external" href="https://www.scipy.org">scipy</a> (1.0.x)</li>
-<li><a class="reference external" href="https://www.matplotlib.org">matplotlib</a> (2.0.x)</li>
-<li><a class="reference external" href="https://pandas.pydata.org">pandas</a> (0.23.x).</li>
-<li><a class="reference external" href="https://seaborn.pydata.org">seaborn</a> (0.8.x)</li>
+<li><a class="reference external" href="https://www.numpy.org">numpy 1.15</a></li>
+<li><a class="reference external" href="https://www.scipy.org">scipy 1.1</a></li>
+<li><a class="reference external" href="https://www.matplotlib.org">matplotlib 2.2</a></li>
+<li><a class="reference external" href="https://pandas.pydata.org">pandas 0.23</a></li>
+<li><a class="reference external" href="https://seaborn.pydata.org">seaborn 0.9</a></li>
 </ul>
 <p>To obtain these package dependencies easily, it is highly recommended to download the <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a> distribution of Python.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Using <code class="docutils literal"><span class="pre">pip</span></code></li>
+<li>Using <code class="docutils literal notranslate"><span class="pre">pip</span></code></li>
 </ol>
 <p>At the command line, run</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install dabest
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install dabest
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -82,14 +77,14 @@
 </ol>
 <p>Clone the <a class="reference external" href="https://github.com/ACCLAB/DABEST-python">DABEST-python repo</a> locally (see instructions <a class="reference external" href="https://help.github.com/articles/cloning-a-repository/">here</a>).</p>
 <p>Then, navigate to the cloned repo in the command line and run</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install .
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install .
 </pre></div>
 </div>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>To test <code class="docutils literal"><span class="pre">dabest</span></code>, you will need to install <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>.</p>
-<p>Run <code class="docutils literal"><span class="pre">pytest</span></code> in the root directory of the source distribution. This runs the test suite in <code class="docutils literal"><span class="pre">dabest/tests</span></code> folder. The test suite will ensure that the bootstrapping functions and the plotting functions perform as expected.</p>
+<p>To test <code class="docutils literal notranslate"><span class="pre">dabest</span></code>, you will need to install <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> in the root directory of the source distribution. This runs the test suite in <code class="docutils literal notranslate"><span class="pre">dabest/tests</span></code> folder. The test suite will ensure that the bootstrapping functions and the plotting functions perform as expected.</p>
 </div>
 <div class="section" id="bugs">
 <h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
@@ -103,6 +98,7 @@
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -115,7 +111,7 @@
 
 
 <p>
-<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=watch&count=true&size=large&v=2"
+<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=star&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 </p>
 
@@ -123,7 +119,9 @@
 
 
 
-<h3>Navigation</h3>
+<p>
+<a href="https://pypi.python.org/pypi/dabest/"><img src="https://badge.fury.io/py/dabest.svg" alt="PyPI version" height="18"></a>
+</p><h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
@@ -135,10 +133,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using <cite>DABEST</cite> in R via the <cite>reticulate</cite> package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 </ul>
 
 <div class="relations">
@@ -152,12 +150,14 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -168,8 +168,8 @@
       &copy;2018, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="_sources/getting-started.rst.txt"

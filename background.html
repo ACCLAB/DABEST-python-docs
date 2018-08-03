@@ -4,20 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Background &#8212; dabest 0.1.3 documentation</title>
+    <title>Background &#8212; dabest 0.1.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1.3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -44,93 +38,187 @@
 </script>
 
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="background">
-<span id="id1"></span><h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-estimation-statistics">
-<h2>What is estimation statistics?<a class="headerlink" href="#what-is-estimation-statistics" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Estimation_statistics">Estimation statistics</a> is a simple framework that—while avoiding the pitfalls of significance testing—uses familiar statistical concepts: means, mean differences, and error bars.</p>
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<p>DABEST provides you with plots from an <a class="reference external" href="https://en.wikipedia.org/wiki/Estimation_statistics">estimation
+statistics</a>
+paradigm. You may have found significance testing and <em>P</em> values
+<a class="reference external" href="https://www.nature.com/articles/nmeth.3288">problematic</a>; you may be
+asking what comes <a class="reference external" href="https://doi.org/10.5281/zenodo.60156">next</a>.</p>
+<div class="section" id="estimation-statistics-p-values">
+<h2>Estimation statistics &gt; <em>P</em> Values<a class="headerlink" href="#estimation-statistics-p-values" title="Permalink to this headline">¶</a></h2>
+<p>Estimation statistics is a simple
+<a class="reference external" href="https://thenewstatistics.com/itns/">framework</a> that—while avoiding
+the pitfalls of significance testing—uses familiar statistical concepts:
+means, mean differences, and error bars. More importantly, it focuses on
+the effect size of one’s experiment/intervention, as opposed to
+significance testing.</p>
+<p>Significance testing calculates the probability (the P-value) that the
+experimental data would be observed, if the intervention did not produce
+a change in the metric measured (i.e. the null hypothesis). This leads
+analysts to apply a false dichotomy on the experimental intervention.</p>
+<p>Estimation statistics, on the other hand, focuses on the magnitude of
+the effect (the effect size) and its precision. This encourages analysts
+to gain a deeper understanding of the metrics used, and how they relate
+to the natural processes being studied.</p>
 </div>
-<div class="section" id="why-use-estimation-statistics">
-<h2>Why use estimation statistics?<a class="headerlink" href="#why-use-estimation-statistics" title="Permalink to this headline">¶</a></h2>
-<p>For each of the most routine significance tests, there is an estimation replacement:</p>
-<ul class="simple">
-<li>Unpaired Student’s t-test → Two-groups Gardner-Altman comparison plot</li>
-<li>Paired Student’s t-test → Paired comparison</li>
-<li>One-way ANOVA + multiple comparisons → Cumming multiple-groups plot</li>
-<li>Repeated measures ANOVA → Multi-paired comparison</li>
-<li>Ordered groups ANOVA → Shared-control comparison</li>
-</ul>
-<p>All of these plots enable you to graphically inspect the mean difference and its confidence interval. When there are multiple groups, the side-by-side plotting allows the visual comparison of effect sizes.</p>
-<table border="1" class="colwidths-given docutils" id="id4">
-<caption><span class="caption-text">Benefits of Estimation Plot</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<div class="section" id="the-inadequacy-of-common-plots">
+<h2>The Inadequacy of Common Plots<a class="headerlink" href="#the-inadequacy-of-common-plots" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say we have performed an experiment with 30 control subjects, and
+30 test subjects. We begin our data analysis by making a barplot of the
+data.</p>
+<img alt="_images/background_10_2.png" src="_images/background_10_2.png" />
+<p>The barplot has several shortcomings, despite enjoying widespread usage
+in academic journals. We’re not the first ones (see
+<a class="reference external" href="https://www.nature.com/articles/nmeth.2837">this</a>,
+<a class="reference external" href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002128">this</a>,
+or
+<a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/ejn.13400">that</a>)
+to point out the myriad flaws with the barplot. Importantly, the barplot
+does not show us the effect size.</p>
+<p>Instead, we can use a boxplot to visualize the data.</p>
+<img alt="_images/background_12_1.png" src="_images/background_12_1.png" />
+<p>Unfortunately, the boxplot still doesn’t show all our data. We still
+lack information about the underlying distribution of your data. Is it
+normally distributed? Is there skew in the points? What is the sample
+size? More importantly, boxplots do not display the effect size.</p>
+<p>To display several data points across one or more categories, we can use
+the jitter plot.</p>
+<img alt="_images/background_15_1.png" src="_images/background_15_1.png" />
+<p>Jitter plots avoid overlapping datapoints (i.e. datapoints with the same
+y-value) by adding a random factor to each point along the orthogonal
+x-axes. Thus, while a jitter plot displays all datapoints (implicitly
+indicating the sample size visually), it might not accurately depict the
+underlying distribution of the data.</p>
+</div>
+<div class="section" id="introducing-the-estimation-plot">
+<h2>Introducing the Estimation Plot<a class="headerlink" href="#introducing-the-estimation-plot" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/background_17_1.png" src="_images/background_17_1.png" />
+<p>An estimation plot has two key features. Firstly, it presents all
+datapoints as a swarmplot, which orders each point to display the
+underlying distribution. Secondly, an estimation plot presents the
+effect size as a <em>bootstrap 95% confidence interval</em> on a <em>separate but
+aligned axes</em>.</p>
+<p>We illustrate how bootstrap confidence intervals are generated below.</p>
+<img alt="_images/background_20_1.png" src="_images/background_20_1.png" />
+<p>In a typical scientific experiment, we are attempting to estimate the
+mean difference between two populations: µControl and µTest (Figure 5A).
+We go about this by obtaining samples from the control population and
+from the test population (Figure 5B). We can easily compute the mean
+difference in our observed sample (Δ).</p>
+<p><strong>But how do we obtain a measure of precision and confidence about our
+observed mean difference, and also get a sense of the population mean
+difference?</strong></p>
+<p>We can calculate the 95% confidence interval (95% CI) of the mean
+difference by resampling from our observed data several times (Figure
+5C). With computers, we can perform 5000 resamples very easily. The mean
+difference for each of these resamples is calculated. According to the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central Limit
+Theorem</a>, these
+5000 resampled mean differences are normally distributed, allowing easy
+derivation of a 95% CI of the mean difference (Figure 5D).</p>
+<p>An added benefit of bootstrap confidence intervals is that we do not
+need to assume that the population from which our samples come from have
+a normal distribution.</p>
+<p>The “95%” of the confidence interval refers to the proportion of
+confidence intervals that would contain the population mean, if samples
+from the population were repeatedly obtained, and confidence intervals
+obtained for each sample. That is to say, we can be 95% confident the
+interval contains the true mean of the population.</p>
+<p>The estimation plot presents Figure 5B and Figure 5D side-by-side as a
+single integrated plot. It thus tightly couples visual presentation of
+the raw data with an indication of the population mean difference, and
+its confidence interval.</p>
+</div>
+<div class="section" id="a-plot-for-every-type-of-data">
+<h2>A plot for every type of data<a class="headerlink" href="#a-plot-for-every-type-of-data" title="Permalink to this headline">¶</a></h2>
+<p>For each of the most routine significance tests, there is an estimation
+replacement:</p>
+<p>Unpaired Student’s t-test → <a class="reference external" href="tutorial.html#independent-two-group-estimation-plot">Two-group estimation plot</a></p>
+<img alt="_images/background_24_0.png" src="_images/background_24_0.png" />
+<p>Paired Student’s t-test → <a class="reference external" href="tutorial.html#paired-two-group-estimation-plot">Paired estimation plot</a></p>
+<img alt="_images/background_26_0.png" src="_images/background_26_0.png" />
+<p>One-way ANOVA + multiple comparisons → <a class="reference external" href="tutorial.html#multi-two-group-estimation-plot">Multi two-group estimation plot</a></p>
+<img alt="_images/background_28_0.png" src="_images/background_28_0.png" />
+<p>Repeated measures ANOVA → <a class="reference external" href="tutorial.html#multi-two-group-estimation-plot">Multi paired estimation plot</a></p>
+<img alt="_images/background_30_0.png" src="_images/background_30_0.png" />
+<p>Ordered groups ANOVA → <a class="reference external" href="tutorial.html#shared-control-estimation-plot">Shared-control estimation plot</a></p>
+<img alt="_images/background_32_0.png" src="_images/background_32_0.png" />
+<p>All of these plots enable you to graphically inspect the mean difference
+and its confidence interval. When there are multiple groups, the
+side-by-side plotting allows the visual comparison of effect sizes.</p>
+<p>Relative to conventional plots, estimation plots offer five key
+benefits:</p>
+<table border="1" class="docutils">
 <colgroup>
-<col width="40%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col width="41%" />
+<col width="13%" />
+<col width="13%" />
+<col width="11%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">&#160;</th>
-<th class="head">Bars-and-Stars</th>
-<th class="head">Boxplot &amp; P</th>
+<th class="head">Barplot</th>
+<th class="head">Boxplot</th>
+<th class="head">Jitter</th>
 <th class="head">Estimation Plot</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Avoid false dichotomy</td>
+<tr class="row-even"><td>Displays all observed values</td>
 <td>✘</td>
-<td>✘</td>
-<td>✔</td>
-</tr>
-<tr class="row-odd"><td>Display all observed values</td>
 <td>✘</td>
 <td>✘</td>
 <td>✔</td>
 </tr>
-<tr class="row-even"><td>Focus on intervention effect size</td>
+<tr class="row-odd"><td>Displays effect size</td>
 <td>✘</td>
-<td>✘</td>
-<td>✔</td>
-</tr>
-<tr class="row-odd"><td>Visualize estimate precision</td>
 <td>✘</td>
 <td>✘</td>
 <td>✔</td>
 </tr>
-<tr class="row-even"><td>Show mean difference distribution</td>
+<tr class="row-even"><td>Visualizes estimate precision</td>
+<td>✘</td>
+<td>✘</td>
+<td>✘</td>
+<td>✔</td>
+</tr>
+<tr class="row-odd"><td>Shows mean difference likelihood</td>
+<td>✘</td>
+<td>✘</td>
+<td>✘</td>
+<td>✔</td>
+</tr>
+<tr class="row-even"><td>Avoids false dichotomy</td>
+<td>✘</td>
 <td>✘</td>
 <td>✘</td>
 <td>✔</td>
 </tr>
 </tbody>
 </table>
-<p><strong>1. Avoid false dichotomy.</strong> Is there really a great difference between probabilities of 0.04999 and 0.05001? One of the many problems with significance testing is the application of an α-threshold creates the illusion of a dichotomy. In significance testing, the former is ‘significant’ and the latter is ‘non-significant.’</p>
-<p>The graphical method of showing this test result with clusters of stars amplifies this false dichotomy; since the average reader is primed to look for <em>P</em> &lt; 0.05, presenting <a href="#id2"><span class="problematic" id="id3">*</span></a>P*values is almost as bad.</p>
-<p>Estimation plots present the significance test result innocuously: as the presence or absence of a gap between the mean-difference zero line and the closest confidence interval bound.</p>
-<p><strong>2. Display all observed values.</strong> <a class="reference external" href="https://doi.org/10.1038/nmeth.2837">Bar charts</a> often show means, error, and significance stars only. <a class="reference external" href="https://www.nature.com/articles/nmeth.2811">Boxplots</a> generally show just medians, quartiles, maybe a few outliers, and <em>P</em> values. For observed values, estimation plots follow best practices by presenting <a class="reference external" href="https://doi.org/10.1371/journal.pbio.1002128">each and every datapoint</a>.</p>
-<p>Presenting all observed values means that nothing is hidden: range, normality, skew, kurtosis, outliers, bounds, modality, and sample size are all clearly visible.</p>
-<p><strong>3. Focus on intervention effect size.</strong> Estimation comparison plots include an entirely new axis for the mean difference of two groups (or paired data), and a whole panel for the mean differences of multiple groups. This serves to draw attention to something that deserves it, the answer to the question: “What is the magnitude of the effect of the intervention?”</p>
-<p><strong>4. Visualize estimate precision.</strong> Unlike a significance test result, the narrowness of a confidence interval gives a clear impression of effect size precision. The 95% confidence interval provides the range of the the population mean difference values that are the most plausible.</p>
-<p>This 95% plausible interval also serves as an 83% prediction interval for replications (<a class="reference external" href="https://www.amazon.com/Introduction-New-Statistics-Estimation-Science/dp/1138825522/">Cumming and Calin-Jageman 2016</a>), i.e. predicts future replication effect sizes (assuming no change in protocol) with 83% accuracy.</p>
-<p><strong>5. Show mean difference distribution.</strong> The distribution of mean differences can be estimated using bootstrap resamples of the available data. As an approximation of the <a class="reference external" href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf">Bayes posterior distribution</a>, this curve allows the analyst to weigh plausibility over an effect likelihood size range. Plotting this distribution also discourages dichotomous thinking—engendered by <em>P</em> values and hard-edged confidence intervals (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/28176294">Kruschke and Liddell 2017</a>)—by drawing attention to the distribution’s graded nature.</p>
-</div>
-<div class="section" id="why-are-these-plots-named-after-gardner-altman-and-cumming">
-<h2>Why are these plots named after Gardner, Altman, and Cumming?<a class="headerlink" href="#why-are-these-plots-named-after-gardner-altman-and-cumming" title="Permalink to this headline">¶</a></h2>
-<p>To our knowledge, mean difference comparison plots were first described by Martin Gardner and Douglas Altman (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/3082422/">Gardner and Altman 1986</a>), while the multiple-comparison design was devised by Geoff Cumming (<a class="reference external" href="https://www.amazon.com/Introduction-New-Statistics-Estimation-Science/dp/1138825522/">Cumming 2012</a>). We propose calling the two-groups plot Gardner-Altman comparison plots and the multi-group plots Cumming comparison plots.</p>
+<p>To our knowledge, mean difference estimation plots were first described
+by Martin Gardner and Douglas Altman (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339793/pdf/bmjcred00225-0036.pdf">Gardner and Altman
+1986</a>),
+while the multiple-comparison design was devised by Geoff Cumming
+(<a class="reference external" href="https://thenewstatistics.com/itns/">Cumming 2012</a>).</p>
 </div>
 </div>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -143,7 +231,7 @@
 
 
 <p>
-<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=watch&count=true&size=large&v=2"
+<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=star&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 </p>
 
@@ -151,20 +239,23 @@
 
 
 
-<h3>Navigation</h3>
+<p>
+<a href="https://pypi.python.org/pypi/dabest/"><img src="https://badge.fury.io/py/dabest.svg" alt="PyPI version" height="18"></a>
+</p><h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Background</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#what-is-estimation-statistics">What is estimation statistics?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#why-use-estimation-statistics">Why use estimation statistics?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#why-are-these-plots-named-after-gardner-altman-and-cumming">Why are these plots named after Gardner, Altman, and Cumming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estimation-statistics-p-values">Estimation statistics &gt; <em>P</em> Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-inadequacy-of-common-plots">The Inadequacy of Common Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introducing-the-estimation-plot">Introducing the Estimation Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-plot-for-every-type-of-data">A plot for every type of data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R via the reticulate package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 </ul>
 
 <div class="relations">
@@ -178,12 +269,14 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -194,8 +287,8 @@
       &copy;2018, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="_sources/background.rst.txt"
