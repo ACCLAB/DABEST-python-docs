@@ -44,10 +44,24 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="release-notes">
 <span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v0-1-6">
+<h2>v0.1.6<a class="headerlink" href="#v0-1-6" title="Permalink to this headline">¶</a></h2>
+<p>Several keywords have been added to allow more fine-grained control over a selection of plot elements.</p>
+<ul class="simple">
+<li><cite>swarm_dotsize</cite></li>
+<li><cite>difference_dotsize</cite></li>
+<li><cite>ci_linewidth</cite></li>
+<li><cite>summary_linewidth</cite></li>
+</ul>
+<p>The new keyword <cite>context</cite> allows you to set the plotting context as defined by seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.plotting_context.html">plotting_context()</a> .</p>
+<p>Now, if <cite>paired=True</cite>, you will need to supply an <cite>id_col</cite>, which is a column in the DataFrame which specifies which sample the datapoint belongs to. See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a> for more details.</p>
+</div>
 <div class="section" id="v0-1-5">
 <h2>v0.1.5<a class="headerlink" href="#v0-1-5" title="Permalink to this headline">¶</a></h2>
 <p>Fix bug that wasn’t updating the seaborn version upon setup and install.</p>
@@ -96,6 +110,7 @@
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -125,6 +140,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-6">v0.1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-5">v0.1.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-3">v0.1.3</a></li>
@@ -166,7 +182,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="_sources/release-notes.rst.txt"

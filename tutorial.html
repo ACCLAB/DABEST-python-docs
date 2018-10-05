@@ -44,32 +44,30 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="id1">
 <h1>Tutorial<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="load-libraries">
-<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<h2>Load Libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5
 6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
 <span class="kn">import</span> <span class="nn">dabest</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re using DABEST v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dabest</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re using DABEST v{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dabest</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.1.5</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.1.6</span>
 </pre></div>
 </div>
 </div>
@@ -81,7 +79,7 @@ each row is simply an index number referring to an observation.</p>
 <p>This is known as a ‘wide’ dataset. See this
 <a class="reference external" href="https://sejdemyr.github.io/r-tutorials/basics/wide-and-long/">writeup</a>
 for more details.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -119,59 +117,161 @@ for more details.</p>
 36
 37
 38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span> <span class="c1"># Used in generation of populations.</span>
+39
+40
+41
+42
+43
+44</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span> <span class="c1"># Used in generation of populations.</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9999</span><span class="p">)</span> <span class="c1"># Fix the seed so the results are replicable.</span>
 <span class="n">pop_size</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1"># Size of each population.</span>
 <span class="n">Ns</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># The number of samples taken from each population</span>
 
 <span class="c1"># Create populations</span>
-<span class="n">control_pop</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
-<span class="n">pop1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
-<span class="n">pop2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
-<span class="n">pop3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
-<span class="n">pop4</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
-<span class="n">pop5</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop4</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop5</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
+<span class="n">pop6</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pop_size</span><span class="p">)</span>
 
 
 <span class="c1"># Sample from the populations</span>
-<span class="n">choice_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sampling_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">control</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">control_pop</span><span class="p">,</span> <span class="o">**</span><span class="n">choice_kwargs</span><span class="p">)</span>
-<span class="n">g1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop1</span><span class="p">,</span> <span class="o">**</span><span class="n">choice_kwargs</span><span class="p">)</span>
-<span class="n">g2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop2</span><span class="p">,</span> <span class="o">**</span><span class="n">choice_kwargs</span><span class="p">)</span>
-<span class="n">g3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop3</span><span class="p">,</span> <span class="o">**</span><span class="n">choice_kwargs</span><span class="p">)</span>
-<span class="n">g4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop4</span><span class="p">,</span> <span class="o">**</span><span class="n">choice_kwargs</span><span class="p">)</span>
-<span class="n">g5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop5</span><span class="p">,</span> <span class="o">**</span><span class="n">choice_kwargs</span><span class="p">)</span>
+<span class="n">g1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop1</span><span class="p">,</span> <span class="o">**</span><span class="n">sampling_kwargs</span><span class="p">)</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop2</span><span class="p">,</span> <span class="o">**</span><span class="n">sampling_kwargs</span><span class="p">)</span>
+<span class="n">g3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop3</span><span class="p">,</span> <span class="o">**</span><span class="n">sampling_kwargs</span><span class="p">)</span>
+<span class="n">g4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop4</span><span class="p">,</span> <span class="o">**</span><span class="n">sampling_kwargs</span><span class="p">)</span>
+<span class="n">g5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop5</span><span class="p">,</span> <span class="o">**</span><span class="n">sampling_kwargs</span><span class="p">)</span>
+<span class="n">g6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pop6</span><span class="p">,</span> <span class="o">**</span><span class="n">sampling_kwargs</span><span class="p">)</span>
 
 <span class="c1"># Add a `gender` column for coloring the data.</span>
 <span class="n">females</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="n">Ns</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">males</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="n">Ns</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">gender</span> <span class="o">=</span> <span class="n">females</span> <span class="o">+</span> <span class="n">males</span>
 
+<span class="c1"># Add an `id` column for paired data plotting.</span>
+<span class="c1"># More info below!</span>
+<span class="n">id_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Ns</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
 <span class="c1"># Combine samples and gender into a DataFrame.</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Control&#39;</span><span class="p">:</span> <span class="n">control</span><span class="p">,</span>
-                   <span class="s1">&#39;Group 1&#39;</span><span class="p">:</span> <span class="n">g1</span><span class="p">,</span>
-                   <span class="s1">&#39;Group 2&#39;</span><span class="p">:</span> <span class="n">g2</span><span class="p">,</span>
-                   <span class="s1">&#39;Group 3&#39;</span><span class="p">:</span> <span class="n">g3</span><span class="p">,</span>
-                   <span class="s1">&#39;Group 4&#39;</span><span class="p">:</span> <span class="n">g4</span><span class="p">,</span>
-                   <span class="s1">&#39;Group 5&#39;</span><span class="p">:</span> <span class="n">g5</span><span class="p">,</span>
-                   <span class="s1">&#39;Gender&#39;</span> <span class="p">:</span> <span class="n">gender</span><span class="p">,</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Control&#39;</span> <span class="p">:</span> <span class="n">g1</span><span class="p">,</span>
+                   <span class="s1">&#39;Group 1&#39;</span> <span class="p">:</span> <span class="n">g2</span><span class="p">,</span>
+                   <span class="s1">&#39;Group 2&#39;</span> <span class="p">:</span> <span class="n">g3</span><span class="p">,</span>
+                   <span class="s1">&#39;Group 3&#39;</span> <span class="p">:</span> <span class="n">g4</span><span class="p">,</span>
+                   <span class="s1">&#39;Group 4&#39;</span> <span class="p">:</span> <span class="n">g5</span><span class="p">,</span>
+                   <span class="s1">&#39;Group 5&#39;</span> <span class="p">:</span> <span class="n">g6</span><span class="p">,</span>
+                   <span class="s1">&#39;Gender&#39;</span>  <span class="p">:</span> <span class="n">gender</span><span class="p">,</span>
+                   <span class="s1">&#39;ID&#39;</span>      <span class="p">:</span> <span class="n">id_col</span>
                   <span class="p">})</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note that we have 6 groups of observations, with an additional
-non-numerical column indicating gender.</p>
+non-numerical column indicating gender, and a column indicating the
+identity of each observation.</p>
+<div class="code ipython3 highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="independent-two-group-estimation-plot">
-<h2>Independent two-group estimation plot<a class="headerlink" href="#independent-two-group-estimation-plot" title="Permalink to this headline">¶</a></h2>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Control</th>
+      <th>Group 1</th>
+      <th>Group 2</th>
+      <th>Group 3</th>
+      <th>Group 4</th>
+      <th>Group 5</th>
+      <th>Gender</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.742313</td>
+      <td>3.737751</td>
+      <td>2.703766</td>
+      <td>3.933794</td>
+      <td>2.138557</td>
+      <td>2.997997</td>
+      <td>Female</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.681590</td>
+      <td>2.954575</td>
+      <td>3.158262</td>
+      <td>2.983600</td>
+      <td>3.377651</td>
+      <td>3.699350</td>
+      <td>Female</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.180724</td>
+      <td>2.531722</td>
+      <td>2.474184</td>
+      <td>2.286611</td>
+      <td>3.450214</td>
+      <td>2.507875</td>
+      <td>Female</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.961873</td>
+      <td>2.629912</td>
+      <td>2.431826</td>
+      <td>1.985591</td>
+      <td>3.565215</td>
+      <td>3.251389</td>
+      <td>Female</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.867556</td>
+      <td>3.335618</td>
+      <td>2.454033</td>
+      <td>3.887869</td>
+      <td>2.841621</td>
+      <td>3.513511</td>
+      <td>Female</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div class="section" id="producing-plots">
+<h2>Producing Plots<a class="headerlink" href="#producing-plots" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="independant-two-group-estimation-plot">
+<h3>Independant two-group estimation plot<a class="headerlink" href="#independant-two-group-estimation-plot" title="Permalink to this headline">¶</a></h3>
 <p>The simplest estimation plot can be generated with <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code>.
 Supply the DataFrame; supply the two groups you want to compare in the
 <code class="docutils literal notranslate"><span class="pre">idx</span></code> argument as a tuple or list.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="p">,</span> <span class="n">results1</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">))</span>
+<div class="code ipython3 highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="p">,</span> <span class="n">results1</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_7_0.png" src="_images/tutorial_7_0.png" />
+</div>
+<img alt="_images/tutorial_8_0.png" src="_images/tutorial_8_0.png" />
 <p>The <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> function will return 2 objects: a matplotlib
 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> and a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <p>In the Jupyter Notebook, with <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>, the figure should
@@ -181,49 +281,27 @@ the Ns (appended to the group names in the xtick labels) indicate the
 number of datapoints being plotted, and used to calculate the contrasts.</p>
 <p>The pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> returned by <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> contains the
 statistics computed in the course of generating the plot, with
-confidence intervals (95% by default) and relevant <em>P</em> values.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">results1</span> <span class="c1"># prints out the DataFrame returned by `dabest.plot()`.</span>
+confidence intervals (95% by default) and relevant p-values.</p>
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># prints out the DataFrame returned by `dabest.plot()`.</span>
+<span class="n">results1</span>
 </pre></div>
 </td></tr></table></div>
 <div>
 <style scoped>
-    .dataframe {
-      display: block;
-      overflow-x: scroll;
-      border-collapse: collapse;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
     }
 
     .dataframe thead th {
-      text-align: centre;
-      background-color: #586e75;
-      color: #eee8d5;
+        text-align: right;
     }
-
-    .dataframe td {
-      padding:10px 25px 10px 1px;
-      border-left: 1px solid #000;
-      border-right: 1px solid #000;
-    }
-
-    .dataframe th td {
-      border-bottom: 1px solid #ddd;
-    }
-
-    .dataframe tbody tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    .dataframe tbody tr td {
-      vertical-align: centre;
-      text-align: right;
-    }
-
-    .dataframe tbody tr:hover {
-      background-color: #eee8d5;
-    }
-
 </style>
-<table border="0" class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -245,8 +323,8 @@ confidence intervals (95% by default) and relevant <em>P</em> values.</p>
       <td>Control</td>
       <td>Group 1</td>
       <td>0.564092</td>
-      <td>0.253715</td>
-      <td>0.890816</td>
+      <td>0.251295</td>
+      <td>0.900291</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -257,47 +335,74 @@ confidence intervals (95% by default) and relevant <em>P</em> values.</p>
 </table>
 </div><p>You can color the dots with any column in the DataFrame, using the
 <code class="docutils literal notranslate"><span class="pre">color_col</span></code> keyword.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f2</span><span class="p">,</span> <span class="n">results2</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
                            <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_11_0.png" src="_images/tutorial_11_0.png" />
+<img alt="_images/tutorial_12_0.png" src="_images/tutorial_12_0.png" />
 </div>
 <div class="section" id="paired-two-group-estimation-plot">
-<h2>Paired two-group estimation plot<a class="headerlink" href="#paired-two-group-estimation-plot" title="Permalink to this headline">¶</a></h2>
+<h3>Paired two-group estimation plot<a class="headerlink" href="#paired-two-group-estimation-plot" title="Permalink to this headline">¶</a></h3>
 <p>DABEST can also produce estimation plots for paired observations
 (repeated measures). This is done by setting the <code class="docutils literal notranslate"><span class="pre">paired</span></code> option to
-<code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">True</span></code>. You will also have to tell <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> which column
+contains the identity of the each datum with the <code class="docutils literal notranslate"><span class="pre">id_col</span></code> keyword.</p>
 <p>The estimation plot uses lines to indicate the pairs of observations.
-The combined visual effect of the slopes of these lines serves to give
-the viewer an intuitive sense of the effect size between the two groups
-of repeated observations.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+This is known as a <a class="reference external" href="https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk">slopegraph</a>. The combined visual effect of the slopes
+of these lines serves to give the viewer an intuitive sense of the effect
+size between the two groups of repeated observations.</p>
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f3</span><span class="p">,</span> <span class="n">results3</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
                            <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
-                           <span class="n">paired</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                           <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s2">&quot;ID&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_14_0.png" src="_images/tutorial_14_0.png" />
-<p>If you want to plot the raw swarmplot instead of the paired lines, use
-the <code class="docutils literal notranslate"><span class="pre">show_pairs</span></code> flag to set this. The contrasts computed will still
-be paired, as indicated by the DataFrame produced.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f4</span><span class="p">,</span> <span class="n">results4</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
-                           <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
-                           <span class="n">paired</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                           <span class="n">show_pairs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">results4</span>
+<img alt="_images/tutorial_15_0.png" src="_images/tutorial_15_0.png" />
+<p>Note that the statistical output records that the difference is a paired
+one, in the <code class="docutils literal notranslate"><span class="pre">is_paired</span></code> column.</p>
+<div class="code ipython3 highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results3</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <div>
+<style scoped>
+  .dataframe {
+    display: block;
+    overflow-x: scroll;
+    border-collapse: collapse;
+  }
 
-<table border="0" class="dataframe">
+  .dataframe thead th {
+    text-align: centre;
+    background-color: #586e75;
+    color: #eee8d5;
+  }
+
+  .dataframe td {
+    padding:10px 25px 10px 1px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+  }
+
+  .dataframe th td {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dataframe tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .dataframe tbody tr td {
+    vertical-align: centre;
+    text-align: right;
+  }
+
+  .dataframe tbody tr:hover {
+    background-color: #eee8d5;
+  }
+</style>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -319,8 +424,8 @@ be paired, as indicated by the DataFrame produced.</p>
       <td>Control</td>
       <td>Group 1</td>
       <td>0.564092</td>
-      <td>0.26027</td>
-      <td>0.826475</td>
+      <td>0.262493</td>
+      <td>0.842903</td>
       <td>95.0</td>
       <td>True</td>
       <td>True</td>
@@ -329,10 +434,22 @@ be paired, as indicated by the DataFrame produced.</p>
     </tr>
   </tbody>
 </table>
-</div><img alt="_images/tutorial_16_1.png" src="_images/tutorial_16_1.png" />
+</div><p>If you want to plot the raw swarmplot instead of the paired lines, use
+the <code class="docutils literal notranslate"><span class="pre">show_pairs</span></code> flag to set this. The contrasts computed will still
+be paired, as indicated by the DataFrame produced.</p>
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f4</span><span class="p">,</span> <span class="n">results4</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
+                           <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
+                           <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span>
+                           <span class="n">show_pairs</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="_images/tutorial_19_0.png" src="_images/tutorial_19_0.png" />
 </div>
 <div class="section" id="multi-two-group-estimation-plot">
-<h2>Multi two-group estimation plot<a class="headerlink" href="#multi-two-group-estimation-plot" title="Permalink to this headline">¶</a></h2>
+<h3>Multi two-group estimation plot<a class="headerlink" href="#multi-two-group-estimation-plot" title="Permalink to this headline">¶</a></h3>
 <p>In a multi-group design, you can horizontally tile two or more two-group
 floating-contrasts. This is designed to meet data visualization and
 presentation paradigms that are predominant in academic biomedical
@@ -342,7 +459,7 @@ tuples or lists within a single tuple/list to create a seperate subplot
 for that contrast.</p>
 <p>The effect sizes and confidence intervals for each two-group plot will
 be computed.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -356,7 +473,20 @@ be computed.</p>
 </pre></div>
 </td></tr></table></div>
 <div>
-<table border="0" class="dataframe">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -378,8 +508,8 @@ be computed.</p>
       <td>Control</td>
       <td>Group 1</td>
       <td>0.564092</td>
-      <td>0.243696</td>
-      <td>0.889834</td>
+      <td>0.256753</td>
+      <td>0.892652</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -391,8 +521,8 @@ be computed.</p>
       <td>Group 2</td>
       <td>Group 3</td>
       <td>0.253319</td>
-      <td>-0.116257</td>
-      <td>0.600037</td>
+      <td>-0.112335</td>
+      <td>0.616018</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -404,8 +534,8 @@ be computed.</p>
       <td>Group 4</td>
       <td>Group 5</td>
       <td>-0.278511</td>
-      <td>-0.543416</td>
-      <td>0.021980</td>
+      <td>-0.551978</td>
+      <td>0.019770</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -414,41 +544,42 @@ be computed.</p>
     </tr>
   </tbody>
 </table>
-</div><img alt="_images/tutorial_18_1.png" src="_images/tutorial_18_1.png" />
+</div><img alt="_images/tutorial_21_1.png" src="_images/tutorial_21_1.png" />
 <p>Each two-group experiment has its own floating contrast axes. Another
 way to present this is to place all the effect sizes (and their
 bootstrap distributions) on a common axes, beneath the raw data. This is
 controlled with the <code class="docutils literal notranslate"><span class="pre">float_contrast</span></code> option.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f6</span><span class="p">,</span> <span class="n">results6</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
                                     <span class="p">(</span><span class="s1">&#39;Group 2&#39;</span><span class="p">,</span><span class="s1">&#39;Group 3&#39;</span><span class="p">),</span>
                                     <span class="p">(</span><span class="s1">&#39;Group 4&#39;</span><span class="p">,</span><span class="s1">&#39;Group 5&#39;</span><span class="p">)),</span>
-                           <span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span>
+                           <span class="n">float_contrast</span><span class="o">=</span><span class="bp">False</span>
                           <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_20_0.png" src="_images/tutorial_20_0.png" />
-<p>You can also produce a paired multi-group plot, by setting <cite>paired=True</cite>.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_23_0.png" src="_images/tutorial_23_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f6_paired</span><span class="p">,</span> <span class="n">results6_paired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f6_paired</span><span class="p">,</span> <span class="n">results6_paired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">),</span>
                                                   <span class="p">(</span><span class="s1">&#39;Group 2&#39;</span><span class="p">,</span><span class="s1">&#39;Group 3&#39;</span><span class="p">),</span>
                                                   <span class="p">(</span><span class="s1">&#39;Group 4&#39;</span><span class="p">,</span><span class="s1">&#39;Group 5&#39;</span><span class="p">)),</span>
-                                         <span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                         <span class="n">paired</span><span class="o">=</span><span class="kc">True</span>
+                                         <span class="n">float_contrast</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                         <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
+                                         <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span>
                                         <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_20_PAIRED.png" src="_images/tutorial_20_PAIRED.png" />
+<img alt="_images/tutorial_24_0.png" src="_images/tutorial_24_0.png" />
 </div>
 <div class="section" id="shared-control-estimation-plot">
-<h2>Shared-control estimation plot<a class="headerlink" href="#shared-control-estimation-plot" title="Permalink to this headline">¶</a></h2>
+<h3>Shared-control estimation plot<a class="headerlink" href="#shared-control-estimation-plot" title="Permalink to this headline">¶</a></h3>
 <p>A common experimental setup seen in contemporary biomedical research is
 a shared-control design (also known as a ‘hub-and-spoke’ design), where
 two or more experimental groups are compared to a common control group.</p>
@@ -459,7 +590,7 @@ such an experimental design.</p>
 the first group in the tuple/list is considered the control group. The
 mean difference and confidence intervals of each subsequent group will
 be computed against the first control group.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f7</span><span class="p">,</span> <span class="n">results7</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 4&#39;</span><span class="p">),</span>
@@ -469,7 +600,20 @@ be computed against the first control group.</p>
 </pre></div>
 </td></tr></table></div>
 <div>
-<table border="0" class="dataframe">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -491,8 +635,8 @@ be computed against the first control group.</p>
       <td>Control</td>
       <td>Group 2</td>
       <td>-0.049862</td>
-      <td>-0.330886</td>
-      <td>0.234553</td>
+      <td>-0.318671</td>
+      <td>0.231657</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -504,8 +648,8 @@ be computed against the first control group.</p>
       <td>Control</td>
       <td>Group 4</td>
       <td>0.698509</td>
-      <td>0.388645</td>
-      <td>0.968367</td>
+      <td>0.409364</td>
+      <td>0.969665</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -514,7 +658,7 @@ be computed against the first control group.</p>
     </tr>
   </tbody>
 </table>
-</div><img alt="_images/tutorial_22_1.png" src="_images/tutorial_22_1.png" />
+</div><img alt="_images/tutorial_26_1.png" src="_images/tutorial_26_1.png" />
 <p>In a shared control plot, the effect sizes and bootstrap 95CIs are shown
 on the lower panel for all comparisons. By default, a summary line is
 plotted for each group. The mean (indicated by the gap) and the standard
@@ -522,19 +666,20 @@ deviation is plotted as a gapped line.</p>
 <p>One can display the median with the 25th and 75th percentiles (a
 Tufte-style boxplot) using the <code class="docutils literal notranslate"><span class="pre">group_summaries</span></code> keyword argument in
 the function.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">f8</span><span class="p">,</span> <span class="n">results8</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 4&#39;</span><span class="p">),</span>
                            <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
                            <span class="n">group_summaries</span><span class="o">=</span><span class="s1">&#39;median_quartiles&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_24_0.png" src="_images/tutorial_24_0.png" />
+<img alt="_images/tutorial_28_0.png" src="_images/tutorial_28_0.png" />
+</div>
 </div>
 <div class="section" id="controlling-aesthetics">
-<h2>Controlling aesthetics<a class="headerlink" href="#controlling-aesthetics" title="Permalink to this headline">¶</a></h2>
+<h2>Controlling Aesthetics<a class="headerlink" href="#controlling-aesthetics" title="Permalink to this headline">¶</a></h2>
 <p>Below we run through ways of customizing various aesthetic features.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -545,8 +690,8 @@ the function.</p>
                            <span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_26_0.png" src="_images/tutorial_26_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_30_0.png" src="_images/tutorial_30_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -557,8 +702,8 @@ the function.</p>
                              <span class="n">swarm_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_27_0.png" src="_images/tutorial_27_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_31_0.png" src="_images/tutorial_31_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -577,28 +722,20 @@ the function.</p>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_28_0.png" src="_images/tutorial_28_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_32_0.png" src="_images/tutorial_32_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Changing the size and alpha (transparency) of the dots in the swarmplot.</span>
-<span class="c1"># This is done through swarmplot_kwargs, which accepts a dictionary.</span>
-<span class="c1"># You can pass any keywords that `sns.swarmplot()` can accept.</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Changing the size of the dots in the swarmplot.</span>
 
 <span class="n">f12</span><span class="p">,</span> <span class="n">results12</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">,</span><span class="s1">&#39;Group 2&#39;</span><span class="p">),</span>
-                             <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
-                             <span class="n">swarmplot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
-                                               <span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">}</span>
+                             <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">swarm_dotsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_29_0.png" src="_images/tutorial_29_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_33_0.png" src="_images/tutorial_33_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -613,8 +750,8 @@ the function.</p>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_30_0.png" src="_images/tutorial_30_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<img alt="_images/tutorial_34_0.png" src="_images/tutorial_34_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -635,8 +772,8 @@ the function.</p>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_31_0.png" src="_images/tutorial_31_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_35_0.png" src="_images/tutorial_35_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -655,22 +792,22 @@ the function.</p>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_32_0.png" src="_images/tutorial_32_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_36_0.png" src="_images/tutorial_36_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Passing a dict as a custom palette.</span>
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Passing a dictionary as a custom palette.</span>
 <span class="n">f16</span><span class="p">,</span> <span class="n">results16</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span><span class="s1">&#39;Group 1&#39;</span><span class="p">,</span><span class="s1">&#39;Group 2&#39;</span><span class="p">),</span>
                              <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span>
-                             <span class="n">custom_palette</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Male&#39;</span><span class="p">:</span><span class="s1">&#39;slategrey&#39;</span><span class="p">,</span>
-                                             <span class="s1">&#39;Female&#39;</span><span class="p">:</span><span class="s1">&#39;darkorange&#39;</span><span class="p">}</span>
+                             <span class="n">custom_palette</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Male&#39;</span>   <span class="p">:</span> <span class="s1">&#39;slategrey&#39;</span><span class="p">,</span>
+                                             <span class="s1">&#39;Female&#39;</span> <span class="p">:</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">}</span>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_33_0.png" src="_images/tutorial_33_0.png" />
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<img alt="_images/tutorial_37_0.png" src="_images/tutorial_37_0.png" />
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -683,17 +820,20 @@ the function.</p>
                             <span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_34_0.png" src="_images/tutorial_34_0.png" />
+<img alt="_images/tutorial_38_0.png" src="_images/tutorial_38_0.png" />
 </div>
-<div class="section" id="working-with-melted-dataframes">
-<h2>Working with ‘melted’ DataFrames<a class="headerlink" href="#working-with-melted-dataframes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="appendix-on-working-with-melted-dataframes">
+<h2>Appendix: On working with ‘melted’ DataFrames.<a class="headerlink" href="#appendix-on-working-with-melted-dataframes" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">dabest.plot</span></code> can also work with ‘melted’ or ‘longform’ data. This
 term is so used because each row will now correspond to a single
 datapoint, with one column carrying the value (<code class="docutils literal notranslate"><span class="pre">value</span></code>) and other
 columns carrying ‘metadata’ describing that datapoint (in this case,
 <code class="docutils literal notranslate"><span class="pre">group</span></code> and <code class="docutils literal notranslate"><span class="pre">Gender</span></code>).</p>
-<p>More details on wide vs long or ‘melted’ data can be found in this <a class="reference external" href="https://en.wikipedia.org/wiki/Wide_and_narrow_data">Wikipedia article</a>. The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html">pandas documentation</a> gives recipes for melting dataframes.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p>For more details on wide vs long or ‘melted’ data, see
+<a class="reference external" href="https://en.wikipedia.org/wiki/Wide_and_narrow_data">https://en.wikipedia.org/wiki/Wide_and_narrow_data</a></p>
+<p>To read more about melting a dataframe,see
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html</a></p>
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -707,10 +847,10 @@ columns carrying ‘metadata’ describing that datapoint (in this case,
 12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;group&#39;</span>
 <span class="n">y</span><span class="o">=</span><span class="s1">&#39;my_metric&#39;</span>
 <span class="n">color_col</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span>
-<span class="n">value_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># select all but the &#39;Gender&#39; column.</span>
+<span class="n">value_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># select all but the &#39;Gender&#39; and &#39;ID&#39; columns.</span>
 
-<span class="n">df_melt</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
-                <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">color_col</span><span class="p">],</span>
+<span class="n">df_melt</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="n">color_col</span><span class="p">],</span>
                 <span class="n">value_vars</span><span class="o">=</span><span class="n">value_cols</span><span class="p">,</span>
                 <span class="n">value_name</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
                 <span class="n">var_name</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
@@ -719,11 +859,24 @@ columns carrying ‘metadata’ describing that datapoint (in this case,
 </pre></div>
 </td></tr></table></div>
 <div>
-<table border="0" class="dataframe">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
   <thead>
-    <tr>
+    <tr style="text-align: right;">
       <th></th>
-      <th>index</th>
+      <th>ID</th>
       <th>Gender</th>
       <th>group</th>
       <th>my_metric</th>
@@ -732,35 +885,35 @@ columns carrying ‘metadata’ describing that datapoint (in this case,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
+      <td>1</td>
       <td>Female</td>
       <td>Control</td>
       <td>2.742313</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
+      <td>2</td>
       <td>Female</td>
       <td>Control</td>
       <td>2.681590</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
+      <td>3</td>
       <td>Female</td>
       <td>Control</td>
       <td>3.180724</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
+      <td>4</td>
       <td>Female</td>
       <td>Control</td>
       <td>1.961873</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
+      <td>5</td>
       <td>Female</td>
       <td>Control</td>
       <td>2.867556</td>
@@ -770,7 +923,7 @@ columns carrying ‘metadata’ describing that datapoint (in this case,
 </div><p>If you are using a melted DataFrame, you will need to specify the <code class="docutils literal notranslate"><span class="pre">x</span></code>
 (containing the categorical group names) and <code class="docutils literal notranslate"><span class="pre">y</span></code> (containing the
 numerical values for plotting) columns.</p>
-<div class="highlight-ipython3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="code ipython3 highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -786,8 +939,20 @@ numerical values for plotting) columns.</p>
 </pre></div>
 </td></tr></table></div>
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
 </style>
-<table border="0" class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -809,8 +974,8 @@ numerical values for plotting) columns.</p>
       <td>Control</td>
       <td>Group 1</td>
       <td>0.564092</td>
-      <td>0.244025</td>
-      <td>0.889509</td>
+      <td>0.244049</td>
+      <td>0.881805</td>
       <td>95.0</td>
       <td>True</td>
       <td>False</td>
@@ -819,12 +984,13 @@ numerical values for plotting) columns.</p>
     </tr>
   </tbody>
 </table>
-</div><img alt="_images/tutorial_38_1.png" src="_images/tutorial_38_1.png" />
+</div><img alt="_images/tutorial_42_1.png" src="_images/tutorial_42_1.png" />
 </div>
 </div>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -852,14 +1018,11 @@ numerical values for plotting) columns.</p>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#load-libraries">Load libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-libraries">Load Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-dummy-dataset">Create dummy dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#independent-two-group-estimation-plot">Independent two-group estimation plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#paired-two-group-estimation-plot">Paired two-group estimation plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multi-two-group-estimation-plot">Multi two-group estimation plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#shared-control-estimation-plot">Shared-control estimation plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#controlling-aesthetics">Controlling aesthetics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-melted-dataframes">Working with ‘melted’ DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#producing-plots">Producing Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controlling-aesthetics">Controlling Aesthetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix-on-working-with-melted-dataframes">Appendix: On working with ‘melted’ DataFrames.</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R</a></li>
@@ -898,7 +1061,7 @@ numerical values for plotting) columns.</p>
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="_sources/tutorial.rst.txt"

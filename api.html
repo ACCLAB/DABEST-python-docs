@@ -43,6 +43,8 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="api">
@@ -51,7 +53,7 @@
 <h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="dabest.plot">
-<code class="descclassname">dabest.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>idx</em>, <em>x=None</em>, <em>y=None</em>, <em>color_col=None</em>, <em>float_contrast=True</em>, <em>paired=False</em>, <em>show_pairs=True</em>, <em>group_summaries='mean_sd'</em>, <em>custom_palette=None</em>, <em>swarm_label=None</em>, <em>contrast_label=None</em>, <em>swarm_ylim=None</em>, <em>contrast_ylim=None</em>, <em>fig_size=None</em>, <em>font_scale=1.25</em>, <em>stat_func=None</em>, <em>ci=95</em>, <em>n_boot=5000</em>, <em>show_group_count=True</em>, <em>swarmplot_kwargs=None</em>, <em>violinplot_kwargs=None</em>, <em>reflines_kwargs=None</em>, <em>group_summary_kwargs=None</em>, <em>legend_kwargs=None</em>, <em>aesthetic_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dabest.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>idx</em>, <em>x=None</em>, <em>y=None</em>, <em>color_col=None</em>, <em>paired=False</em>, <em>id_col=None</em>, <em>float_contrast=True</em>, <em>fig_size=None</em>, <em>stat_func=None</em>, <em>ci=95</em>, <em>n_boot=5000</em>, <em>swarm_dotsize=8</em>, <em>difference_dotsize=10</em>, <em>swarm_label=None</em>, <em>contrast_label=None</em>, <em>swarm_ylim=None</em>, <em>contrast_ylim=None</em>, <em>custom_palette=None</em>, <em>show_pairs=True</em>, <em>show_group_count=True</em>, <em>group_summaries='mean_sd'</em>, <em>context='talk'</em>, <em>ci_linewidth=3</em>, <em>summary_linewidth=3</em>, <em>multiplot_horizontal_spacing=0.75</em>, <em>font_scale=1</em>, <em>dpi=100</em>, <em>tick_length=10</em>, <em>tick_pad=5</em>, <em>swarmplot_kwargs=None</em>, <em>violinplot_kwargs=None</em>, <em>reflines_kwargs=None</em>, <em>group_summary_kwargs=None</em>, <em>legend_kwargs=None</em>, <em>aesthetic_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a pandas DataFrame and produces a contrast plot:
 either a Cummings hub-and-spoke plot or a Gardner-Altman contrast plot.
 Paired and unpaired options available.</p>
@@ -66,22 +68,54 @@ Paired and unpaired options available.</p>
 with each individual tuple producing its own contrast plot.</dd>
 <dt>x, y: strings, default None</dt>
 <dd>Column names for data to be plotted on the x-axis and y-axis.</dd>
-<dt>color_col: list, default None</dt>
+<dt>color_col: string, default None</dt>
 <dd>Column to be used for colors.</dd>
-<dt>swarm_label, contrast_label: strings, default None</dt>
-<dd>Set labels for the y-axis of the swarmplot and the contrast plot,
-respectively.</dd>
+<dt>paired: boolean, default False</dt>
+<dd>Whether or not the data is paired. If True, <cite>idx</cite> must consist of a
+tuple of length 2, or each tuple in <cite>idx</cite> must have a length of 2.
+The first category/group is the observation before treatment, whilst
+the second category/group is that after treatment.</dd>
+<dt>id_col: string, default None</dt>
+<dd>If <cite>paired</cite> is True, this must be supplied. This column indicates
+the identity of the datapoint if the data is paired.</dd>
 <dt>float_contrast: boolean, default True</dt>
 <dd>Whether or not to display the halfviolin bootstrapped difference
 distribution alongside the raw data.</dd>
-<dt>paired: boolean, default False</dt>
-<dd>Whether or not the data is paired. To elaborate.</dd>
-<dt>custom_palette: dict or list, default None</dt>
-<dd><p class="first">Pass a dictionary with {‘group’:’color’} pairings here, or a list
-of matplotlib colors. This palette will be used to color the
-swarmplot.</p>
-<p>Please take a look at the seaborn commands <cite>color_palette</cite>
-and <cite>cubehelix_palette</cite> to generate a custom palette.
+<dt>fig_size: tuple, default None</dt>
+<dd>The desired dimensions of the figure as a (length, width) tuple.</dd>
+<dt>stat_func: callable, default None</dt>
+<dd>The function used to compute the summary. If None, defaults to
+np.mean()</dd>
+<dt>ci: integer, default 95</dt>
+<dd>The size of the confidence interval desired (in percentage).
+Sensible values range from 50 to 99.</dd>
+<dt>n_boot: integer, default 5000</dt>
+<dd>Number of bootstrap iterations to perform during calculation of
+confidence intervals.</dd>
+<dt>swarm_dotsize: integer, default 8</dt>
+<dd>The size of the dots used to plot the rawdata in the swarmplot.</dd>
+<dt>difference_dotsize: integer, default 10</dt>
+<dd>The size of the dots used to indicate the effect sizes.</dd>
+<dt>swarm_label, contrast_label: strings, default None</dt>
+<dd>Set labels for the y-axis of the swarmplot and the contrast plot,
+respectively.</dd>
+<dt>swarm_ylim: tuple, default None</dt>
+<dd>The desired y-limits of the raw data swarmplot as a (lower, higher)
+tuple.</dd>
+<dt>contrast_ylim: tuple, default None</dt>
+<dd>The desired y-limits of the constrast plot as a (lower, higher)
+tuple.</dd>
+<dt>custom_palette: dict, list, or matplotlib color palette, default None</dt>
+<dd><p class="first">This keyword accepts a dictionary with {‘group’:’color’} pairings,
+a list of RGB colors, or a specified matplotlib palette.</p>
+<p>This palette will be used to color the swarmplot. If no <cite>color_col</cite>
+is specified, then each group will be colored in sequence according
+to the palette.</p>
+<p>If <cite>color_col</cite> is specified but this is not, the default palette
+used is ‘tab10’.</p>
+<p>Please take a look at the seaborn commands <cite>sns.color_palette</cite>
+and <cite>sns.cubehelix_palette</cite> to generate a custom palette. Both
+these functions generate a list of RGB colors.
 <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.color_palette.html">https://seaborn.pydata.org/generated/seaborn.color_palette.html</a>
 <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.cubehelix_palette.html">https://seaborn.pydata.org/generated/seaborn.cubehelix_palette.html</a></p>
 <p class="last">The named colors of matplotlib can be found here:
@@ -91,62 +125,118 @@ and <cite>cubehelix_palette</cite> to generate a custom palette.
 <dd>If the data is paired, whether or not to show the raw data as a
 swarmplot, or as paired plot, with a line joining each pair of
 observations.</dd>
+<dt>show_group_count: boolean, default True</dt>
+<dd>Whether or not the group count (e.g. ‘N=10’) will be appended to the
+xtick labels.</dd>
 <dt>group_summaries: [‘mean_sd’, ‘median_quartiles’, ‘None’], default ‘mean_sd’</dt>
 <dd>Plots the summary statistics for each group. If ‘mean_sd’, then the
 mean and standard deviation of each group is plotted as a notched
 line beside each group. If ‘median_quantiles’, then the
 median and 25th and 75th percentiles of each group is plotted
 instead. If ‘None’, the summaries are not shown.</dd>
-<dt>swarm_ylim: tuple, default None</dt>
-<dd>The desired y-limits of the raw data swarmplot as a (lower, higher)
-tuple.</dd>
-<dt>contrast_ylim: tuple, default None</dt>
-<dd>The desired y-limits of the constrast plot as a (lower, higher)
-tuple.</dd>
-<dt>fig_size: tuple, default None</dt>
-<dd>The desired dimensions of the figure as a (length, width) tuple.</dd>
-<dt>font_scale: float, default 1.4</dt>
-<dd>The font size will be scaled by this number.</dd>
-<dt>stat_func: callable, default None</dt>
-<dd>The function used to compute the summary. If None, defaults to
-np.mean()</dd>
-<dt>ci: integer, default 95</dt>
-<dd>The size of the confidence interval desired (in percentage).</dd>
-<dt>n_boot: integer, default 5000</dt>
-<dd>Number of bootstrap iterations to perform during calculation of
-confidence intervals.</dd>
-<dt>show_group_count: boolean, default True</dt>
-<dd>Whether or not the group count (e.g. ‘N=10’) will be appended to the
-xtick labels.</dd>
+<dt>context: string, default ‘talk’</dt>
+<dd>This implements the plotting context, as defined in seaborn.
+There are four contexts: “paper”, “notebook”, “talk”, and “poster”,
+which have plot elements (e.g. font scales) scaled by 0.8x, 1x,
+1.3x, and 1.6x, respectively.</dd>
+<dt>ci_linewidth: float, default 3</dt>
+<dd>The width of the vertical line (in points) indicating the confidence
+interval.</dd>
+<dt>summary_linewidth: float, default 3</dt>
+<dd>The width of the vertical gapped line (in points) indicating the
+summary of each group (as specified by <cite>group_summaries</cite>)</dd>
+<dt>multiplot_horizontal_spacing: float, default 0.75</dt>
+<dd>If the plot is a two-group multiplot with floating contrast axes,
+this determines the horizontal spacing between each plot. This
+number is a fraction of the axes width.</dd>
+<dt>font_scale: float, default 1.</dt>
+<dd>The font size will be scaled by this number. This value is passed
+on to seaborn.set().</dd>
+<dt>dpi: float, default 100</dt>
+<dd>The dots per inch of the figure produced. The default of 100 matches
+the matplotlib default for both screen display and image saving.</dd>
+<dt>tick_length: int, default 10</dt>
+<dd>The length of the ticks (in points) for both the swarm and contrast
+axes.</dd>
+<dt>tick_pad: int, default 5</dt>
+<dd>The distance of the tick label from the tick (in points), for both
+the swarm and contrast axes.</dd>
 <dt>swarmplot_kwargs: dict, default None</dt>
 <dd>Pass any keyword arguments accepted by the seaborn <cite>swarmplot</cite>
 command here, as a dict.</dd>
 <dt>violinplot_kwargs: dict, default None</dt>
 <dd>Pass any keyword arguments accepted by the matplotlib `
-pyplot.violinplot` command here, as a dict.</dd>
+pyplot.violinplot` command here, as a dict. If None, the following
+keywords are passed to violinplot: {‘widths’:0.5, ‘vert’:True,
+‘showextrema’:False, ‘showmedians’:False}.</dd>
 <dt>reflines_kwargs: dict, default None</dt>
-<dd>Pass any keyword arguments accepted by the matplotlib Axes <cite>hlines</cite>
-command here, as a dict.T his will change the appearance of the zero
-reference lines.</dd>
+<dd>This will change the appearance of the zero reference lines. Pass
+any keyword arguments accepted by the matplotlib Axes <cite>hlines</cite>
+command here, as a dict. If None, the following keywords are passed
+to Axes.hlines:
+{‘linestyle’:’solid’, ‘linewidth’:0.75, ‘color’:’k’}.</dd>
 <dt>group_summary_kwargs: dict, default None</dt>
 <dd>Pass any keyword arguments accepted by the matplotlib.lines.Line2D
 command here, as a dict. This will change the appearance of the
 vertical summary lines for each group, if <cite>group_summaries</cite> is not
-‘None’.</dd>
+‘None’. If None, the following keywords are passed to Line2D:
+{‘lw’: 4, ‘color’: ‘k’,’alpha’: 1, ‘zorder’: 5}.</dd>
 <dt>legend_kwargs: dict, default None</dt>
 <dd>Pass any keyword arguments accepted by the matplotlib Axes <cite>legend</cite>
-command here, as a dict.</dd>
+command here, as a dict. If None, the following keywords are passed
+to Axes.legend:
+{‘loc’: ‘upper left’, ‘frameon’: False, ‘markerscale’: 1.5,
+‘bbox_to_anchor’: (0.95, 1.)}.</dd>
 <dt>aesthetic_kwargs: dict, default None</dt>
 <dd>Pass any keyword arguments accepted by the seaborn <cite>set</cite> command
-here, as a dict.</dd>
+here, as a dict. If None, the following keywords are passed to
+seaborn.set:
+{‘context’: ‘poster’, ‘style’: ‘ticks’, ‘font_scale’: font_scale}
+(<cite>font_scale</cite> is a keyword as noted above with default 0.9.)</dd>
 </dl>
 </div></blockquote>
 <dl class="last docutils">
 <dt>Returns:</dt>
-<dd><p class="first">A matplotlib Figure.
-Arrangement of the axes. Obtaining access to them via figure.axes[i]</p>
-<p class="last">A pandas DataFrame.
-Description of column headings.</p>
+<dd><dl class="first last docutils">
+<dt>A matplotlib Figure.</dt>
+<dd>You can access each figure via <cite>figure.axes[i]</cite>.
+The odd-numbered axes are the swarmplot axes. The even-numbered
+axes are the contrast axes. Every group in <cite>idx</cite> will have its own
+pair of axes.</dd>
+<dt>A pandas DataFrame with the following columns:</dt>
+<dd><dl class="first last docutils">
+<dt>stat_summary</dt>
+<dd>The mean difference.</dd>
+<dt>bca_ci_low</dt>
+<dd>The lower bound of the confidence interval.</dd>
+<dt>bca_ci_high</dt>
+<dd>The upper bound of the confidence interval.</dd>
+<dt>ci</dt>
+<dd>The width of the confidence interval, typically 95%.</dd>
+<dt>pvalue_2samp_ind_ttest</dt>
+<dd>P-value obtained from scipy.stats.ttest_ind. Only produced
+if paired is False.
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_ind.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_ind.html</a></dd>
+<dt>pvalue_mann_whitney: float</dt>
+<dd>Two-sided p-value obtained from scipy.stats.mannwhitneyu.
+Only produced if paired is False.
+The Mann-Whitney U-test is a nonparametric unpaired test of
+the null hypothesis that x1 and x2 are from the same distribution.
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.mannwhitneyu.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.mannwhitneyu.html</a></dd>
+<dt>pvalue_2samp_related_ttest</dt>
+<dd>P-value obtained from scipy.stats.ttest_rel. Only produced
+if paired is True.
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_rel.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_rel.html</a></dd>
+<dt>pvalue_wilcoxon: float</dt>
+<dd>P-value obtained from scipy.stats.wilcoxon. Only produced
+if paired is True.
+The Wilcoxons signed-rank test is a nonparametric paired
+test of the null hypothesis that the paired samples x1 and
+x2 are from the same distribution.
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/scipy.stats.wilcoxon.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/scipy.stats.wilcoxon.html</a></dd>
+</dl>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -217,7 +307,7 @@ percentage confidence interval bounds.</dd>
 confidence interval bounds.</dd>
 <dt>pvalue_1samp_ttest: float</dt>
 <dd>P-value obtained from scipy.stats.ttest_1samp. If 2 arrays were
-(x1 and x2), returns ‘NIL’.
+passed (x1 and x2), returns ‘NIL’.
 See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_1samp.html">https://docs.scipy.org/doc/scipy-1.0.0/reference/generated/scipy.stats.ttest_1samp.html</a></dd>
 <dt>pvalue_2samp_ind_ttest: float</dt>
 <dd>P-value obtained from scipy.stats.ttest_ind.
@@ -253,6 +343,7 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -279,7 +370,11 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Load Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#create-dummy-dataset">Create dummy dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#producing-plots">Producing Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#controlling-aesthetics">Controlling Aesthetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#appendix-on-working-with-melted-dataframes">Appendix: On working with ‘melted’ DataFrames.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
@@ -319,7 +414,7 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="_sources/api.rst.txt"
