@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>API &#8212; dabest 0.1.5 documentation</title>
+    <title>API &#8212; dabest 0.1.7 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -53,7 +53,7 @@
 <h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="dabest.plot">
-<code class="descclassname">dabest.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>idx</em>, <em>x=None</em>, <em>y=None</em>, <em>color_col=None</em>, <em>paired=False</em>, <em>id_col=None</em>, <em>float_contrast=True</em>, <em>fig_size=None</em>, <em>stat_func=None</em>, <em>ci=95</em>, <em>n_boot=5000</em>, <em>swarm_dotsize=8</em>, <em>difference_dotsize=10</em>, <em>swarm_label=None</em>, <em>contrast_label=None</em>, <em>swarm_ylim=None</em>, <em>contrast_ylim=None</em>, <em>custom_palette=None</em>, <em>show_pairs=True</em>, <em>show_group_count=True</em>, <em>group_summaries='mean_sd'</em>, <em>context='talk'</em>, <em>ci_linewidth=3</em>, <em>summary_linewidth=3</em>, <em>multiplot_horizontal_spacing=0.75</em>, <em>font_scale=1</em>, <em>dpi=100</em>, <em>tick_length=10</em>, <em>tick_pad=5</em>, <em>swarmplot_kwargs=None</em>, <em>violinplot_kwargs=None</em>, <em>reflines_kwargs=None</em>, <em>group_summary_kwargs=None</em>, <em>legend_kwargs=None</em>, <em>aesthetic_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dabest.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>idx</em>, <em>x=None</em>, <em>y=None</em>, <em>color_col=None</em>, <em>paired=False</em>, <em>id_col=None</em>, <em>float_contrast=True</em>, <em>fig_size=None</em>, <em>stat_func=None</em>, <em>ci=95</em>, <em>n_boot=5000</em>, <em>swarm_dotsize=8</em>, <em>difference_dotsize=10</em>, <em>swarm_label=None</em>, <em>contrast_label=None</em>, <em>swarm_ylim=None</em>, <em>contrast_ylim=None</em>, <em>custom_palette=None</em>, <em>show_pairs=True</em>, <em>show_group_count=True</em>, <em>group_summaries='mean_sd'</em>, <em>context='talk'</em>, <em>ci_linewidth=3</em>, <em>summary_linewidth=3</em>, <em>multiplot_horizontal_spacing=0.75</em>, <em>cumming_vertical_spacing=0.05</em>, <em>font_scale=1</em>, <em>dpi=100</em>, <em>tick_length=10</em>, <em>tick_pad=5</em>, <em>swarmplot_kwargs=None</em>, <em>violinplot_kwargs=None</em>, <em>reflines_kwargs=None</em>, <em>group_summary_kwargs=None</em>, <em>legend_kwargs=None</em>, <em>aesthetic_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a pandas DataFrame and produces a contrast plot:
 either a Cummings hub-and-spoke plot or a Gardner-Altman contrast plot.
 Paired and unpaired options available.</p>
@@ -149,6 +149,10 @@ summary of each group (as specified by <cite>group_summaries</cite>)</dd>
 <dd>If the plot is a two-group multiplot with floating contrast axes,
 this determines the horizontal spacing between each plot. This
 number is a fraction of the axes width.</dd>
+<dt>cumming_vertical_spacing: float, default 0.05</dt>
+<dd>The amount of height reserved for space between the swarmplot and
+the contrast plots, expressed as a fraction of the average axis
+height.</dd>
 <dt>font_scale: float, default 1.</dt>
 <dd>The font size will be scaled by this number. This value is passed
 on to seaborn.set().</dd>
@@ -370,12 +374,7 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Load Libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#create-dummy-dataset">Create dummy dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#producing-plots">Producing Plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#controlling-aesthetics">Controlling Aesthetics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#appendix-on-working-with-melted-dataframes">Appendix: On working with ‘melted’ DataFrames.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dabest-r.html">Using DABEST in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
@@ -405,6 +404,14 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -413,8 +420,8 @@ See <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.0.0/r
       &copy;2018, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/api.rst.txt"
