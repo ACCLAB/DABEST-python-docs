@@ -9,12 +9,13 @@
     <title>API &#8212; dabest 0.2.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,23 +45,250 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="api">
 <span id="id1"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="dabest.load">
+<code class="descclassname">dabest.</code><code class="descname">load</code><span class="sig-paren">(</span><em>data</em>, <em>idx</em>, <em>x=None</em>, <em>y=None</em>, <em>paired=False</em>, <em>id_col=None</em>, <em>ci=95</em>, <em>resamples=5000</em>, <em>random_seed=12345</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads data in preparation for estimation statistics.</p>
+<p>This is designed to work with pandas DataFrames.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>pandas DataFrame</em>) – </li>
+<li><strong>idx</strong> (<em>tuple</em>) – List of column names (if ‘x’ is not supplied) or of category names
+(if ‘x’ is supplied). This can be expressed as a tuple of tuples,
+with each individual tuple producing its own contrast plot</li>
+<li><strong>y</strong> (<em>x</em><em>,</em>) – Column names for data to be plotted on the x-axis and y-axis.</li>
+<li><strong>paired</strong> (<em>boolean</em><em>, </em><em>default False.</em>) – </li>
+<li><strong>id_col</strong> (<em>default None.</em>) – Required if <cite>paired</cite> is True.</li>
+<li><strong>ci</strong> (<em>integer</em><em>, </em><em>default 95</em>) – The confidence interval width. The default of 95 produces 95%
+confidence intervals.</li>
+<li><strong>resamples</strong> (<em>integer</em><em>, </em><em>default 5000.</em>) – The number of resamples taken to generate the bootstraps which are used
+to generate the confidence intervals.</li>
+<li><strong>random_seed</strong> (<em>int</em><em>, </em><em>default 12345</em>) – This integer is used to seed the random number generator during
+bootstrap resampling, ensuring that the confidence intervals
+reported are replicable.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A <cite>Dabest</cite> object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<p>Load libraries.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+</pre></div>
+</div>
+<p>Create dummy data for demonstration.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">88888</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">115</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Control 1&#39;</span> <span class="p">:</span> <span class="n">c1</span><span class="p">,</span> <span class="s1">&#39;Test 1&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Load the data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_data</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="plotting-data">
 <h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="dabest._classes.EffectSizeDataFrame.plot">
+<code class="descclassname">dabest._classes.EffectSizeDataFrame.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>self</em>, <em>color_col=None</em>, <em>raw_marker_size=6</em>, <em>es_marker_size=9</em>, <em>swarm_label=None</em>, <em>contrast_label=None</em>, <em>swarm_ylim=None</em>, <em>contrast_ylim=None</em>, <em>custom_palette=None</em>, <em>swarm_desat=0.5</em>, <em>halfviolin_desat=1</em>, <em>halfviolin_alpha=0.8</em>, <em>float_contrast=True</em>, <em>show_pairs=True</em>, <em>group_summaries=None</em>, <em>fig_size=None</em>, <em>dpi=100</em>, <em>swarmplot_kwargs=None</em>, <em>violinplot_kwargs=None</em>, <em>slopegraph_kwargs=None</em>, <em>reflines_kwargs=None</em>, <em>group_summary_kwargs=None</em>, <em>legend_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an estimation plot for the effect size of interest.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>color_col</strong> (<em>string</em><em>, </em><em>default None</em>) – Column to be used for colors.</li>
+<li><strong>raw_marker_size</strong> (<em>float</em><em>, </em><em>default 6</em>) – The diameter (in points) of the marker dots plotted in the
+swarmplot.</li>
+<li><strong>es_marker_size</strong> (<em>float</em><em>, </em><em>default 9</em>) – The size (in points) of the effect size points on the difference
+axes.</li>
+<li><strong>contrast_label</strong> (<em>swarm_label</em><em>,</em>) – Set labels for the y-axis of the swarmplot and the contrast plot,
+respectively. If <cite>swarm_label</cite> is not specified, it defaults to
+“value”, unless a column name was passed to <cite>y</cite>. If
+<cite>contrast_label</cite> is not specified, it defaults to the effect size
+being plotted.</li>
+<li><strong>contrast_ylim</strong> (<em>swarm_ylim</em><em>,</em>) – The desired y-limits of the raw data (swarmplot) axes and the
+difference axes respectively, as a tuple. These will be autoscaled
+to sensible values if they are not specified.</li>
+<li><strong>custom_palette</strong> (<em>dict</em><em>, </em><em>list</em><em>, or </em><em>matplotlib color palette</em><em>, </em><em>default None</em>) – This keyword accepts a dictionary with {‘group’:’color’} pairings,
+a list of RGB colors, or a specified matplotlib palette. This
+palette will be used to color the swarmplot. If <cite>color_col</cite> is not
+specified, then each group will be colored in sequence according
+to the default palette currently used by matplotlib.
+Please take a look at the seaborn commands <cite>color_palette</cite>
+and <cite>cubehelix_palette</cite> to generate a custom palette. Both
+these functions generate a list of RGB colors.
+See:
+<a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.color_palette.html">https://seaborn.pydata.org/generated/seaborn.color_palette.html</a>
+<a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.cubehelix_palette.html">https://seaborn.pydata.org/generated/seaborn.cubehelix_palette.html</a>
+The named colors of matplotlib can be found here:
+<a class="reference external" href="https://matplotlib.org/examples/color/named_colors.html">https://matplotlib.org/examples/color/named_colors.html</a></li>
+<li><strong>swarm_desat</strong> (<em>float</em><em>, </em><em>default 1</em>) – Decreases the saturation of the colors in the swarmplot by the
+desired proportion. Uses <cite>seaborn.desaturate()</cite> to acheive this.</li>
+<li><strong>halfviolin_desat</strong> (<em>float</em><em>, </em><em>default 0.5</em>) – Decreases the saturation of the colors of the half-violin bootstrap
+curves by the desired proportion. Uses <cite>seaborn.desaturate()</cite> to
+acheive this.</li>
+<li><strong>halfviolin_alpha</strong> (<em>float</em><em>, </em><em>default 0.8</em>) – The alpha (transparency) level of the half-violin bootstrap curves.</li>
+<li><strong>float_contrast</strong> (<em>boolean</em><em>, </em><em>default True</em>) – Whether or not to display the halfviolin bootstrapped difference
+distribution alongside the raw data.</li>
+<li><strong>show_pairs</strong> (<em>boolean</em><em>, </em><em>default True</em>) – If the data is paired, whether or not to show the raw data as a
+swarmplot, or as slopegraph, with a line joining each pair of
+observations.</li>
+<li><strong>group_summaries</strong> (<em>[</em><em>'mean_sd'</em><em>, </em><em>'median_quartiles'</em><em>, </em><em>'None'</em><em>]</em><em>, </em><em>default None.</em>) – Plots the summary statistics for each group. If ‘mean_sd’, then
+the mean and standard deviation of each group is plotted as a
+notched line beside each group. If ‘median_quantiles’, then the
+median and 25th and 75th percentiles of each group is plotted
+instead. If ‘None’, the summaries are not shown.</li>
+<li><strong>fig_size</strong> (<em>tuple</em><em>, </em><em>default None</em>) – The desired dimensions of the figure as a (length, width) tuple.</li>
+<li><strong>dpi</strong> (<em>int</em><em>, </em><em>default 100</em>) – The dots per inch of the resulting figure.</li>
+<li><strong>swarmplot_kwargs</strong> (<em>dict</em><em>, </em><em>default None</em>) – Pass any keyword arguments accepted by the seaborn <cite>swarmplot</cite>
+command here, as a dict. If None, the following keywords are
+passed to sns.swarmplot : {‘size’:<cite>raw_marker_size</cite>}.</li>
+<li><strong>violinplot_kwargs</strong> (<em>dict</em><em>, </em><em>default None</em>) – Pass any keyword arguments accepted by the matplotlib `
+pyplot.violinplot` command here, as a dict. If None, the following
+keywords are passed to violinplot : {‘widths’:0.5, ‘vert’:True,
+‘showextrema’:False, ‘showmedians’:False}.</li>
+<li><strong>reflines_kwargs</strong> (<em>dict</em><em>, </em><em>default None</em>) – This will change the appearance of the zero reference lines. Pass
+any keyword arguments accepted by the matplotlib Axes <cite>hlines</cite>
+command here, as a dict. If None, the following keywords are
+passed to Axes.hlines : {‘linestyle’:’solid’, ‘linewidth’:0.75,
+‘zorder’:2, ‘color’ : default y-tick color}.</li>
+<li><strong>group_summary_kwargs</strong> (<em>dict</em><em>, </em><em>default None</em>) – Pass any keyword arguments accepted by the matplotlib.lines.Line2D
+command here, as a dict. This will change the appearance of the
+vertical summary lines for each group, if <cite>group_summaries</cite> is not
+‘None’. If None, the following keywords are passed to
+matplotlib.lines.Line2D : {‘lw’:2, ‘alpha’:1, ‘zorder’:3}.</li>
+<li><strong>legend_kwargs</strong> (<em>dict</em><em>, </em><em>default None</em>) – Pass any keyword arguments accepted by the matplotlib Axes
+<cite>legend</cite> command here, as a dict. If None, the following keywords
+are passed to matplotlib.Axes.legend : {‘loc’:’upper left’,
+‘frameon’:False}.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li>A <code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code> with 2 Axes.</li>
+<li>The first axes (accessible with <code class="docutils literal notranslate"><span class="pre">FigName.axes()[0]</span></code>) contains the rawdata swarmplot; the second axes (accessible with <code class="docutils literal notranslate"><span class="pre">FigName.axes()[1]</span></code>) has the bootstrap distributions and effect sizes (with confidence intervals) plotted on it.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Create a Gardner-Altman estimation plot for the mean difference.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_data</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig1</span> <span class="o">=</span> <span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a Gardner-Altman plot for the Hedges’ g effect size.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig2</span> <span class="o">=</span> <span class="n">my_data</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a Cumming estimation plot for the mean difference.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig3</span> <span class="o">=</span> <span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">float_contrast</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a paired Gardner-Altman plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_data_paired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span>
+<span class="gp">... </span>                             <span class="n">paired</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig4</span> <span class="o">=</span> <span class="n">my_data_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a multi-group Cumming plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_multi_groups</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span>
+<span class="gp">... </span>                                       <span class="p">(</span><span class="s2">&quot;Control 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 2&quot;</span><span class="p">))</span>
+<span class="gp">... </span>                              <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig5</span> <span class="o">=</span> <span class="n">my_multi_groups</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a shared control Cumming plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_shared_control</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                                         <span class="s2">&quot;Test 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 3&quot;</span><span class="p">)</span>
+<span class="gp">... </span>                                <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig6</span> <span class="o">=</span> <span class="n">my_shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="computing-effect-sizes">
 <h2>Computing Effect Sizes<a class="headerlink" href="#computing-effect-sizes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="dabest._classes.TwoGroupsEffectSize">
+<em class="property">class </em><code class="descclassname">dabest._classes.</code><code class="descname">TwoGroupsEffectSize</code><span class="sig-paren">(</span><em>control</em>, <em>test</em>, <em>effect_size</em>, <em>is_paired=False</em>, <em>ci=95</em>, <em>resamples=5000</em>, <em>random_seed=12345</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.TwoGroupsEffectSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the effect size between two groups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>test</strong> (<em>control</em><em>,</em>) – These should be numerical iterables.</li>
+<li><strong>effect_size</strong> (<em>string.</em>) – Any one of the following are accepted inputs:
+‘mean_diff’, ‘median_diff’, ‘cohens_d’, ‘hedges_g’, or ‘cliffs_delta’</li>
+<li><strong>is_paired</strong> (<em>boolean</em><em>, </em><em>default False</em>) – </li>
+<li><strong>resamples</strong> (<em>int</em><em>, </em><em>default 5000</em>) – The number of bootstrap resamples to be taken.</li>
+<li><strong>ci</strong> (<em>float</em><em>, </em><em>default 95</em>) – The confidence interval width. The default of 95 produces 95%
+confidence intervals.</li>
+<li><strong>random_seed</strong> (<em>int</em><em>, </em><em>default 12345</em>) – <cite>random_seed</cite> is used to seed the random number generator during
+bootstrap resampling. This ensures that the confidence intervals
+reported are replicable.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A <cite>TwoGroupEffectSize</cite> object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">effsize</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">TwoGroupsEffectSize</span><span class="p">(</span><span class="n">control</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="s2">&quot;mean_diff&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">effsize</span>
+<span class="go">The unpaired mean difference is -0.253 [95%CI -0.782, 0.241]</span>
+<span class="go">5000 bootstrap samples. The confidence interval is bias-corrected</span>
+<span class="go">and accelerated.</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -120,6 +348,14 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -128,8 +364,8 @@
       &copy;2019, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/api.rst.txt"
