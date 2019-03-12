@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Release Notes &#8212; dabest 0.1.7 documentation</title>
+    <title>Release Notes &#8212; dabest 0.2.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
+    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -18,7 +18,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="About" href="about.html" />
+    <link rel="next" title="API" href="api.html" />
     <link rel="prev" title="Tutorial" href="tutorial.html" />
 
    
@@ -44,18 +44,71 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="release-notes">
 <span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Permalink to this headline">¶</a></h2>
+<p>We have redesigned the interface from the ground up. This allows speed and flexibility to compute different effect sizes (including Cohen’s <em>d</em>, Hedges’ <em>g</em>, and Cliff’s delta). Statistical arguments are now parsed differently from graphical arguments.</p>
+<p>In short, any code relying on v0.1.x will <strong>not work with v0.2.0, and must be upgraded.</strong></p>
+<p>Now, every analysis session begins with <code class="docutils literal notranslate"><span class="pre">dabest.load()</span></code>.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_dataframe</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">))</span>
+</pre></div>
+</td></tr></table></div>
+<p>This creates a <code class="docutils literal notranslate"><span class="pre">dabest</span></code> object with effect sizes as instances.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span>
+</pre></div>
+</td></tr></table></div>
+<p>which prints out:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.0
+=============
+
+Good afternoon!
+The current time is Mon Mar  4 17:03:29 2019.
+
+The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
+
+5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
+The p-value(s) reported are the likelihood(s) of observing the effect size(s),
+if the null hypothesis of zero difference is true.
+</pre></div>
+</div>
+<p>The following are valid effect sizes:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span>
+<span class="n">my_data</span><span class="o">.</span><span class="n">median_diff</span>
+<span class="n">my_data</span><span class="o">.</span><span class="n">cohens_d</span>
+<span class="n">my_data</span><span class="o">.</span><span class="n">hedges_g</span>
+<span class="n">my_data</span><span class="o">.</span><span class="n">cliffs_delta</span>
+</pre></div>
+</td></tr></table></div>
+<p>To produce an estimation plot, each effect size instance has a <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a>  and <a class="reference internal" href="api.html"><span class="doc">API</span></a> for more details, including keyword options for the <code class="docutils literal notranslate"><span class="pre">load()</span></code> and <code class="docutils literal notranslate"><span class="pre">plot()</span></code> methods.</p>
+</div>
 <div class="section" id="v0-1-7">
 <h2>v0.1.7<a class="headerlink" href="#v0-1-7" title="Permalink to this headline">¶</a></h2>
-<p>The keyword <cite>cumming_vertical_spacing</cite> has been added to tweak the vertical spacing between the rawdata swarm axes and the contrast axes in Cumming estimation plots.</p>
+<p>The keyword <code class="docutils literal notranslate"><span class="pre">cumming_vertical_spacing</span></code> has been added to tweak the vertical spacing between the rawdata swarm axes and the contrast axes in Cumming estimation plots.</p>
 </div>
 <div class="section" id="v0-1-6">
 <h2>v0.1.6<a class="headerlink" href="#v0-1-6" title="Permalink to this headline">¶</a></h2>
+<p>Several keywords have been added to allow more fine-grained control over a selection of plot elements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">swarm_dotsize</span>
+<span class="n">difference_dotsize</span>
+<span class="n">ci_linewidth</span>
+<span class="n">summary_linewidth</span>
+</pre></div>
+</div>
+<p>The new keyword context allows you to set the plotting context as defined by seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.plotting_context.html">plotting_context()</a>.</p>
+<p>Now, if paired=True, you will need to supply an id_col, which is a column in the DataFrame which specifies which sample the datapoint belongs to.</p>
+<div class="section" id="id2">
+<h3>v0.1.6<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Several keywords have been added to allow more fine-grained control over a selection of plot elements.</p>
 <ul class="simple">
 <li><cite>swarm_dotsize</cite></li>
@@ -65,6 +118,7 @@
 </ul>
 <p>The new keyword <cite>context</cite> allows you to set the plotting context as defined by seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.plotting_context.html">plotting_context()</a> .</p>
 <p>Now, if <cite>paired=True</cite>, you will need to supply an <cite>id_col</cite>, which is a column in the DataFrame which specifies which sample the datapoint belongs to. See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a> for more details.</p>
+</div>
 </div>
 <div class="section" id="v0-1-5">
 <h2>v0.1.5<a class="headerlink" href="#v0-1-5" title="Permalink to this headline">¶</a></h2>
@@ -114,7 +168,6 @@
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -139,10 +192,12 @@
 <a href="https://pypi.python.org/pypi/dabest/"><img src="https://badge.fury.io/py/dabest.svg" alt="PyPI version" height="18"></a>
 </p><h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-7">v0.1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-6">v0.1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-5">v0.1.5</a></li>
@@ -152,8 +207,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-1">v0.1.1</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 </ul>
 
 <div class="relations">
@@ -161,7 +216,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
-      <li>Next: <a href="about.html" title="next chapter">About</a></li>
+      <li>Next: <a href="api.html" title="next chapter">API</a></li>
   </ul></li>
 </ul>
 </div>
@@ -177,24 +232,16 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Joses W. Ho.
+      &copy;2019, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="_sources/release-notes.rst.txt"

@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>DABEST &#8212; dabest 0.1.7 documentation</title>
+    <title>DABEST &#8212; dabest 0.2.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
+    <link rel="stylesheet" href="_static/css/alabaster-custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -18,7 +18,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Background" href="background.html" />
+    <link rel="next" title="Robust and Beautiful Statistical Visualization" href="robust-beautiful.html" />
 
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -43,42 +43,47 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="dabest">
 <h1>DABEST<a class="headerlink" href="#dabest" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-analysis-with-bootstrap-coupled-estimation">
 <h2>Data Analysis with Bootstrap-coupled ESTimation<a class="headerlink" href="#data-analysis-with-bootstrap-coupled-estimation" title="Permalink to this headline">¶</a></h2>
-<p><em>version 0.1.7</em></p>
-<p>Analyze your data with effect sizes!</p>
+<p><em>version 0.2.0</em></p>
+<div class="section" id="analyze-your-data-with-estimation-statistics">
+<h3>Analyze your data with estimation statistics!<a class="headerlink" href="#analyze-your-data-with-estimation-statistics" title="Permalink to this headline">¶</a></h3>
 <img alt="_images/showpiece.png" src="_images/showpiece.png" />
+</div>
 <div class="section" id="news">
 <h3>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
-<dt>January 2019</dt>
+<dt>March 2019:</dt>
 <dd><ul class="first last simple">
-<li>Release of v0.1.7. <em>Added `cumming_vertical_spacing` option.</em> See the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</li>
+<li>Release of v0.2.0. This is a major update that makes several breaking changes to the API. See the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</li>
 </ul>
 </dd>
-<dt>October 2018</dt>
+<dt>January 2019:</dt>
 <dd><ul class="first last simple">
-<li>Release of v0.1.6. <em>Added more keywords for control of plot elements.</em>  See the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</li>
+<li>Release of v0.1.7. Added <cite>cumming_vertical_spacing</cite> option.</li>
 </ul>
 </dd>
-<dt>July 2018</dt>
+<dt>October 2018:</dt>
+<dd><ul class="first last simple">
+<li>Release of v0.1.6. Added more keywords for control of plot elements.</li>
+</ul>
+</dd>
+<dt>July 2018:</dt>
 <dd><ul class="first last simple">
 <li>Release of v0.1.5. <em>bugfix for setup and package management</em></li>
 <li>Release of v0.1.4.</li>
 </ul>
 </dd>
-<dt>June 2018</dt>
+<dt>June 2018:</dt>
 <dd><ul class="first last simple">
-<li>Release of v0.1.3.</li>
+<li>Release of v0.1.3. Also added a short tutorial for dabest in R.</li>
 </ul>
 </dd>
-<dt>December 2017</dt>
+<dt>December 2017:</dt>
 <dd><ul class="first last simple">
 <li>We have made a <a class="reference external" href="https://www.estimationstats.com">webapp</a> that produces Gardner-Altman and Cumming plots!</li>
 </ul>
@@ -89,11 +94,18 @@
 <h3>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="background.html#estimation-statistics-p-values">Estimation statistics &gt; <em>P</em> Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#the-inadequacy-of-common-plots">The Inadequacy of Common Plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#introducing-the-estimation-plot">Introducing the Estimation Plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#a-plot-for-every-type-of-data">A plot for every type of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#current-plots-do-not-work">Current plots do not work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#introducing-the-estimation-plot">Introducing the Estimation Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#an-estimation-plot-for-every-experimental-design">An Estimation Plot For Every Experimental Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#estimation-plots-the-way-forward">Estimation Plots: The Way Forward</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#sampling-from-populations">Sampling from Populations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#the-bootstrap-confidence-interval">The bootstrap confidence interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#adjusting-for-asymmetrical-resampling-distributions">Adjusting for asymmetrical resampling distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#estimation-plots-incorporate-bootstrap-resampling">Estimation plots incorporate bootstrap resampling</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
@@ -106,13 +118,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#load-libraries">Load Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#create-dummy-dataset">Create dummy dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#producing-plots">Producing Plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#controlling-aesthetics">Controlling Aesthetics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#appendix-on-working-with-melted-dataframes">Appendix: On working with ‘melted’ DataFrames.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#create-dataset-for-demo">Create dataset for demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#loading-data">Loading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#effect-sizes">Effect sizes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#producing-estimation-plots">Producing estimation plots</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-7">v0.1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-6">v0.1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-5">v0.1.5</a></li>
@@ -122,15 +135,16 @@
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-1">v0.1.1</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#loading-data">Loading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#plotting-data">Plotting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#computing-effect-sizes">Computing Effect Sizes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="about.html#authors">Authors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about.html#typography">Typography</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about.html#license">License</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#plotting">Plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#bootstrap-confidence-intervals">Bootstrap Confidence Intervals</a></li>
 </ul>
 </li>
 </ul>
@@ -141,7 +155,6 @@
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -166,19 +179,20 @@
 <a href="https://pypi.python.org/pypi/dabest/"><img src="https://badge.fury.io/py/dabest.svg" alt="PyPI version" height="18"></a>
 </p><h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="background.html" title="next chapter">Background</a></li>
+      <li>Next: <a href="robust-beautiful.html" title="next chapter">Robust and Beautiful Statistical Visualization</a></li>
   </ul></li>
 </ul>
 </div>
@@ -194,24 +208,16 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Joses W. Ho.
+      &copy;2019, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="_sources/index.rst.txt"
