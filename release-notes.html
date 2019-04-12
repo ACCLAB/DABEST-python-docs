@@ -51,6 +51,10 @@
             
   <div class="section" id="release-notes">
 <span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v0-2-2">
+<h2>v0.2.2<a class="headerlink" href="#v0-2-2" title="Permalink to this headline">¶</a></h2>
+<p>This release fixes a <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/pull/30">bug</a> that has a mean difference or median difference of exactly 0.</p>
+</div>
 <div class="section" id="v0-2-1">
 <h2>v0.2.1<a class="headerlink" href="#v0-2-1" title="Permalink to this headline">¶</a></h2>
 <p>This release fixes a bug that misplotted the gapped summary lines in Cumming plots when the <em>x</em>-variable was a <code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Categorical</span></code> object.</p>
@@ -106,17 +110,6 @@ if the null hypothesis of zero difference is true.
 <div class="section" id="v0-1-6">
 <h2>v0.1.6<a class="headerlink" href="#v0-1-6" title="Permalink to this headline">¶</a></h2>
 <p>Several keywords have been added to allow more fine-grained control over a selection of plot elements.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">swarm_dotsize</span>
-<span class="n">difference_dotsize</span>
-<span class="n">ci_linewidth</span>
-<span class="n">summary_linewidth</span>
-</pre></div>
-</div>
-<p>The new keyword context allows you to set the plotting context as defined by seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.plotting_context.html">plotting_context()</a>.</p>
-<p>Now, if paired=True, you will need to supply an id_col, which is a column in the DataFrame which specifies which sample the datapoint belongs to.</p>
-<div class="section" id="id2">
-<h3>v0.1.6<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Several keywords have been added to allow more fine-grained control over a selection of plot elements.</p>
 <ul class="simple">
 <li><cite>swarm_dotsize</cite></li>
 <li><cite>difference_dotsize</cite></li>
@@ -125,7 +118,6 @@ if the null hypothesis of zero difference is true.
 </ul>
 <p>The new keyword <cite>context</cite> allows you to set the plotting context as defined by seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.plotting_context.html">plotting_context()</a> .</p>
 <p>Now, if <cite>paired=True</cite>, you will need to supply an <cite>id_col</cite>, which is a column in the DataFrame which specifies which sample the datapoint belongs to. See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a> for more details.</p>
-</div>
 </div>
 <div class="section" id="v0-1-5">
 <h2>v0.1.5<a class="headerlink" href="#v0-1-5" title="Permalink to this headline">¶</a></h2>
@@ -205,6 +197,7 @@ if the null hypothesis of zero difference is true.
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-2-2">v0.2.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-2-1">v0.2.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-7">v0.1.7</a></li>
