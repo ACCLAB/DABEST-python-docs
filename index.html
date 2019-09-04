@@ -1,16 +1,14 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>DABEST &#8212; dabest 0.2.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -58,22 +56,23 @@
 </div>
 <div class="section" id="news">
 <h3>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>May 2019:</dt>
-<dd><ul class="first last simple">
-<li>v0.2.4 released. This is a patch for a set of bugs that mis-aligned Gardner-Altman plots, and also adds the capability to tweak the x-position of the Tufte gapped lines. See the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</li>
-<li>v0.2.3 released. This is a fix for a bug that did not properly handle x-columns which were pandas Categorical objects.</li>
+<dl class="simple">
+<dt>September 2019:</dt><dd><ul class="simple">
+<li><p>v0.2.5 released. This release addresses two feature requests, and also patches two bugs: one affecting the paired difference CIs, and one involving NaNs in unused/irrelevant columns. See the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</p></li>
 </ul>
 </dd>
-<dt>April 2019:</dt>
-<dd><ul class="first last simple">
-<li>v0.2.2 released. This is a minor bugfix that addressed an issue for an edge case where the mean or median difference was exactly zero.</li>
+<dt>May 2019:</dt><dd><ul class="simple">
+<li><p>v0.2.4 released. This is a patch for a set of bugs that mis-aligned Gardner-Altman plots, and also adds the capability to tweak the x-position of the Tufte gapped lines.</p></li>
+<li><p>v0.2.3 released. This is a fix for a bug that did not properly handle x-columns which were pandas Categorical objects.</p></li>
 </ul>
 </dd>
-<dt>March 2019:</dt>
-<dd><ul class="first last simple">
-<li>v0.2.1 released. This is a minor bugfix that addressed an issue in gapped line plotting.</li>
-<li>v0.2.0 released. This is a major update that makes several breaking changes to the API.</li>
+<dt>April 2019:</dt><dd><ul class="simple">
+<li><p>v0.2.2 released. This is a minor bugfix that addressed an issue for an edge case where the mean or median difference was exactly zero.</p></li>
+</ul>
+</dd>
+<dt>March 2019:</dt><dd><ul class="simple">
+<li><p>v0.2.1 released. This is a minor bugfix that addressed an issue in gapped line plotting.</p></li>
+<li><p>v0.2.0 released. This is a major update that makes several breaking changes to the API.</p></li>
 </ul>
 </dd>
 </dl>
@@ -113,6 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-5">v0.2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-4">v0.2.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-3">v0.2.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-2">v0.2.2</a></li>
@@ -190,13 +190,11 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -217,7 +215,7 @@
       &copy;2019, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

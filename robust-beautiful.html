@@ -1,16 +1,14 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Robust and Beautiful Statistical Visualization &#8212; dabest 0.2.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -56,9 +54,10 @@
 <p>What is data visualization? Battle-Baptiste and Rusert (2018) give a
 cogent and compelling definition:</p>
 <blockquote>
-<div>[Data visualization is] the rendering of information in a visual
+<div><p>[Data visualization is] the rendering of information in a visual
 format to help communicate data while also generating new patterns
-and knowledge through the act of visualization itself. <a class="footnote-reference" href="#id2" id="id1">[1]</a></div></blockquote>
+and knowledge through the act of visualization itself. <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+</div></blockquote>
 <p>Sadly, too many figures and visualizations in modern academic
 publications seemingly fail to “generate new patterns and knowledge
 through the act of visualization itself”. Here, we propose a solution:
@@ -71,7 +70,7 @@ accurately represent the underlying distribution of the data.</p>
 <p>In the above figure, four different samples with wildly different
 distributions—as seen in the swarmplot on the left panel—look exactly
 the same when visualized with a barplot on the right panel. (You can
-download the <a class="reference download internal" download="" href="_downloads/f1d7cdde60e9d43c117e3d961afc13b8/four_samples.csv"><code class="xref download docutils literal notranslate"><span class="pre">dataset</span></code></a> to see for yourself.)</p>
+download the <a class="reference download internal" download="" href="_downloads/9d5e613c5b7ffeb0ea0834c28cb674d8/four_samples.csv"><code class="xref download docutils literal notranslate"><span class="pre">dataset</span></code></a> to see for yourself.)</p>
 <p>We’re not the first ones (see
 <a class="reference external" href="https://www.nature.com/articles/nmeth.2837">this</a>,
 <a class="reference external" href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002128">this</a>,
@@ -194,45 +193,45 @@ low</a>.</p>
 <h2>Estimation Plots: The Way Forward<a class="headerlink" href="#estimation-plots-the-way-forward" title="Permalink to this headline">¶</a></h2>
 <p>In summary, estimation plots offer five key benefits relative to
 conventional plots:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="48%" />
-<col width="14%" />
-<col width="14%" />
-<col width="24%" />
+<col style="width: 48%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">&#160;</th>
-<th class="head">Barplot</th>
-<th class="head">Boxplot</th>
-<th class="head">Estimation Plot</th>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Barplot</p></th>
+<th class="head"><p>Boxplot</p></th>
+<th class="head"><p>Estimation Plot</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Displays all observed values</td>
-<td>✘</td>
-<td>✘</td>
-<td>✅</td>
+<tbody>
+<tr class="row-even"><td><p>Displays all observed values</p></td>
+<td><p>✘</p></td>
+<td><p>✘</p></td>
+<td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td>Avoids false dichotomy</td>
-<td>✘</td>
-<td>✘</td>
-<td>✅</td>
+<tr class="row-odd"><td><p>Avoids false dichotomy</p></td>
+<td><p>✘</p></td>
+<td><p>✘</p></td>
+<td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td>Focusses on effect size</td>
-<td>✘</td>
-<td>✘</td>
-<td>✅</td>
+<tr class="row-even"><td><p>Focusses on effect size</p></td>
+<td><p>✘</p></td>
+<td><p>✘</p></td>
+<td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td>Visualizes effect size precision</td>
-<td>✘</td>
-<td>✘</td>
-<td>✅</td>
+<tr class="row-odd"><td><p>Visualizes effect size precision</p></td>
+<td><p>✘</p></td>
+<td><p>✘</p></td>
+<td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td>Shows mean difference distribution</td>
-<td>✘</td>
-<td>✘</td>
-<td>✅</td>
+<tr class="row-even"><td><p>Shows mean difference distribution</p></td>
+<td><p>✘</p></td>
+<td><p>✘</p></td>
+<td><p>✅</p></td>
 </tr>
 </tbody>
 </table>
@@ -241,12 +240,11 @@ Bootstrap Estimation) packages, which are available in
 <a class="reference external" href="https://github.com/ACCLAB/DABEST-Matlab">Matlab</a>,
 <a class="reference external" href="https://github.com/ACCLAB/DABEST-python">Python</a>, and
 <a class="reference external" href="https://github.com/ACCLAB/dabestr">R</a>.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://www.papress.com/html/product.details.dna?isbn=9781616897062">W. E. B. Du Bois’s Data Portraits: Visualizing Black America</a>. Edited by Whitney Battle-Baptiste and Britt Rusert, Princeton Architectural Press, 2018</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://www.papress.com/html/product.details.dna?isbn=9781616897062">W. E. B. Du Bois’s Data Portraits: Visualizing Black America</a>. Edited by Whitney Battle-Baptiste and Britt Rusert, Princeton Architectural Press, 2018</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -302,13 +300,11 @@ Bootstrap Estimation) packages, which are available in
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -329,7 +325,7 @@ Bootstrap Estimation) packages, which are available in
       &copy;2019, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
