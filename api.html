@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>API &#8212; dabest 0.2.4 documentation</title>
+    <title>API &#8212; dabest 0.2.6 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
@@ -109,7 +109,7 @@ reported are replicable.</p></li>
 <h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="dabest._classes.EffectSizeDataFrame.plot">
-<code class="sig-prename descclassname">dabest._classes.EffectSizeDataFrame.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">color_col=None</em>, <em class="sig-param">raw_marker_size=6</em>, <em class="sig-param">es_marker_size=9</em>, <em class="sig-param">swarm_label=None</em>, <em class="sig-param">contrast_label=None</em>, <em class="sig-param">swarm_ylim=None</em>, <em class="sig-param">contrast_ylim=None</em>, <em class="sig-param">custom_palette=None</em>, <em class="sig-param">swarm_desat=0.5</em>, <em class="sig-param">halfviolin_desat=1</em>, <em class="sig-param">halfviolin_alpha=0.8</em>, <em class="sig-param">float_contrast=True</em>, <em class="sig-param">show_pairs=True</em>, <em class="sig-param">group_summaries=None</em>, <em class="sig-param">group_summaries_offset=0.1</em>, <em class="sig-param">fig_size=None</em>, <em class="sig-param">dpi=100</em>, <em class="sig-param">swarmplot_kwargs=None</em>, <em class="sig-param">violinplot_kwargs=None</em>, <em class="sig-param">slopegraph_kwargs=None</em>, <em class="sig-param">reflines_kwargs=None</em>, <em class="sig-param">group_summary_kwargs=None</em>, <em class="sig-param">legend_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dabest._classes.EffectSizeDataFrame.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">color_col=None</em>, <em class="sig-param">raw_marker_size=6</em>, <em class="sig-param">es_marker_size=9</em>, <em class="sig-param">swarm_label=None</em>, <em class="sig-param">contrast_label=None</em>, <em class="sig-param">swarm_ylim=None</em>, <em class="sig-param">contrast_ylim=None</em>, <em class="sig-param">custom_palette=None</em>, <em class="sig-param">swarm_desat=0.5</em>, <em class="sig-param">halfviolin_desat=1</em>, <em class="sig-param">halfviolin_alpha=0.8</em>, <em class="sig-param">float_contrast=True</em>, <em class="sig-param">show_pairs=True</em>, <em class="sig-param">group_summaries=None</em>, <em class="sig-param">group_summaries_offset=0.1</em>, <em class="sig-param">fig_size=None</em>, <em class="sig-param">dpi=100</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">swarmplot_kwargs=None</em>, <em class="sig-param">violinplot_kwargs=None</em>, <em class="sig-param">slopegraph_kwargs=None</em>, <em class="sig-param">reflines_kwargs=None</em>, <em class="sig-param">group_summary_kwargs=None</em>, <em class="sig-param">legend_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an estimation plot for the effect size of interest.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -160,6 +160,8 @@ instead. If ‘None’, the summaries are not shown.</p></li>
 data swarmplot groups by this value.</p></li>
 <li><p><strong>fig_size</strong> (<em>tuple</em><em>, </em><em>default None</em>) – The desired dimensions of the figure as a (length, width) tuple.</p></li>
 <li><p><strong>dpi</strong> (<em>int</em><em>, </em><em>default 100</em>) – The dots per inch of the resulting figure.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.Axes</em><em>, </em><em>default None</em>) – Provide an existing Axes for the plots to be created. If no Axes is
+specified, a new matplotlib Figure will be created.</p></li>
 <li><p><strong>swarmplot_kwargs</strong> (<em>dict</em><em>, </em><em>default None</em>) – Pass any keyword arguments accepted by the seaborn <cite>swarmplot</cite>
 command here, as a dict. If None, the following keywords are
 passed to sns.swarmplot : {‘size’:<cite>raw_marker_size</cite>}.</p></li>
@@ -185,8 +187,11 @@ are passed to matplotlib.Axes.legend : {‘loc’:’upper left’,
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code> with 2 Axes.</p></li>
+<li><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code> with 2 Axes, if <code class="docutils literal notranslate"><span class="pre">ax</span> <span class="pre">=</span> <span class="pre">None</span></code>.</p></li>
 <li><p>The first axes (accessible with <code class="docutils literal notranslate"><span class="pre">FigName.axes[0]</span></code>) contains the rawdata swarmplot; the second axes (accessible with <code class="docutils literal notranslate"><span class="pre">FigName.axes[1]</span></code>) has the bootstrap distributions and effect sizes (with confidence intervals) plotted on it.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">ax</span></code> is specified, the rawdata swarmplot is accessed at <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p>itself, while the effect size axes is accessed at <code class="docutils literal notranslate"><span class="pre">ax.contrast_axes</span></code>.</p></li>
+<li><p><em>See the last example below.</em></p></li>
 </ul>
 </p>
 </dd>
@@ -223,6 +228,14 @@ are passed to matplotlib.Axes.legend : {‘loc’:’upper left’,
 <span class="gp">... </span>                                         <span class="s2">&quot;Test 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 3&quot;</span><span class="p">)</span>
 <span class="gp">... </span>                                <span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig6</span> <span class="o">=</span> <span class="n">my_shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Creating estimation plots in individual panels of a figure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">,</span> <span class="n">axx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_data_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
