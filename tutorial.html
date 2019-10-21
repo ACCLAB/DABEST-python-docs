@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Tutorial &#8212; dabest 0.2.6 documentation</title>
+    <title>Tutorial &#8212; dabest 0.2.7 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
@@ -62,7 +62,7 @@
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re using DABEST v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dabest</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.2.6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.2.7</span>
 </pre></div>
 </div>
 </div>
@@ -268,11 +268,11 @@ the comparisons that can be computed.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.6
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:00 2019.
+The current time is Mon Oct 21  11:29:00 2019.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -294,11 +294,11 @@ dataset that indicates the identity of each observation, using the
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.6
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:00 2019.
+The current time is Mon Oct 21  11:29:00 2019.
 
 Paired effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -314,11 +314,11 @@ produced.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired_ci90</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.6
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:00 2019.
+The current time is Mon Oct 21  11:29:00 2019.
 
 Effect size(s) with 90% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -342,11 +342,11 @@ delta</a>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.6
+<pre class="literal-block">DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:00 2019.
+The current time is Mon Oct 21  11:29:00 2019.
 
 The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
 The two-sided p-value of the Mann-Whitney test is 0.00163.
@@ -370,7 +370,7 @@ share the same variance (ie. heteroscadacity).</p>
 <p>As noted in the output, you can use <code class="docutils literal notranslate"><span class="pre">.mean_diff.statistical_tests</span></code> to
 obtain the p-values and test statistics for all relavant statistical
 tests.</p>
-<p>You can access the results as a pandas DataFrame as well.</p>
+<p>You can access the results as a <code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> as well.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">50</span>
   <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">results</span>
@@ -513,11 +513,11 @@ tests.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.6
+<pre class="literal-block">DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:01 2019.
+The current time is Mon Oct 21  11:29:01 2019.
 
 The unpaired Hedges' g between Control 1 and Test 1 is 1.03 [95%CI 0.317, 1.62].
 The two-sided p-value of the Mann-Whitney test is 0.00163.
@@ -694,11 +694,11 @@ to <code class="docutils literal notranslate"><span class="pre">idx</span></code
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.6
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:24 2019.
+The current time is Mon Oct 21  11:29:24 2019.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -714,11 +714,11 @@ Effect size(s) with 95% confidence intervals will be computed for:
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.6
+<pre class="literal-block">DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:25 2019.
+The current time is Mon Oct 21  11:29:25 2019.
 
 The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
 The two-sided p-value of the Mann-Whitney test is 0.00163.
@@ -761,11 +761,11 @@ complex visualizations and statistics.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.6
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:26 2019.
+The current time is Mon Oct 21  11:29:26 2019.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -781,11 +781,11 @@ Effect size(s) with 95% confidence intervals will be computed for:
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.6
+<pre class="literal-block">DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:27 2019.
+The current time is Mon Oct 21  11:29:27 2019.
 
 The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
 The two-sided p-value of the Mann-Whitney test is 0.00163.
@@ -924,11 +924,11 @@ gives recipes for melting dataframes.</p>
   <span class="n">analysis_of_long_df</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.6
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
 =============
 
 Good afternoon!
-The current time is Thu Oct  3 17:38:27 2019.
+The current time is Mon Oct 21  11:29:27 2019.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
