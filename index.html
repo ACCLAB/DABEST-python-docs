@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>DABEST &#8212; dabest 0.2.8 documentation</title>
+    <title>DABEST &#8212; dabest 0.3.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,8 +58,12 @@
 <div class="section" id="news">
 <h3>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
+<dt>January 2020:</dt><dd><ul class="simple">
+<li><p>v0.3.0 released. Approximate permutation tests have been added, and are now the default p-values reported in the textual output. The LqRT tests were also refactored to a user-callable property. For more information, see the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</p></li>
+</ul>
+</dd>
 <dt>December 2019:</dt><dd><ul class="simple">
-<li><p>v0.2.8 released. This release adds the <a class="reference external" href="https://github.com/alyakin314/lqrt">Lq-Likelihood-Ratio-Type Test</a> in the statistical output, and also a bugfix for  slopegraph and reference line keyword parsing. For more information, see the <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a>.</p></li>
+<li><p>v0.2.8 released. This release adds the <a class="reference external" href="https://github.com/alyakin314/lqrt">Lq-Likelihood-Ratio-Type Test</a> in the statistical output, and also a bugfix for  slopegraph and reference line keyword parsing.</p></li>
 </ul>
 </dd>
 <dt>October 2019:</dt><dd><ul class="simple">
@@ -90,68 +95,14 @@
 <h3>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#current-plots-do-not-work">Current plots do not work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#introducing-the-estimation-plot">Introducing the Estimation Plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#an-estimation-plot-for-every-experimental-design">An Estimation Plot For Every Experimental Design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="robust-beautiful.html#estimation-plots-the-way-forward">Estimation Plots: The Way Forward</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#sampling-from-populations">Sampling from Populations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#the-bootstrap-confidence-interval">The bootstrap confidence interval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#adjusting-for-asymmetrical-resampling-distributions">Adjusting for asymmetrical resampling distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bootstraps.html#estimation-plots-incorporate-bootstrap-resampling">Estimation plots incorporate bootstrap resampling</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting-started.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting-started.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting-started.html#testing">Testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting-started.html#bugs">Bugs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting-started.html#contributing">Contributing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#load-libraries">Load Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#create-dataset-for-demo">Create dataset for demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#loading-data">Loading Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#effect-sizes">Effect sizes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#producing-estimation-plots">Producing estimation plots</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-8">v0.2.8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-7">v0.2.7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-6">v0.2.6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-5">v0.2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-4">v0.2.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-3">v0.2.3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-2">v0.2.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-1">v0.2.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-2-0">v0.2.0</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-7">v0.1.7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-6">v0.1.6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-5">v0.1.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-4">v0.1.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-3">v0.1.3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-2">v0.1.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#v0-1-1">v0.1.1</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#loading-data">Loading Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#plotting-data">Plotting Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#computing-effect-sizes">Computing Effect Sizes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#authors">Authors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#contributors">Contributors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#typography">Typography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#license">License</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing DABEST</a></li>
 </ul>
 </div>
 </div>
@@ -192,6 +143,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing DABEST</a></li>
 </ul>
 
 <div class="relations">
@@ -225,7 +177,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Joses W. Ho.
+      &copy;2017-2020, Joses W. Ho.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>

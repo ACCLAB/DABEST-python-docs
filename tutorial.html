@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Tutorial &#8212; dabest 0.2.8 documentation</title>
+    <title>Tutorial &#8212; dabest 0.3.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -62,13 +63,13 @@
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re using DABEST v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dabest</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.2.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.3.0</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="create-dataset-for-demo">
 <h2>Create dataset for demo<a class="headerlink" href="#create-dataset-for-demo" title="Permalink to this headline">¶</a></h2>
-<p>Here, we create a dataset to illustrate how DABEST functions. In
+<p>Here, we create a dataset to illustrate how <code class="docutils literal notranslate"><span class="pre">dabest</span></code> functions. In
 this dataset, each column corresponds to a group of observations.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -150,7 +151,7 @@ for more details.</p>
 </td></tr></table></div>
 <div>
 <style scoped>
-    /* .dataframe tbody tr th:only-of-type {
+  /*  .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
 
@@ -263,16 +264,16 @@ list.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span> <span class="n">resamples</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Calling this <code class="xref py py-class docutils literal notranslate"><span class="pre">Dabest</span></code>; object gives you a gentle greeting, as well as
+<p>Calling this <code class="docutils literal notranslate"><span class="pre">Dabest</span></code> object gives you a gentle greeting, as well as
 the comparisons that can be computed.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:00 2019.
+The current time is Mon Jan 20 17:12:44 2020.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -294,11 +295,11 @@ dataset that indicates the identity of each observation, using the
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:00 2019.
+The current time is Mon Jan 20 17:12:44 2020.
 
 Paired effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -314,11 +315,11 @@ produced.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired_ci90</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:00 2019.
+The current time is Mon Jan 20 17:12:44 2020.
 
 Effect size(s) with 90% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -330,47 +331,42 @@ Effect size(s) with 90% confidence intervals will be computed for:
 </div>
 <div class="section" id="effect-sizes">
 <h2>Effect sizes<a class="headerlink" href="#effect-sizes" title="Permalink to this headline">¶</a></h2>
-<p>DABEST now features a range of effect sizes: - the mean difference
-(<code class="docutils literal notranslate"><span class="pre">mean_diff</span></code>) - the median difference (<code class="docutils literal notranslate"><span class="pre">median_diff</span></code>) - <a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Cohen's_d">Cohen’s
-*d*</a>
-(<code class="docutils literal notranslate"><span class="pre">cohens_d</span></code>) - <a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Hedges'_g">Hedges’
-*g*</a>
-(<code class="docutils literal notranslate"><span class="pre">hedges_g</span></code>) - <a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Effect_size_for_ordinal_data">Cliff’s
-delta</a>
-(<code class="docutils literal notranslate"><span class="pre">cliffs_delta</span></code>)</p>
-<p>Each of these are attributes of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dabest</span></code> object.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dabest</span></code> now features a range of effect sizes:</dt><dd><ul class="simple">
+<li><p>the mean difference (<code class="docutils literal notranslate"><span class="pre">mean_diff</span></code>)</p></li>
+<li><p>the median difference (<code class="docutils literal notranslate"><span class="pre">median_diff</span></code>)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Cohen's_d">Cohen’s d</a> (<code class="docutils literal notranslate"><span class="pre">cohens_d</span></code>)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Hedges'_g">Hedges’ g</a> (<code class="docutils literal notranslate"><span class="pre">hedges_g</span></code>)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Effect_size_for_ordinal_data">Cliff’s delta</a> (<code class="docutils literal notranslate"><span class="pre">cliffs_delta</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Each of these are attributes of the <code class="docutils literal notranslate"><span class="pre">Dabest</span></code> object.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.7
+<pre class="literal-block">DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:00 2019.
+The current time is Mon Jan 20 17:12:44 2020.
 
-The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
-The two-sided p-value of the Mann-Whitney test is 0.00163.
+The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.221, 0.768].
+The p-value of the two-sided permutation t-test is 0.001.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
 The p-value(s) reported are the likelihood(s) of observing the effect size(s),
 if the null hypothesis of zero difference is true.
+For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.mean_diff.statistical_tests</cite></pre>
 <p>For each comparison, the type of effect size is reported (here, it’s the
-“unpaired mean difference”).</p>
-<p>The confidence interval is reported as: [<em>confidenceIntervalWidth</em>
-<em>LowerBound</em>, <em>UpperBound</em>]</p>
+“unpaired mean difference”). The confidence interval is reported as:
+[<em>confidenceIntervalWidth</em> <em>LowerBound</em>, <em>UpperBound</em>]</p>
 <p>This confidence interval is generated through bootstrap resampling. See
-:ref:<code class="docutils literal notranslate"><span class="pre">Bootstrap</span> <span class="pre">Confidence</span> <span class="pre">Intervals</span></code> for more details.</p>
-<p>By default, DABEST will report the two-sided p-value of the most
-conservative test that is appropriate for the effect size. “Most
-conservative” refers to the test that does not assume normality of the
-underlying populations, and does not assume that both of them do not
-share the same variance (ie. heteroscadacity).</p>
-<p>As noted in the output, you can use <code class="docutils literal notranslate"><span class="pre">.mean_diff.statistical_tests</span></code> to
-obtain the p-values and test statistics for all relavant statistical
-tests.</p>
-<p>You can access the results as a <code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> as well.</p>
+<a class="reference internal" href="bootstraps.html"><span class="doc">Bootstrap Confidence Intervals</span></a> for more details.</p>
+<p>Since v0.3.0, DABEST will report the p-value of the <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">non-parametric two-sided approximate permutation t-test</a>. This is also known as the Monte Carlo permutation test.</p>
+<p>For unpaired comparisons, the p-values and test statistics of <a class="reference external" href="https://en.wikipedia.org/wiki/Welch%27s_t-test">Welch’s t test</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test">Student’s t test</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test">Mann-Whitney U test</a> can be found in addition. For paired comparisons, the p-values and test statistics of the <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test#Paired_samples">paired Student’s t</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">Wilcoxon</a> tests are presented.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">50</span>
   <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">results</span>
@@ -378,7 +374,7 @@ tests.</p>
 </td></tr></table></div>
 <div>
 <style scoped>
-    .dataframe tbody tr th:only-of-type {
+    /* .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
 
@@ -388,7 +384,7 @@ tests.</p>
 
     .dataframe thead th {
         text-align: right;
-    }
+    } */
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -408,6 +404,8 @@ tests.</p>
       <th>pct_low</th>
       <th>pct_high</th>
       <th>pct_interval_idx</th>
+      <th>pvalue_permutation</th>
+      <th>permutation_count</th>
       <th>bootstraps</th>
       <th>resamples</th>
       <th>random_seed</th>
@@ -430,13 +428,15 @@ tests.</p>
       <td>False</td>
       <td>0.48029</td>
       <td>95</td>
-      <td>0.205161</td>
-      <td>0.773647</td>
-      <td>(145, 4893)</td>
-      <td>0.197427</td>
-      <td>0.758752</td>
+      <td>0.220869</td>
+      <td>0.767721</td>
+      <td>(140, 4889)</td>
+      <td>0.215697</td>
+      <td>0.761716</td>
       <td>(125, 4875)</td>
-      <td>[-0.05989473868674011, -0.018608309424335, 0.0...</td>
+      <td>0.001</td>
+      <td>5000</td>
+      <td>[-0.157303571150468, -0.025932185794146356, 0....</td>
       <td>5000</td>
       <td>12345</td>
       <td>0.002094</td>
@@ -479,6 +479,7 @@ tests.</p>
       <th>ci</th>
       <th>bca_low</th>
       <th>bca_high</th>
+      <th>pvalue_permutation</th>
       <th>pvalue_welch</th>
       <th>statistic_welch</th>
       <th>pvalue_students_t</th>
@@ -498,8 +499,9 @@ tests.</p>
       <td>False</td>
       <td>0.48029</td>
       <td>95</td>
-      <td>0.205161</td>
-      <td>0.773647</td>
+      <td>0.220869</td>
+      <td>0.767721</td>
+      <td>0.001</td>
       <td>0.002094</td>
       <td>-3.308806</td>
       <td>0.002057</td>
@@ -509,22 +511,23 @@ tests.</p>
     </tr>
   </tbody>
 </table>
-</div><p>Let’s compute the Hedges’ g for our comparison.</p>
+</div><p>Let’s compute the Hedges’ <em>g</em> for our comparison.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.7
+<pre class="literal-block">DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:01 2019.
+The current time is Mon Jan 20 17:12:46 2020.
 
-The unpaired Hedges' g between Control 1 and Test 1 is 1.03 [95%CI 0.317, 1.62].
-The two-sided p-value of the Mann-Whitney test is 0.00163.
+The unpaired Hedges' g between Control 1 and Test 1 is 1.03 [95%CI 0.349, 1.62].
+The p-value of the two-sided permutation t-test is 0.001.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
 The p-value(s) reported are the likelihood(s) of observing the effect size(s),
 if the null hypothesis of zero difference is true.
+For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.hedges_g.statistical_tests</cite></pre>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">results</span>
@@ -562,6 +565,8 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
       <th>pct_low</th>
       <th>pct_high</th>
       <th>pct_interval_idx</th>
+      <th>pvalue_permutation</th>
+      <th>permutation_count</th>
       <th>bootstraps</th>
       <th>resamples</th>
       <th>random_seed</th>
@@ -584,13 +589,15 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
       <td>False</td>
       <td>1.025525</td>
       <td>95</td>
-      <td>0.316506</td>
-      <td>1.616235</td>
-      <td>(42, 4725)</td>
-      <td>0.44486</td>
-      <td>1.745146</td>
+      <td>0.349394</td>
+      <td>1.618579</td>
+      <td>(42, 4724)</td>
+      <td>0.472844</td>
+      <td>1.74166</td>
       <td>(125, 4875)</td>
-      <td>[-0.1491709040527835, -0.0504066101302326, 0.0...</td>
+      <td>0.001</td>
+      <td>5000</td>
+      <td>[-0.3617512915188043, -0.06120428036887727, 0....</td>
       <td>5000</td>
       <td>12345</td>
       <td>0.002094</td>
@@ -607,17 +614,17 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
 <h2>Producing estimation plots<a class="headerlink" href="#producing-estimation-plots" title="Permalink to this headline">¶</a></h2>
 <p>To produce a <strong>Gardner-Altman estimation plot</strong>, simply use the
 <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. You can read more about its genesis and design
-inspiration here.</p>
+inspiration at <a class="reference internal" href="robust-beautiful.html"><span class="doc">Robust and Beautiful Statistical Visualization</span></a>.</p>
 <p>Every effect size instance has access to the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. This
 means you can quickly create plots for different effect sizes easily.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_28_0.png" src="_images/tutorial_28_0.png" />
+<img alt="_images/tutorial_27_0.png" src="_images/tutorial_27_0.png" />
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_29_0.png" src="_images/tutorial_29_0.png" />
+<img alt="_images/tutorial_28_0.png" src="_images/tutorial_28_0.png" />
 <p>Instead of a Gardner-Altman plot, you can produce a <strong>Cumming estimation
 plot</strong> by setting <code class="docutils literal notranslate"><span class="pre">float_contrast=False</span></code> in the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.
 This will plot the bootstrap effect sizes below the raw data, and also
@@ -627,7 +634,7 @@ Tufte’s dictum to maximise the data-ink ratio.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_31_0.png" src="_images/tutorial_31_0.png" />
+<img alt="_images/tutorial_30_0.png" src="_images/tutorial_30_0.png" />
 <p>For paired data, we use
 <a class="reference external" href="https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk">slopegraphs</a>
 (another innovation from Edward Tufte) to connect paired observations.
@@ -635,12 +642,12 @@ Both Gardner-Altman and Cumming plots support this.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_33_0.png" src="_images/tutorial_33_0.png" />
+<img alt="_images/tutorial_32_0.png" src="_images/tutorial_32_0.png" />
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_34_0.png" src="_images/tutorial_34_0.png" />
-<p>The DABEST package also implements a range of estimation plot
+<img alt="_images/tutorial_33_0.png" src="_images/tutorial_33_0.png" />
+<p>The <code class="docutils literal notranslate"><span class="pre">dabest</span></code> package also implements a range of estimation plot
 designs aimed at depicting common experimental designs.</p>
 <p>The <strong>multi-two-group estimation plot</strong> tiles two or more Cumming plots
 horizontally, and is created by passing a <em>nested tuple</em> to <code class="docutils literal notranslate"><span class="pre">idx</span></code> when
@@ -659,7 +666,7 @@ meta-analyses to aggregate and compare data from different experiments.</p>
   <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_36_0.png" src="_images/tutorial_36_0.png" />
+<img alt="_images/tutorial_35_0.png" src="_images/tutorial_35_0.png" />
 <p>The multi-two-group design also accomodates paired comparisons.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -676,7 +683,7 @@ meta-analyses to aggregate and compare data from different experiments.</p>
   <span class="n">multi_2group_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_38_0.png" src="_images/tutorial_38_0.png" />
+<img alt="_images/tutorial_37_0.png" src="_images/tutorial_37_0.png" />
 <p>The <strong>shared control plot</strong> displays another common experimental
 paradigm, where several test samples are compared against a common
 reference sample.</p>
@@ -694,11 +701,11 @@ to <code class="docutils literal notranslate"><span class="pre">idx</span></code
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:24 2019.
+The current time is Mon Jan 20 17:12:54 2020.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -714,40 +721,41 @@ Effect size(s) with 95% confidence intervals will be computed for:
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.7
+<pre class="literal-block">DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:25 2019.
+The current time is Mon Jan 20 17:12:58 2020.
 
-The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
-The two-sided p-value of the Mann-Whitney test is 0.00163.
+The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.221, 0.768].
+The p-value of the two-sided permutation t-test is 0.001.
 
-The unpaired mean difference between Control 1 and Test 2 is -0.542 [95%CI -0.915, -0.206].
-The two-sided p-value of the Mann-Whitney test is 0.0114.
+The unpaired mean difference between Control 1 and Test 2 is -0.542 [95%CI -0.914, -0.211].
+The p-value of the two-sided permutation t-test is 0.0042.
 
-The unpaired mean difference between Control 1 and Test 3 is 0.174 [95%CI -0.273, 0.647].
-The two-sided p-value of the Mann-Whitney test is 0.409.
+The unpaired mean difference between Control 1 and Test 3 is 0.174 [95%CI -0.295, 0.628].
+The p-value of the two-sided permutation t-test is 0.479.
 
-The unpaired mean difference between Control 1 and Test 4 is 0.79 [95%CI 0.325, 1.33].
-The two-sided p-value of the Mann-Whitney test is 0.0531.
+The unpaired mean difference between Control 1 and Test 4 is 0.79 [95%CI 0.306, 1.31].
+The p-value of the two-sided permutation t-test is 0.0042.
 
-The unpaired mean difference between Control 1 and Test 5 is 0.265 [95%CI 0.0115, 0.497].
-The two-sided p-value of the Mann-Whitney test is 0.0411.
+The unpaired mean difference between Control 1 and Test 5 is 0.265 [95%CI 0.0137, 0.497].
+The p-value of the two-sided permutation t-test is 0.0404.
 
-The unpaired mean difference between Control 1 and Test 6 is 0.288 [95%CI 0.00913, 0.524].
-The two-sided p-value of the Mann-Whitney test is 0.0275.
+The unpaired mean difference between Control 1 and Test 6 is 0.288 [95%CI -0.00441, 0.515].
+The p-value of the two-sided permutation t-test is 0.0324.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
 The p-value(s) reported are the likelihood(s) of observing the effect size(s),
 if the null hypothesis of zero difference is true.
+For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.mean_diff.statistical_tests</cite></pre>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_43_0.png" src="_images/tutorial_43_0.png" />
-<p>DABEST thus empowers you to robustly perform and elegantly present
+<img alt="_images/tutorial_42_0.png" src="_images/tutorial_42_0.png" />
+<p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> thus empowers you to robustly perform and elegantly present
 complex visualizations and statistics.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -761,11 +769,11 @@ complex visualizations and statistics.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:26 2019.
+The current time is Mon Jan 20 17:12:58 2020.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -781,43 +789,44 @@ Effect size(s) with 95% confidence intervals will be computed for:
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
 </td></tr></table></div>
-<pre class="literal-block">DABEST v0.2.7
+<pre class="literal-block">DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:27 2019.
+The current time is Mon Jan 20 17:13:02 2020.
 
-The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.205, 0.774].
-The two-sided p-value of the Mann-Whitney test is 0.00163.
+The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.221, 0.768].
+The p-value of the two-sided permutation t-test is 0.001.
 
-The unpaired mean difference between Control 2 and Test 2 is -1.38 [95%CI -1.93, -0.905].
-The two-sided p-value of the Mann-Whitney test is 2.6e-05.
+The unpaired mean difference between Control 2 and Test 2 is -1.38 [95%CI -1.93, -0.895].
+The p-value of the two-sided permutation t-test is 0.0.
 
-The unpaired mean difference between Control 2 and Test 3 is -0.666 [95%CI -1.29, -0.0788].
-The two-sided p-value of the Mann-Whitney test is 0.0439.
+The unpaired mean difference between Control 2 and Test 3 is -0.666 [95%CI -1.3, -0.103].
+The p-value of the two-sided permutation t-test is 0.0352.
 
-The unpaired mean difference between Control 3 and Test 4 is 0.362 [95%CI -0.111, 0.901].
-The two-sided p-value of the Mann-Whitney test is 0.365.
+The unpaired mean difference between Control 3 and Test 4 is 0.362 [95%CI -0.114, 0.887].
+The p-value of the two-sided permutation t-test is 0.161.
 
-The unpaired mean difference between Control 3 and Test 5 is -0.164 [95%CI -0.398, 0.0747].
-The two-sided p-value of the Mann-Whitney test is 0.156.
+The unpaired mean difference between Control 3 and Test 5 is -0.164 [95%CI -0.404, 0.0742].
+The p-value of the two-sided permutation t-test is 0.208.
 
-The unpaired mean difference between Control 3 and Test 6 is -0.14 [95%CI -0.4, 0.0937].
-The two-sided p-value of the Mann-Whitney test is 0.441.
+The unpaired mean difference between Control 3 and Test 6 is -0.14 [95%CI -0.398, 0.102].
+The p-value of the two-sided permutation t-test is 0.282.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
 The p-value(s) reported are the likelihood(s) of observing the effect size(s),
 if the null hypothesis of zero difference is true.
+For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.mean_diff.statistical_tests</cite></pre>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_48_0.png" src="_images/tutorial_48_0.png" />
+<img alt="_images/tutorial_47_0.png" src="_images/tutorial_47_0.png" />
 <div class="section" id="using-long-aka-melted-data-frames">
 <h3>Using long (aka ‘melted’) data frames<a class="headerlink" href="#using-long-aka-melted-data-frames" title="Permalink to this headline">¶</a></h3>
-<p>DABEST can also work with ‘melted’ or ‘long’ data. This term is
-so used because each row will now correspond to a single datapoint, with
+<p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> can also work with ‘melted’ or ‘long’ data. This term is so
+used because each row will now correspond to a single datapoint, with
 one column carrying the value and other columns carrying ‘metadata’
 describing that datapoint.</p>
 <p>More details on wide vs long or ‘melted’ data can be found in this
@@ -924,11 +933,11 @@ gives recipes for melting dataframes.</p>
   <span class="n">analysis_of_long_df</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
 =============
 
 Good afternoon!
-The current time is Mon Oct 21  11:29:27 2019.
+The current time is Mon Jan 20 17:13:03 2020.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -939,7 +948,7 @@ Effect size(s) with 95% confidence intervals will be computed for:
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">analysis_of_long_df</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_53_0.png" src="_images/tutorial_53_0.png" />
+<img alt="_images/tutorial_52_0.png" src="_images/tutorial_52_0.png" />
 </div>
 <div class="section" id="controlling-plot-aesthetics">
 <h3>Controlling plot aesthetics<a class="headerlink" href="#controlling-plot-aesthetics" title="Permalink to this headline">¶</a></h3>
@@ -949,26 +958,26 @@ Effect size(s) with 95% confidence intervals will be computed for:
                                      <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;The bootstrap</span><span class="se">\n</span><span class="s2">distribtions!&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_56_0.png" src="_images/tutorial_56_0.png" />
+<img alt="_images/tutorial_55_0.png" src="_images/tutorial_55_0.png" />
 <p>Color the rawdata according to another column in the dataframe.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_58_0.png" src="_images/tutorial_58_0.png" />
+<img alt="_images/tutorial_57_0.png" src="_images/tutorial_57_0.png" />
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_59_0.png" src="_images/tutorial_59_0.png" />
+<img alt="_images/tutorial_58_0.png" src="_images/tutorial_58_0.png" />
 <p>Changing the palette used with <code class="docutils literal notranslate"><span class="pre">custom_palette</span></code>. Any valid matplotlib
 or seaborn color palette is accepted.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span> <span class="n">custom_palette</span><span class="o">=</span><span class="s2">&quot;Dark2&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_61_0.png" src="_images/tutorial_61_0.png" />
+<img alt="_images/tutorial_60_0.png" src="_images/tutorial_60_0.png" />
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="s2">&quot;Paired&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_62_0.png" src="_images/tutorial_62_0.png" />
+<img alt="_images/tutorial_61_0.png" src="_images/tutorial_61_0.png" />
 <p>You can also create your own color palette. Create a dictionary where
 the keys are group names, and the values are valid matplotlib colors.</p>
 <p>You can specify matplotlib colors in a <a class="reference external" href="https://matplotlib.org/users/colors.html">variety of
@@ -990,7 +999,7 @@ tuples.</p>
   <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="n">my_color_palette</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_64_0.png" src="_images/tutorial_64_0.png" />
+<img alt="_images/tutorial_63_0.png" src="_images/tutorial_63_0.png" />
 <p>By default, <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> will
 <a class="reference external" href="https://en.wikipedia.org/wiki/Colorfulness#Saturation">desaturate</a>
 the color of the dots in the swarmplot by 50%. This draws attention to
@@ -1004,7 +1013,7 @@ the effect size bootstrap curves.</p>
                               <span class="n">halfviolin_desat</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_66_0.png" src="_images/tutorial_66_0.png" />
+<img alt="_images/tutorial_65_0.png" src="_images/tutorial_65_0.png" />
 <p>You can also change the sizes of the dots used in the rawdata swarmplot,
 and those used to indicate the effect sizes.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -1012,14 +1021,14 @@ and those used to indicate the effect sizes.</p>
                               <span class="n">es_marker_size</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_68_0.png" src="_images/tutorial_68_0.png" />
+<img alt="_images/tutorial_67_0.png" src="_images/tutorial_67_0.png" />
 <p>Changing the y-limits for the rawdata axes, and for the contrast axes.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
                               <span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_70_0.png" src="_images/tutorial_70_0.png" />
+<img alt="_images/tutorial_69_0.png" src="_images/tutorial_69_0.png" />
 <p>If your effect size is qualitatively inverted (ie. a smaller value is a
 better outcome), you can simply invert the tuple passed to
 <code class="docutils literal notranslate"><span class="pre">contrast_ylim</span></code>.</p>
@@ -1028,10 +1037,10 @@ better outcome), you can simply invert the tuple passed to
                               <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;More negative is better!&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_72_0.png" src="_images/tutorial_72_0.png" />
+<img alt="_images/tutorial_71_0.png" src="_images/tutorial_71_0.png" />
 <p>You can add minor ticks and also change the tick frequency by accessing
 the axes directly.</p>
-<p>The estimation plot produced by <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> has 2 axes. The first one
+<p>Each estimation plot produced by <code class="docutils literal notranslate"><span class="pre">dabest</span></code> has 2 axes. The first one
 contains the rawdata swarmplot; the second one contains the bootstrap
 effect size differences.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -1059,7 +1068,7 @@ effect size differences.</p>
   <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_74_0.png" src="_images/tutorial_74_0.png" />
+<img alt="_images/tutorial_73_0.png" src="_images/tutorial_73_0.png" />
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1083,11 +1092,11 @@ effect size differences.</p>
   <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_75_0.png" src="_images/tutorial_75_0.png" />
+<img alt="_images/tutorial_74_0.png" src="_images/tutorial_74_0.png" />
 </div>
 <div class="section" id="creating-estimation-plots-in-existing-axes">
 <span id="inset-plot"></span><h3>Creating estimation plots in existing axes<a class="headerlink" href="#creating-estimation-plots-in-existing-axes" title="Permalink to this headline">¶</a></h3>
-<p><em>Implemented in v0.2.6 by Adam Nekimken.</em></p>
+<p><em>Implemented in v0.2.6 by Adam Nekimken</em>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">dabest.plot</span></code> has an <code class="docutils literal notranslate"><span class="pre">ax</span></code> keyword that accepts any Matplotlib
 <code class="docutils literal notranslate"><span class="pre">Axes</span></code>. The entire estimation plot will be created in the specified
 <code class="docutils literal notranslate"><span class="pre">Axes</span></code>.</p>
@@ -1103,14 +1112,10 @@ effect size differences.</p>
 10
 11
 12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
   <span class="n">f</span><span class="p">,</span> <span class="n">axx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-
-                        <span class="c1"># ensure proper width-wise spacing.</span>
-                        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}</span>
+                        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}</span> <span class="c1"># ensure proper width-wise spacing.</span>
                        <span class="p">)</span>
 
   <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
@@ -1122,23 +1127,27 @@ effect size differences.</p>
   <span class="n">multi_2group_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_77_0.png" src="_images/tutorial_77_0.png" />
+<img alt="_images/tutorial_76_0.png" src="_images/tutorial_76_0.png" />
 <p>In this case, to access the individual rawdata axes, use
 <code class="docutils literal notranslate"><span class="pre">name_of_axes</span></code> to manipulate the rawdata swarmplot axes, and
 <code class="docutils literal notranslate"><span class="pre">name_of_axes.contrast_axes</span></code> to gain access to the effect size axes.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">topleft_axes</span> <span class="o">=</span> <span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">topleft_axes</span> <span class="o">=</span> <span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
   <span class="n">topleft_axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;New y-axis label for rawdata&quot;</span><span class="p">)</span>
   <span class="n">topleft_axes</span><span class="o">.</span><span class="n">contrast_axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;New y-axis label for effect size&quot;</span><span class="p">)</span>
+
+  <span class="n">f</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_79_0.png" src="_images/tutorial_79_0.png" />
+<img alt="_images/tutorial_78_0.png" src="_images/tutorial_78_0.png" />
 </div>
 <div class="section" id="applying-style-sheets">
 <h3>Applying style sheets<a class="headerlink" href="#applying-style-sheets" title="Permalink to this headline">¶</a></h3>
 <p><em>Implemented in v0.2.0</em>.</p>
-<p>DABEST can now apply <a class="reference external" href="https://matplotlib.org/tutorials/introductory/customizing.html">matplotlib style
+<p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> can apply <a class="reference external" href="https://matplotlib.org/tutorials/introductory/customizing.html">matplotlib style
 sheets</a>
 to estimation plots. You can refer to this
 <a class="reference external" href="https://matplotlib.org/3.0.3/gallery/style_sheets/style_sheets_reference.html">gallery</a>
@@ -1151,7 +1160,7 @@ of style sheets for reference.</p>
 <div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-<img alt="_images/tutorial_82_0.png" src="_images/tutorial_82_0.png" />
+<img alt="_images/tutorial_81_0.png" src="_images/tutorial_81_0.png" />
 </div>
 </div>
 </div>
@@ -1186,17 +1195,11 @@ of style sheets for reference.</p>
 <li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#load-libraries">Load Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-dataset-for-demo">Create dataset for demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#loading-data">Loading Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#effect-sizes">Effect sizes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#producing-estimation-plots">Producing estimation plots</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing DABEST</a></li>
 </ul>
 
 <div class="relations">
@@ -1231,7 +1234,7 @@ of style sheets for reference.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Joses W. Ho.
+      &copy;2017-2020, Joses W. Ho.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>

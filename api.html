@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>API &#8212; dabest 0.2.8 documentation</title>
+    <title>API &#8212; dabest 0.3.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -105,11 +106,171 @@ reported are replicable.</p></li>
 </dd></dl>
 
 </div>
+<div class="section" id="computing-effect-sizes">
+<h2>Computing Effect Sizes<a class="headerlink" href="#computing-effect-sizes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="dabest._classes.Dabest">
+<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">Dabest</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">idx</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">paired</em>, <em class="sig-param">id_col</em>, <em class="sig-param">ci</em>, <em class="sig-param">resamples</em>, <em class="sig-param">random_seed</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.Dabest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses and stores pandas DataFrames in preparation for estimation
+statistics. You should not be calling this class directly; instead,
+use <cite>dabest.load()</cite> to parse your DataFrame prior to analysis.</p>
+<dl class="method">
+<dt id="dabest._classes.Dabest.mean_diff">
+<em class="property">property </em><code class="sig-name descname">mean_diff</code><a class="headerlink" href="#dabest._classes.Dabest.mean_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the mean difference, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>    <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_df</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;control&quot;</span><span class="p">:</span> <span class="n">control</span><span class="p">,</span>
+<span class="go">                            &quot;test&quot;: test})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span><span class="o">.</span><span class="n">mean_diff</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This is simply the mean of the control group subtracted from
+the mean of the test group.</p>
+<div class="math notranslate nohighlight">
+\[\text{Mean difference} = \overline{x}_{Test} - \overline{x}_{Control}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the mean for the group <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dabest._classes.Dabest.median_diff">
+<em class="property">property </em><code class="sig-name descname">median_diff</code><a class="headerlink" href="#dabest._classes.Dabest.median_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the median difference, its confidence interval, and relevant statistics, for all comparisons  as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>    <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_df</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;control&quot;</span><span class="p">:</span> <span class="n">control</span><span class="p">,</span>
+<span class="go">                            &quot;test&quot;: test})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span><span class="o">.</span><span class="n">median_diff</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This is simply the median of the control group subtracted from
+the median of the test group.</p>
+<div class="math notranslate nohighlight">
+\[\text{Median difference} = \widetilde{x}_{Test} - \widetilde{x}_{Control}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\widetilde{x}\)</span> is the median for the group <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dabest._classes.Dabest.cohens_d">
+<em class="property">property </em><code class="sig-name descname">cohens_d</code><a class="headerlink" href="#dabest._classes.Dabest.cohens_d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the standardized mean difference Cohen’s <cite>d</cite>, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>    <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_df</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;control&quot;</span><span class="p">:</span> <span class="n">control</span><span class="p">,</span>
+<span class="go">                            &quot;test&quot;: test})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span><span class="o">.</span><span class="n">cohens_d</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>Cohen’s <cite>d</cite> is simply the mean of the control group subtracted from
+the mean of the test group.</p>
+<p>If the comparison(s) are unpaired, Cohen’s <cite>d</cite> is computed with the following equation:</p>
+<div class="math notranslate nohighlight">
+\[d = \frac{\overline{x}_{Test} - \overline{x}_{Control}} {\text{pooled standard deviation}}\]</div>
+<p>For paired comparisons, Cohen’s d is given by</p>
+<div class="math notranslate nohighlight">
+\[d = \frac{\overline{x}_{Test} - \overline{x}_{Control}} {\text{average standard deviation}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the mean of the respective group of observations, <span class="math notranslate nohighlight">\({Var}_{x}\)</span> denotes the variance of that group,</p>
+<div class="math notranslate nohighlight">
+\[\text{pooled standard deviation} = \sqrt{ \frac{(n_{control} - 1) * {Var}_{control} + (n_{test} - 1) * {Var}_{test} } {n_{control} + n_{test} - 2} }\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\text{average standard deviation} = \sqrt{ \frac{{Var}_{control} + {Var}_{test}} {2}}\]</div>
+<p>The sample variance (and standard deviation) uses N-1 degrees of freedoms.
+This is an application of <a class="reference external" href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>, and yields the unbiased
+sample variance.</p>
+<p class="rubric">References</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Cohen's_d">https://en.wikipedia.org/wiki/Effect_size#Cohen’s_d</a>
+<a class="reference external" href="https://en.wikipedia.org/wiki/Bessel%27s_correction">https://en.wikipedia.org/wiki/Bessel%27s_correction</a>
+<a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation">https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dabest._classes.Dabest.hedges_g">
+<em class="property">property </em><code class="sig-name descname">hedges_g</code><a class="headerlink" href="#dabest._classes.Dabest.hedges_g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the standardized mean difference Hedges’ <cite>g</cite>, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>    <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_df</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;control&quot;</span><span class="p">:</span> <span class="n">control</span><span class="p">,</span>
+<span class="go">                            &quot;test&quot;: test})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span><span class="o">.</span><span class="n">hedges_g</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>Hedges’ <cite>g</cite> is <a class="reference internal" href="#dabest._classes.Dabest.cohens_d" title="dabest._classes.Dabest.cohens_d"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cohens_d</span></code></a> corrected for bias via multiplication with the following correction factor:</p>
+<div class="math notranslate nohighlight">
+\[\frac{ \Gamma( \frac{a} {2} )} {\sqrt{ \frac{a} {2} } \times \Gamma( \frac{a - 1} {2} )}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[a = {n}_{control} + {n}_{test} - 2\]</div>
+<p>and <span class="math notranslate nohighlight">\(\Gamma(x)\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gamma_function">Gamma function</a>.</p>
+<p class="rubric">References</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Hedges'_g">https://en.wikipedia.org/wiki/Effect_size#Hedges’_g</a>
+<a class="reference external" href="https://journals.sagepub.com/doi/10.3102/10769986006002107">https://journals.sagepub.com/doi/10.3102/10769986006002107</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dabest._classes.Dabest.cliffs_delta">
+<em class="property">property </em><code class="sig-name descname">cliffs_delta</code><a class="headerlink" href="#dabest._classes.Dabest.cliffs_delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for Cliff’s delta, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>    <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_df</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;control&quot;</span><span class="p">:</span> <span class="n">control</span><span class="p">,</span>
+<span class="go">                            &quot;test&quot;: test})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dabest_object</span><span class="o">.</span><span class="n">cliffs_delta</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>Cliff’s delta is a measure of ordinal dominance, ie. how often the values from the test sample are larger than values from the control sample.</p>
+<div class="math notranslate nohighlight">
+\[\text{Cliff's delta} = \frac{\#({x}_{test} &gt; {x}_{control}) - \#({x}_{test} &lt; {x}_{control})} {{n}_{Test} \times {n}_{Control}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\#\)</span> denotes the number of times a value from the test sample exceeds (or is lesser than) values in the control sample.</p>
+<p>Cliff’s delta ranges from -1 to 1; it can also be thought of as a measure of the degree of overlap between the two samples. An attractive aspect of this effect size is that it does not make an assumptions about the underlying distributions that the samples were drawn from.</p>
+<p class="rubric">References</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Effect_size#Effect_size_for_ordinal_data">https://en.wikipedia.org/wiki/Effect_size#Effect_size_for_ordinal_data</a>
+<a class="reference external" href="https://psycnet.apa.org/record/1994-08169-001">https://psycnet.apa.org/record/1994-08169-001</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="plotting-data">
 <h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="class">
+<dt id="dabest._classes.EffectSizeDataFrame">
+<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">EffectSizeDataFrame</code><span class="sig-paren">(</span><em class="sig-param">dabest</em>, <em class="sig-param">effect_size</em>, <em class="sig-param">is_paired</em>, <em class="sig-param">ci=95</em>, <em class="sig-param">resamples=5000</em>, <em class="sig-param">permutation_count=5000</em>, <em class="sig-param">random_seed=12345</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the data from a Dabest object, enabling plotting and printing
+capability for the effect size of interest.</p>
+<dl class="method">
 <dt id="dabest._classes.EffectSizeDataFrame.plot">
-<code class="sig-prename descclassname">dabest._classes.EffectSizeDataFrame.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">color_col=None</em>, <em class="sig-param">raw_marker_size=6</em>, <em class="sig-param">es_marker_size=9</em>, <em class="sig-param">swarm_label=None</em>, <em class="sig-param">contrast_label=None</em>, <em class="sig-param">swarm_ylim=None</em>, <em class="sig-param">contrast_ylim=None</em>, <em class="sig-param">custom_palette=None</em>, <em class="sig-param">swarm_desat=0.5</em>, <em class="sig-param">halfviolin_desat=1</em>, <em class="sig-param">halfviolin_alpha=0.8</em>, <em class="sig-param">float_contrast=True</em>, <em class="sig-param">show_pairs=True</em>, <em class="sig-param">group_summaries=None</em>, <em class="sig-param">group_summaries_offset=0.1</em>, <em class="sig-param">fig_size=None</em>, <em class="sig-param">dpi=100</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">swarmplot_kwargs=None</em>, <em class="sig-param">violinplot_kwargs=None</em>, <em class="sig-param">slopegraph_kwargs=None</em>, <em class="sig-param">reflines_kwargs=None</em>, <em class="sig-param">group_summary_kwargs=None</em>, <em class="sig-param">legend_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">color_col=None</em>, <em class="sig-param">raw_marker_size=6</em>, <em class="sig-param">es_marker_size=9</em>, <em class="sig-param">swarm_label=None</em>, <em class="sig-param">contrast_label=None</em>, <em class="sig-param">swarm_ylim=None</em>, <em class="sig-param">contrast_ylim=None</em>, <em class="sig-param">custom_palette=None</em>, <em class="sig-param">swarm_desat=0.5</em>, <em class="sig-param">halfviolin_desat=1</em>, <em class="sig-param">halfviolin_alpha=0.8</em>, <em class="sig-param">float_contrast=True</em>, <em class="sig-param">show_pairs=True</em>, <em class="sig-param">group_summaries=None</em>, <em class="sig-param">group_summaries_offset=0.1</em>, <em class="sig-param">fig_size=None</em>, <em class="sig-param">dpi=100</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">swarmplot_kwargs=None</em>, <em class="sig-param">violinplot_kwargs=None</em>, <em class="sig-param">slopegraph_kwargs=None</em>, <em class="sig-param">reflines_kwargs=None</em>, <em class="sig-param">group_summary_kwargs=None</em>, <em class="sig-param">legend_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an estimation plot for the effect size of interest.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -245,13 +406,23 @@ are passed to matplotlib.Axes.legend : {‘loc’:’upper left’,
 </div>
 </dd></dl>
 
+<dl class="method">
+<dt id="dabest._classes.EffectSizeDataFrame.lqrt">
+<em class="property">property </em><code class="sig-name descname">lqrt</code><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.lqrt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all pairwise Lq-Likelihood Ratio Type test results
+as a pandas DataFrame.</p>
+<p>For more information on LqRT tests, see <a class="reference external" href="https://arxiv.org/abs/1911.11922">https://arxiv.org/abs/1911.11922</a></p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="computing-effect-sizes">
-<h2>Computing Effect Sizes<a class="headerlink" href="#computing-effect-sizes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="permutation-tests">
+<h2>Permutation Tests<a class="headerlink" href="#permutation-tests" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="dabest._classes.TwoGroupsEffectSize">
-<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">TwoGroupsEffectSize</code><span class="sig-paren">(</span><em class="sig-param">control</em>, <em class="sig-param">test</em>, <em class="sig-param">effect_size</em>, <em class="sig-param">is_paired=False</em>, <em class="sig-param">ci=95</em>, <em class="sig-param">resamples=5000</em>, <em class="sig-param">random_seed=12345</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.TwoGroupsEffectSize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the effect size between two groups.</p>
+<dt id="dabest._classes.PermutationTest">
+<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">PermutationTest</code><span class="sig-paren">(</span><em class="sig-param">control</em>, <em class="sig-param">test</em>, <em class="sig-param">effect_size</em>, <em class="sig-param">is_paired</em>, <em class="sig-param">permutation_count=5000</em>, <em class="sig-param">random_seed=12345</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.PermutationTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to compute and report permutation tests.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -260,77 +431,42 @@ are passed to matplotlib.Axes.legend : {‘loc’:’upper left’,
 <li><p><strong>effect_size</strong> (<em>string.</em>) – Any one of the following are accepted inputs:
 ‘mean_diff’, ‘median_diff’, ‘cohens_d’, ‘hedges_g’, or ‘cliffs_delta’</p></li>
 <li><p><strong>is_paired</strong> (<em>boolean</em><em>, </em><em>default False</em>) – </p></li>
-<li><p><strong>resamples</strong> (<em>int</em><em>, </em><em>default 5000</em>) – The number of bootstrap resamples to be taken.</p></li>
-<li><p><strong>ci</strong> (<em>float</em><em>, </em><em>default 95</em>) – The confidence interval width. The default of 95 produces 95%
-confidence intervals.</p></li>
+<li><p><strong>permutation_count</strong> (<em>int</em><em>, </em><em>default 10000</em>) – The number of permutations (reshuffles) to perform.</p></li>
 <li><p><strong>random_seed</strong> (<em>int</em><em>, </em><em>default 12345</em>) – <cite>random_seed</cite> is used to seed the random number generator during
-bootstrap resampling. This ensures that the confidence intervals
-reported are replicable.</p></li>
+bootstrap resampling. This ensures that the generated permutations
+are replicable.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">TwoGroupEffectSize</span></code> object.</p></li>
+<li><p>A <a class="reference internal" href="#dabest._classes.PermutationTest" title="dabest._classes.PermutationTest"><code class="xref py py-class docutils literal notranslate"><span class="pre">PermutationTest</span></code></a> object.</p></li>
 <li><p><strong>difference</strong> (<em>float</em>) – The effect size of the difference between the control and the test.</p></li>
 <li><p><strong>effect_size</strong> (<em>string</em>) – The type of effect size reported.</p></li>
-<li><p><strong>is_paired</strong> (<em>boolean</em>) – Whether or not the difference is paired (ie. repeated measures).</p></li>
-<li><p><strong>ci</strong> (<em>float</em>) – Returns the width of the confidence interval, in percent.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em>) – Returns the significance level of the statistical test as a float
-between 0 and 1.</p></li>
-<li><p><strong>resamples</strong> (<em>int</em>) – The number of resamples performed during the bootstrap procedure.</p></li>
-<li><p><strong>bootstraps</strong> (<em>nmupy ndarray</em>) – The generated bootstraps of the effect size.</p></li>
-<li><p><strong>random_seed</strong> (<em>int</em>) – The number used to initialise the numpy random seed generator, ie.
-<cite>seed_value</cite> from <cite>numpy.random.seed(seed_value)</cite> is returned.</p></li>
-<li><p><strong>bca_low, bca_high</strong> (<em>float</em>) – The bias-corrected and accelerated confidence interval lower limit
-and upper limits, respectively.</p></li>
-<li><p><strong>pct_low, pct_high</strong> (<em>float</em>) – The percentile confidence interval lower limit and upper limits,
-respectively.</p></li>
 </ul>
 </p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
+<p class="rubric">Notes</p>
+<p>The basic concept of permutation tests is the same as that behind bootstrapping.
+In an “exact” permutation test, all possible resuffles of the control and test
+labels are performed, and the proportion of effect sizes that equal or exceed
+the observed effect size is computed. This is the probability, under the null
+hypothesis of zero difference between test and control groups, of observing the
+effect size: the p-value of the Student’s t-test.</p>
+<p>Exact permutation tests are impractical: computing the effect sizes for all reshuffles quickly exceeds trivial computational loads. A control group and a test group both with 10 observations each would have a total of  <span class="math notranslate nohighlight">\(20!\)</span> or <span class="math notranslate nohighlight">\(2.43 \times {10}^{18}\)</span> reshuffles.
+Therefore, in practice, “approximate” permutation tests are performed, where a sufficient number of reshuffles are performed (5,000 or 10,000), from which the p-value is computed.</p>
+<p>More information can be found <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">here</a>.</p>
+<p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dabest</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">effsize</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">TwoGroupsEffectSize</span><span class="p">(</span><span class="n">control</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="s2">&quot;mean_diff&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">effsize</span>
-<span class="go">The unpaired mean difference is -0.253 [95%CI -0.782, 0.241]</span>
-<span class="go">5000 bootstrap samples. The confidence interval is bias-corrected</span>
-<span class="go">and accelerated.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">effsize</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
-<span class="go">{&#39;alpha&#39;: 0.05,</span>
-<span class="go"> &#39;bca_high&#39;: 0.2413346581369784,</span>
-<span class="go"> &#39;bca_interval_idx&#39;: (109, 4858),</span>
-<span class="go"> &#39;bca_low&#39;: -0.7818088458343655,</span>
-<span class="go"> &#39;bootstraps&#39;: array([-1.09875628, -1.08840014, -1.08258695, ...,  0.66675324,</span>
-<span class="go">         0.75814087,  0.80848265]),</span>
-<span class="go"> &#39;ci&#39;: 95,</span>
-<span class="go"> &#39;difference&#39;: -0.25315417702752846,</span>
-<span class="go"> &#39;effect_size&#39;: &#39;mean difference&#39;,</span>
-<span class="go"> &#39;is_paired&#39;: False,</span>
-<span class="go"> &#39;pct_high&#39;: 0.25135646125431527,</span>
-<span class="go"> &#39;pct_interval_idx&#39;: (125, 4875),</span>
-<span class="go"> &#39;pct_low&#39;: -0.763588353717278,</span>
-<span class="go"> &#39;pvalue_brunner_munzel&#39;: nan,</span>
-<span class="go"> &#39;pvalue_kruskal&#39;: nan,</span>
-<span class="go"> &#39;pvalue_mann_whitney&#39;: 0.2600723060808019,</span>
-<span class="go"> &#39;pvalue_paired_students_t&#39;: nan,</span>
-<span class="go"> &#39;pvalue_students_t&#39;: 0.34743913903372836,</span>
-<span class="go"> &#39;pvalue_welch&#39;: 0.3474493875548965,</span>
-<span class="go"> &#39;pvalue_wilcoxon&#39;: nan,</span>
-<span class="go"> &#39;random_seed&#39;: 12345,</span>
-<span class="go"> &#39;resamples&#39;: 5000,</span>
-<span class="go"> &#39;statistic_brunner_munzel&#39;: nan,</span>
-<span class="go"> &#39;statistic_kruskal&#39;: nan,</span>
-<span class="go"> &#39;statistic_mann_whitney&#39;: 406.0,</span>
-<span class="go"> &#39;statistic_paired_students_t&#39;: nan,</span>
-<span class="go"> &#39;statistic_students_t&#39;: 0.9472545159069105,</span>
-<span class="go"> &#39;statistic_welch&#39;: 0.9472545159069105,</span>
-<span class="go"> &#39;statistic_wilcoxon&#39;: nan}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">control</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perm_test</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">PermutationTest</span><span class="p">(</span><span class="n">control</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span>
+<span class="gp">... </span>                                   <span class="n">effect_size</span><span class="o">=</span><span class="s2">&quot;mean_diff&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                                   <span class="n">is_paired</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perm_test</span>
+<span class="go">5000 permutations were taken. The pvalue is 0.0758.</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -370,13 +506,9 @@ respectively.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#loading-data">Loading Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-data">Plotting Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#computing-effect-sizes">Computing Effect Sizes</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing DABEST</a></li>
 </ul>
 
 <div class="relations">
@@ -411,7 +543,7 @@ respectively.</p></li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Joses W. Ho.
+      &copy;2017-2020, Joses W. Ho.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
