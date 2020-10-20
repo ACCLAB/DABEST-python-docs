@@ -1,20 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>API &#8212; dabest 0.3.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API &#8212; dabest 0.3.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -52,9 +53,9 @@
 <span id="id1"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="dabest.load">
-<code class="sig-prename descclassname">dabest.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">idx</em>, <em class="sig-param">x=None</em>, <em class="sig-param">y=None</em>, <em class="sig-param">paired=False</em>, <em class="sig-param">id_col=None</em>, <em class="sig-param">ci=95</em>, <em class="sig-param">resamples=5000</em>, <em class="sig-param">random_seed=12345</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dabest.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">idx</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">paired</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">id_col</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ci</span><span class="o">=</span><span class="default_value">95</span></em>, <em class="sig-param"><span class="n">resamples</span><span class="o">=</span><span class="default_value">5000</span></em>, <em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">12345</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dabest.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads data in preparation for estimation statistics.</p>
 <p>This is designed to work with pandas DataFrames.</p>
 <dl class="field-list simple">
@@ -108,13 +109,13 @@ reported are replicable.</p></li>
 </div>
 <div class="section" id="computing-effect-sizes">
 <h2>Computing Effect Sizes<a class="headerlink" href="#computing-effect-sizes" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="dabest._classes.Dabest">
-<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">Dabest</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">idx</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">paired</em>, <em class="sig-param">id_col</em>, <em class="sig-param">ci</em>, <em class="sig-param">resamples</em>, <em class="sig-param">random_seed</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.Dabest" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">Dabest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">idx</span></em>, <em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">paired</span></em>, <em class="sig-param"><span class="n">id_col</span></em>, <em class="sig-param"><span class="n">ci</span></em>, <em class="sig-param"><span class="n">resamples</span></em>, <em class="sig-param"><span class="n">random_seed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.Dabest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses and stores pandas DataFrames in preparation for estimation
 statistics. You should not be calling this class directly; instead,
 use <cite>dabest.load()</cite> to parse your DataFrame prior to analysis.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.Dabest.mean_diff">
 <em class="property">property </em><code class="sig-name descname">mean_diff</code><a class="headerlink" href="#dabest._classes.Dabest.mean_diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the mean difference, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
@@ -138,7 +139,7 @@ the mean of the test group.</p>
 <p>where <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the mean for the group <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.Dabest.median_diff">
 <em class="property">property </em><code class="sig-name descname">median_diff</code><a class="headerlink" href="#dabest._classes.Dabest.median_diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the median difference, its confidence interval, and relevant statistics, for all comparisons  as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
@@ -162,7 +163,7 @@ the median of the test group.</p>
 <p>where <span class="math notranslate nohighlight">\(\widetilde{x}\)</span> is the median for the group <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.Dabest.cohens_d">
 <em class="property">property </em><code class="sig-name descname">cohens_d</code><a class="headerlink" href="#dabest._classes.Dabest.cohens_d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the standardized mean difference Cohen’s <cite>d</cite>, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
@@ -202,7 +203,7 @@ sample variance.</p>
 <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation">https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation</a></p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.Dabest.hedges_g">
 <em class="property">property </em><code class="sig-name descname">hedges_g</code><a class="headerlink" href="#dabest._classes.Dabest.hedges_g" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for the standardized mean difference Hedges’ <cite>g</cite>, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
@@ -231,7 +232,7 @@ sample variance.</p>
 <a class="reference external" href="https://journals.sagepub.com/doi/10.3102/10769986006002107">https://journals.sagepub.com/doi/10.3102/10769986006002107</a></p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.Dabest.cliffs_delta">
 <em class="property">property </em><code class="sig-name descname">cliffs_delta</code><a class="headerlink" href="#dabest._classes.Dabest.cliffs_delta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference internal" href="#dabest._classes.EffectSizeDataFrame" title="dabest._classes.EffectSizeDataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code></a> for Cliff’s delta, its confidence interval, and relevant statistics, for all comparisons as indicated via the <cite>idx</cite> and <cite>paired</cite> argument in <cite>dabest.load()</cite>.</p>
@@ -263,14 +264,14 @@ sample variance.</p>
 </div>
 <div class="section" id="plotting-data">
 <h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="dabest._classes.EffectSizeDataFrame">
-<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">EffectSizeDataFrame</code><span class="sig-paren">(</span><em class="sig-param">dabest</em>, <em class="sig-param">effect_size</em>, <em class="sig-param">is_paired</em>, <em class="sig-param">ci=95</em>, <em class="sig-param">resamples=5000</em>, <em class="sig-param">permutation_count=5000</em>, <em class="sig-param">random_seed=12345</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">EffectSizeDataFrame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dabest</span></em>, <em class="sig-param"><span class="n">effect_size</span></em>, <em class="sig-param"><span class="n">is_paired</span></em>, <em class="sig-param"><span class="n">ci</span><span class="o">=</span><span class="default_value">95</span></em>, <em class="sig-param"><span class="n">resamples</span><span class="o">=</span><span class="default_value">5000</span></em>, <em class="sig-param"><span class="n">permutation_count</span><span class="o">=</span><span class="default_value">5000</span></em>, <em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">12345</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses the data from a Dabest object, enabling plotting and printing
 capability for the effect size of interest.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.EffectSizeDataFrame.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">color_col=None</em>, <em class="sig-param">raw_marker_size=6</em>, <em class="sig-param">es_marker_size=9</em>, <em class="sig-param">swarm_label=None</em>, <em class="sig-param">contrast_label=None</em>, <em class="sig-param">swarm_ylim=None</em>, <em class="sig-param">contrast_ylim=None</em>, <em class="sig-param">custom_palette=None</em>, <em class="sig-param">swarm_desat=0.5</em>, <em class="sig-param">halfviolin_desat=1</em>, <em class="sig-param">halfviolin_alpha=0.8</em>, <em class="sig-param">float_contrast=True</em>, <em class="sig-param">show_pairs=True</em>, <em class="sig-param">group_summaries=None</em>, <em class="sig-param">group_summaries_offset=0.1</em>, <em class="sig-param">fig_size=None</em>, <em class="sig-param">dpi=100</em>, <em class="sig-param">ax=None</em>, <em class="sig-param">swarmplot_kwargs=None</em>, <em class="sig-param">violinplot_kwargs=None</em>, <em class="sig-param">slopegraph_kwargs=None</em>, <em class="sig-param">reflines_kwargs=None</em>, <em class="sig-param">group_summary_kwargs=None</em>, <em class="sig-param">legend_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color_col</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">raw_marker_size</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">es_marker_size</span><span class="o">=</span><span class="default_value">9</span></em>, <em class="sig-param"><span class="n">swarm_label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">contrast_label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">swarm_ylim</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">contrast_ylim</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">custom_palette</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">swarm_desat</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">halfviolin_desat</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">halfviolin_alpha</span><span class="o">=</span><span class="default_value">0.8</span></em>, <em class="sig-param"><span class="n">float_contrast</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">show_pairs</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">group_summaries</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">group_summaries_offset</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">fig_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dpi</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">swarmplot_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">violinplot_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">slopegraph_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">reflines_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">group_summary_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">legend_kwargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an estimation plot for the effect size of interest.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -280,12 +281,20 @@ capability for the effect size of interest.</p>
 swarmplot.</p></li>
 <li><p><strong>es_marker_size</strong> (<em>float</em><em>, </em><em>default 9</em>) – The size (in points) of the effect size points on the difference
 axes.</p></li>
-<li><p><strong>contrast_label</strong> (<em>swarm_label</em><em>,</em>) – Set labels for the y-axis of the swarmplot and the contrast plot,
+<li><p><strong>swarm_label</strong> (<em>strings</em><em>, </em><em>default None</em>) – Set labels for the y-axis of the swarmplot and the contrast plot,
 respectively. If <cite>swarm_label</cite> is not specified, it defaults to
 “value”, unless a column name was passed to <cite>y</cite>. If
 <cite>contrast_label</cite> is not specified, it defaults to the effect size
 being plotted.</p></li>
-<li><p><strong>contrast_ylim</strong> (<em>swarm_ylim</em><em>,</em>) – The desired y-limits of the raw data (swarmplot) axes and the
+<li><p><strong>contrast_label</strong> (<em>strings</em><em>, </em><em>default None</em>) – Set labels for the y-axis of the swarmplot and the contrast plot,
+respectively. If <cite>swarm_label</cite> is not specified, it defaults to
+“value”, unless a column name was passed to <cite>y</cite>. If
+<cite>contrast_label</cite> is not specified, it defaults to the effect size
+being plotted.</p></li>
+<li><p><strong>swarm_ylim</strong> (<em>tuples</em><em>, </em><em>default None</em>) – The desired y-limits of the raw data (swarmplot) axes and the
+difference axes respectively, as a tuple. These will be autoscaled
+to sensible values if they are not specified.</p></li>
+<li><p><strong>contrast_ylim</strong> (<em>tuples</em><em>, </em><em>default None</em>) – The desired y-limits of the raw data (swarmplot) axes and the
 difference axes respectively, as a tuple. These will be autoscaled
 to sensible values if they are not specified.</p></li>
 <li><p><strong>custom_palette</strong> (<em>dict</em><em>, </em><em>list</em><em>, or </em><em>matplotlib color palette</em><em>, </em><em>default None</em>) – This keyword accepts a dictionary with {‘group’:’color’} pairings,
@@ -406,7 +415,7 @@ are passed to matplotlib.Axes.legend : {‘loc’:’upper left’,
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="dabest._classes.EffectSizeDataFrame.lqrt">
 <em class="property">property </em><code class="sig-name descname">lqrt</code><a class="headerlink" href="#dabest._classes.EffectSizeDataFrame.lqrt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all pairwise Lq-Likelihood Ratio Type test results
@@ -419,9 +428,9 @@ as a pandas DataFrame.</p>
 </div>
 <div class="section" id="permutation-tests">
 <h2>Permutation Tests<a class="headerlink" href="#permutation-tests" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="dabest._classes.PermutationTest">
-<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">PermutationTest</code><span class="sig-paren">(</span><em class="sig-param">control</em>, <em class="sig-param">test</em>, <em class="sig-param">effect_size</em>, <em class="sig-param">is_paired</em>, <em class="sig-param">permutation_count=5000</em>, <em class="sig-param">random_seed=12345</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.PermutationTest" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dabest._classes.</code><code class="sig-name descname">PermutationTest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">control</span></em>, <em class="sig-param"><span class="n">test</span></em>, <em class="sig-param"><span class="n">effect_size</span></em>, <em class="sig-param"><span class="n">is_paired</span></em>, <em class="sig-param"><span class="n">permutation_count</span><span class="o">=</span><span class="default_value">5000</span></em>, <em class="sig-param"><span class="n">random_seed</span><span class="o">=</span><span class="default_value">12345</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dabest._classes.PermutationTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class to compute and report permutation tests.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -529,7 +538,7 @@ Therefore, in practice, “approximate” permutation tests are performed, where
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -546,7 +555,7 @@ Therefore, in practice, “approximate” permutation tests are performed, where
       &copy;2017-2020, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
