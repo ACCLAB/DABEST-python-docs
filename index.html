@@ -1,21 +1,21 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>DABEST &#8212; dabest 0.3.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -48,19 +48,49 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="dabest">
-<h1>DABEST<a class="headerlink" href="#dabest" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="data-analysis-with-bootstrap-coupled-estimation">
-<h2>Data Analysis with Bootstrap-coupled ESTimation<a class="headerlink" href="#data-analysis-with-bootstrap-coupled-estimation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="analyze-your-data-with-estimation-statistics">
-<h3>Analyze your data with estimation statistics!<a class="headerlink" href="#analyze-your-data-with-estimation-statistics" title="Permalink to this headline">¶</a></h3>
+  <section id="dabest">
+<h1>DABEST<a class="headerlink" href="#dabest" title="Permalink to this heading">¶</a></h1>
+<section id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this heading">¶</a></h2>
+<p><strong>DABEST version 2023.02.14</strong> has been released:
+<a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a></p>
+<p>Briefly, this release introduces several new functions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Additional plotting functions for repeated measures experimental designs</p></li>
+<li><p>Calculating of Cohen’s <em>h</em> and proportional plots for binary data</p></li>
+<li><p>Calculating and plotting delta-deltas for 2x2 experimental designs</p></li>
+<li><p>Calculating and plotting of weighted deltas for mini-meta-analysis of experimental replicates</p></li>
+</ul>
+</div></blockquote>
+<p>Refer to <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a> for full details.</p>
+<section id="data-analysis-with-bootstrap-coupled-estimation">
+<h3>Data Analysis with Bootstrap-coupled ESTimation<a class="headerlink" href="#data-analysis-with-bootstrap-coupled-estimation" title="Permalink to this heading">¶</a></h3>
+</section>
+</section>
+<section id="analyze-your-data-with-estimation-statistics">
+<h2>Analyze your data with estimation statistics!<a class="headerlink" href="#analyze-your-data-with-estimation-statistics" title="Permalink to this heading">¶</a></h2>
 <img alt="_images/showpiece.png" src="_images/showpiece.png" />
-</div>
-<div class="section" id="news">
-<h3>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="news">
+<h2>News<a class="headerlink" href="#news" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
+<dt>March 2023:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><strong>v2023.02.14</strong> released. The following features have been added:</dt><dd><ul>
+<li><p>Additional plotting functions for repeated measures experimental designs</p></li>
+<li><p>Calculating of Cohen’s <em>h</em> and proportional plots for binary data</p></li>
+<li><p>Calculating and plotting delta-deltas for 2x2 experimental designs</p></li>
+<li><p>Calculating and plotting of weighted deltas for mini-meta-analysis of experimental replicates</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>See <a class="reference internal" href="release-notes.html"><span class="doc">Release Notes</span></a> for more details.</p></li>
+</ul>
+</dd>
 <dt>October 2020:</dt><dd><ul class="simple">
-<li><p>v0.3.1 released. The minimal versions of dependencies have been upgraded. Also, the minimal version of Python required is now 3.5.</p></li>
+<li><p>v0.3.1 released. The minimal versions of dependencies have been upgraded. Also, the minimal version of Python required is now 3.6.</p></li>
 </ul>
 </dd>
 <dt>January 2020:</dt><dd><ul class="simple">
@@ -73,7 +103,7 @@
 </dd>
 <dt>October 2019:</dt><dd><ul class="simple">
 <li><p>v0.2.7 released. A minor bugfix in the handling of wide datasets with unequal Ns in each group.</p></li>
-<li><p>v0.2.6 released. This release has one new feature (plotting of estimation plot inside any <code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code>; see the section on <a class="reference internal" href="tutorial.html#inset-plot"><span class="std std-ref">Creating estimation plots in existing axes</span></a> in the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a>). There are also two bug patches for the handling of bootstrap plotting, and of dependency installation.</p></li>
+<li><p>v0.2.6 released. This release has one new feature (plotting of estimation plot inside any <code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code>; see the section on <a class="reference internal" href="plotaesthetics.html#inset-plot"><span class="std std-ref">Creating estimation plots in existing axes</span></a> in the <a class="reference internal" href="plotaesthetics.html"><span class="doc">Tutorial: Controlling Plot Aesthetics</span></a>). There are also two bug patches for the handling of bootstrap plotting, and of dependency installation.</p></li>
 </ul>
 </dd>
 <dt>September 2019:</dt><dd><ul class="simple">
@@ -95,24 +125,28 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="contents">
-<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotaesthetics.html">Tutorial: Controlling Plot Aesthetics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citation.html">Citing DABEST</a></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -144,7 +178,12 @@
 <li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotaesthetics.html">Tutorial: Controlling Plot Aesthetics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
@@ -163,12 +202,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -182,10 +221,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017-2020, Joses W. Ho.
+      &copy;2016-2023, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -1,25 +1,25 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial &#8212; dabest 0.3.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial: Basics &#8212; dabest 0.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Release Notes" href="release-notes.html" />
+    <link rel="next" title="Tutorial: Repeated Measures" href="repeatedmeasures.html" />
     <link rel="prev" title="Getting Started" href="getting-started.html" />
 
    
@@ -49,107 +49,70 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="tutorial">
-<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="load-libraries">
-<h2>Load Libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-  <span class="kn">import</span> <span class="nn">dabest</span>
-
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re using DABEST v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dabest</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v0.3.1</span>
+  <section id="tutorial-basics">
+<span id="tutorial"></span><h1>Tutorial: Basics<a class="headerlink" href="#tutorial-basics" title="Permalink to this heading">¶</a></h1>
+<section id="load-libraries">
+<h2>Load Libraries<a class="headerlink" href="#load-libraries" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span>  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="linenos">3</span>  <span class="kn">import</span> <span class="nn">dabest</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;re using DABEST v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dabest</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span><span class="s1">&#39;re using DABEST v2023.02.14</span>
+</pre></div>
 </div>
-<div class="section" id="create-dataset-for-demo">
-<h2>Create dataset for demo<a class="headerlink" href="#create-dataset-for-demo" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="create-dataset-for-demo">
+<h2>Create dataset for demo<a class="headerlink" href="#create-dataset-for-demo" title="Permalink to this heading">¶</a></h2>
 <p>Here, we create a dataset to illustrate how <code class="docutils literal notranslate"><span class="pre">dabest</span></code> functions. In
 this dataset, each column corresponds to a group of observations.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span> <span class="c1"># Used in generation of populations.</span>
-
-  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9999</span><span class="p">)</span> <span class="c1"># Fix the seed so the results are replicable.</span>
-  <span class="c1"># pop_size = 10000 # Size of each population.</span>
-  <span class="n">Ns</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># The number of samples taken from each population</span>
-
-  <span class="c1"># Create samples</span>
-  <span class="n">c1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">c2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">c3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-
-  <span class="n">t1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">t2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">t3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">t4</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">t5</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-  <span class="n">t6</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
-
-
-  <span class="c1"># Add a `gender` column for coloring the data.</span>
-  <span class="n">females</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="n">Ns</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-  <span class="n">males</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="n">Ns</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-  <span class="n">gender</span> <span class="o">=</span> <span class="n">females</span> <span class="o">+</span> <span class="n">males</span>
-
-  <span class="c1"># Add an `id` column for paired data plotting.</span>
-  <span class="n">id_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Ns</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-
-  <span class="c1"># Combine samples and gender into a DataFrame.</span>
-  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Control 1&#39;</span> <span class="p">:</span> <span class="n">c1</span><span class="p">,</span>     <span class="s1">&#39;Test 1&#39;</span> <span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
-                     <span class="s1">&#39;Control 2&#39;</span> <span class="p">:</span> <span class="n">c2</span><span class="p">,</span>     <span class="s1">&#39;Test 2&#39;</span> <span class="p">:</span> <span class="n">t2</span><span class="p">,</span>
-                     <span class="s1">&#39;Control 3&#39;</span> <span class="p">:</span> <span class="n">c3</span><span class="p">,</span>     <span class="s1">&#39;Test 3&#39;</span> <span class="p">:</span> <span class="n">t3</span><span class="p">,</span>
-                     <span class="s1">&#39;Test 4&#39;</span>    <span class="p">:</span> <span class="n">t4</span><span class="p">,</span>     <span class="s1">&#39;Test 5&#39;</span> <span class="p">:</span> <span class="n">t5</span><span class="p">,</span> <span class="s1">&#39;Test 6&#39;</span> <span class="p">:</span> <span class="n">t6</span><span class="p">,</span>
-                     <span class="s1">&#39;Gender&#39;</span>    <span class="p">:</span> <span class="n">gender</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span>  <span class="p">:</span> <span class="n">id_col</span>
-                    <span class="p">})</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>  <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span> <span class="c1"># Used in generation of populations.</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9999</span><span class="p">)</span> <span class="c1"># Fix the seed so the results are replicable.</span>
+<span class="linenos"> 4</span>  <span class="c1"># pop_size = 10000 # Size of each population.</span>
+<span class="linenos"> 5</span>  <span class="n">Ns</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># The number of samples taken from each population</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>  <span class="c1"># Create samples</span>
+<span class="linenos"> 8</span>  <span class="n">c1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos"> 9</span>  <span class="n">c2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">10</span>  <span class="n">c3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>  <span class="n">t1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">13</span>  <span class="n">t2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">14</span>  <span class="n">t3</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">15</span>  <span class="n">t4</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">16</span>  <span class="n">t5</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">17</span>  <span class="n">t6</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">3.25</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ns</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>  <span class="c1"># Add a `gender` column for coloring the data.</span>
+<span class="linenos">21</span>  <span class="n">females</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="n">Ns</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="linenos">22</span>  <span class="n">males</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="n">Ns</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="linenos">23</span>  <span class="n">gender</span> <span class="o">=</span> <span class="n">females</span> <span class="o">+</span> <span class="n">males</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>  <span class="c1"># Add an `id` column for paired data plotting.</span>
+<span class="linenos">26</span>  <span class="n">id_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Ns</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span>  <span class="c1"># Combine samples and gender into a DataFrame.</span>
+<span class="linenos">29</span>  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Control 1&#39;</span> <span class="p">:</span> <span class="n">c1</span><span class="p">,</span>     <span class="s1">&#39;Test 1&#39;</span> <span class="p">:</span> <span class="n">t1</span><span class="p">,</span>
+<span class="linenos">30</span>                     <span class="s1">&#39;Control 2&#39;</span> <span class="p">:</span> <span class="n">c2</span><span class="p">,</span>     <span class="s1">&#39;Test 2&#39;</span> <span class="p">:</span> <span class="n">t2</span><span class="p">,</span>
+<span class="linenos">31</span>                     <span class="s1">&#39;Control 3&#39;</span> <span class="p">:</span> <span class="n">c3</span><span class="p">,</span>     <span class="s1">&#39;Test 3&#39;</span> <span class="p">:</span> <span class="n">t3</span><span class="p">,</span>
+<span class="linenos">32</span>                     <span class="s1">&#39;Test 4&#39;</span>    <span class="p">:</span> <span class="n">t4</span><span class="p">,</span>     <span class="s1">&#39;Test 5&#39;</span> <span class="p">:</span> <span class="n">t5</span><span class="p">,</span> <span class="s1">&#39;Test 6&#39;</span> <span class="p">:</span> <span class="n">t6</span><span class="p">,</span>
+<span class="linenos">33</span>                     <span class="s1">&#39;Gender&#39;</span>    <span class="p">:</span> <span class="n">gender</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span>  <span class="p">:</span> <span class="n">id_col</span>
+<span class="linenos">34</span>                    <span class="p">})</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Note that we have 9 groups (3 Control samples and 6 Test samples). Our
 dataset also has a non-numerical column indicating gender, and another
 column indicating the identity of each observation.</p>
 <p>This is known as a ‘wide’ dataset. See this
 <a class="reference external" href="https://sejdemyr.github.io/r-tutorials/basics/wide-and-long/">writeup</a>
 for more details.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <div>
 <style scoped>
   /*  .dataframe tbody tr th:only-of-type {
@@ -254,27 +217,27 @@ for more details.</p>
     </tr>
   </tbody>
 </table>
-</div></div>
-<div class="section" id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+</div></section>
+<section id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">¶</a></h2>
 <p>Before we create estimation plots and obtain confidence intervals for
 our effect sizes, we need to load the data and the relevant groups.</p>
 <p>We simply supply the DataFrame to <code class="docutils literal notranslate"><span class="pre">dabest.load()</span></code>. We also must supply
 the two groups you want to compare in the <code class="docutils literal notranslate"><span class="pre">idx</span></code> argument as a tuple or
 list.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span> <span class="n">resamples</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span> <span class="n">resamples</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Calling this <code class="docutils literal notranslate"><span class="pre">Dabest</span></code> object gives you a gentle greeting, as well as
 the comparisons that can be computed.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.1
-=============
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:12:44 2020.
+Good evening!
+The current time is Sun Aug 29 18:00:54 2021.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -282,42 +245,18 @@ Effect size(s) with 95% confidence intervals will be computed for:
 5000 resamples will be used to generate the effect size bootstraps.
 </pre></div>
 </div>
-<div class="section" id="changing-statistical-parameters">
-<h3>Changing statistical parameters<a class="headerlink" href="#changing-statistical-parameters" title="Permalink to this headline">¶</a></h3>
-<p>If the dataset contains paired data (ie. repeated observations), specify
-this with the <code class="docutils literal notranslate"><span class="pre">paired</span></code> keyword. You must also pass a column in the
-dataset that indicates the identity of each observation, using the
-<code class="docutils literal notranslate"><span class="pre">id_col</span></code> keyword.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span>
-                                <span class="n">paired</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s2">&quot;ID&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.1
-=============
-
-Good afternoon!
-The current time is Mon Oct 19 17:12:44 2020.
-
-Paired effect size(s) with 95% confidence intervals will be computed for:
-1. Test 1 minus Control 1
-
-5000 resamples will be used to generate the effect size bootstraps.
+<section id="changing-statistical-parameters">
+<h3>Changing statistical parameters<a class="headerlink" href="#changing-statistical-parameters" title="Permalink to this heading">¶</a></h3>
+<p>You can change the width of the confidence interval that will be
+produced by manipulating the <code class="docutils literal notranslate"><span class="pre">ci</span></code> argument.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired_ci90</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span> <span class="n">ci</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can also change the width of the confidence interval that will be
-produced.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired_ci90</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span> <span class="n">ci</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired_ci90</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired_ci90</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.1
-=============
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v2023.02.14
+==================
 
 Good afternoon!
 The current time is Mon Oct 19 17:12:44 2020.
@@ -328,10 +267,10 @@ Effect size(s) with 90% confidence intervals will be computed for:
 5000 resamples will be used to generate the effect size bootstraps.
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="effect-sizes">
-<h2>Effect sizes<a class="headerlink" href="#effect-sizes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="effect-sizes">
+<h2>Effect sizes<a class="headerlink" href="#effect-sizes" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">dabest</span></code> now features a range of effect sizes:</dt><dd><ul class="simple">
 <li><p>the mean difference (<code class="docutils literal notranslate"><span class="pre">mean_diff</span></code>)</p></li>
@@ -343,21 +282,21 @@ Effect size(s) with 90% confidence intervals will be computed for:
 </dd>
 </dl>
 <p>Each of these are attributes of the <code class="docutils literal notranslate"><span class="pre">Dabest</span></code> object.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
-</td></tr></table></div>
-<pre class="literal-block">DABEST v0.3.1
-=============
+</div>
+<pre class="literal-block">DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:12:44 2020.
+Good evening!
+The current time is Sun Aug 29 18:10:44 2021.
 
 The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.221, 0.768].
-The p-value of the two-sided permutation t-test is 0.001.
+The p-value of the two-sided permutation t-test is 0.001, calculated for legacy purposes only.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
-The p-value(s) reported are the likelihood(s) of observing the effect size(s),
-if the null hypothesis of zero difference is true.
+Any p-value reported is the probability of observing theeffect size (or greater),
+assuming the null hypothesis ofzero difference is true.
 For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.mean_diff.statistical_tests</cite></pre>
@@ -368,11 +307,10 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
 <a class="reference internal" href="bootstraps.html"><span class="doc">Bootstrap Confidence Intervals</span></a> for more details.</p>
 <p>Since v0.3.0, DABEST will report the p-value of the <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">non-parametric two-sided approximate permutation t-test</a>. This is also known as the Monte Carlo permutation test.</p>
 <p>For unpaired comparisons, the p-values and test statistics of <a class="reference external" href="https://en.wikipedia.org/wiki/Welch%27s_t-test">Welch’s t test</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test">Student’s t test</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test">Mann-Whitney U test</a> can be found in addition. For paired comparisons, the p-values and test statistics of the <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test#Paired_samples">paired Student’s t</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">Wilcoxon</a> tests are presented.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">50</span>
-  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">results</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="linenos">2</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">results</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <div>
 <style scoped>
     /* .dataframe tbody tr th:only-of-type {
@@ -405,11 +343,13 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
       <th>pct_low</th>
       <th>pct_high</th>
       <th>pct_interval_idx</th>
-      <th>pvalue_permutation</th>
-      <th>permutation_count</th>
       <th>bootstraps</th>
       <th>resamples</th>
       <th>random_seed</th>
+      <th>permutations</th>
+      <th>pvalue_permutation</th>
+      <th>permutation_count</th>
+      <th>permutations_var</th>
       <th>pvalue_welch</th>
       <th>statistic_welch</th>
       <th>pvalue_students_t</th>
@@ -426,7 +366,7 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
       <td>20</td>
       <td>20</td>
       <td>mean difference</td>
-      <td>False</td>
+      <td>None</td>
       <td>0.48029</td>
       <td>95</td>
       <td>0.220869</td>
@@ -435,11 +375,13 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
       <td>0.215697</td>
       <td>0.761716</td>
       <td>(125, 4875)</td>
-      <td>0.001</td>
-      <td>5000</td>
-      <td>[-0.157303571150468, -0.025932185794146356, 0....</td>
+      <td>[0.6686169333655454, 0.4382051534234943, 0.665...</td>
       <td>5000</td>
       <td>12345</td>
+      <td>[-0.17259843762502491, 0.03802293852634886, -0...</td>
+      <td>0.001</td>
+      <td>5000</td>
+      <td>[0.026356588154404337, 0.027102495439046997, 0...</td>
       <td>0.002094</td>
       <td>-3.308806</td>
       <td>0.002057</td>
@@ -449,9 +391,9 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
     </tr>
   </tbody>
 </table>
-</div><div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">statistical_tests</span>
+</div><div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">statistical_tests</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -497,7 +439,7 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
       <td>20</td>
       <td>20</td>
       <td>mean difference</td>
-      <td>False</td>
+      <td>None</td>
       <td>0.48029</td>
       <td>95</td>
       <td>0.220869</td>
@@ -513,27 +455,27 @@ To get the results of all valid statistical tests, use <cite>.mean_diff.statisti
   </tbody>
 </table>
 </div><p>Let’s compute the Hedges’ <em>g</em> for our comparison.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span>
 </pre></div>
-</td></tr></table></div>
-<pre class="literal-block">DABEST v0.3.0
-=============
+</div>
+<pre class="literal-block">DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:12:46 2020.
+Good evening!
+The current time is Sun Aug 29 18:12:17 2021.
 
 The unpaired Hedges' g between Control 1 and Test 1 is 1.03 [95%CI 0.349, 1.62].
-The p-value of the two-sided permutation t-test is 0.001.
+The p-value of the two-sided permutation t-test is 0.001, calculated for legacy purposes only.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
-The p-value(s) reported are the likelihood(s) of observing the effect size(s),
-if the null hypothesis of zero difference is true.
+Any p-value reported is the probability of observing theeffect size (or greater),
+assuming the null hypothesis ofzero difference is true.
 For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.hedges_g.statistical_tests</cite></pre>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">results</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">results</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -566,11 +508,13 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
       <th>pct_low</th>
       <th>pct_high</th>
       <th>pct_interval_idx</th>
-      <th>pvalue_permutation</th>
-      <th>permutation_count</th>
       <th>bootstraps</th>
       <th>resamples</th>
       <th>random_seed</th>
+      <th>permutations</th>
+      <th>pvalue_permutation</th>
+      <th>permutation_count</th>
+      <th>permutations_var</th>
       <th>pvalue_welch</th>
       <th>statistic_welch</th>
       <th>pvalue_students_t</th>
@@ -587,7 +531,7 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
       <td>20</td>
       <td>20</td>
       <td>Hedges' g</td>
-      <td>False</td>
+      <td>None</td>
       <td>1.025525</td>
       <td>95</td>
       <td>0.349394</td>
@@ -596,11 +540,13 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
       <td>0.472844</td>
       <td>1.74166</td>
       <td>(125, 4875)</td>
-      <td>0.001</td>
-      <td>5000</td>
-      <td>[-0.3617512915188043, -0.06120428036887727, 0....</td>
+      <td>[1.1337301267831184, 0.8311210968422604, 1.539...</td>
       <td>5000</td>
       <td>12345</td>
+      <td>[-0.3295089865590538, 0.07158401210924781, -0....</td>
+      <td>0.001</td>
+      <td>5000</td>
+      <td>[0.026356588154404337, 0.027102495439046997, 0... </td>
       <td>0.002094</td>
       <td>-3.308806</td>
       <td>0.002057</td>
@@ -610,21 +556,21 @@ To get the results of all valid statistical tests, use <cite>.hedges_g.statistic
     </tr>
   </tbody>
 </table>
-</div></div>
-<div class="section" id="producing-estimation-plots">
-<h2>Producing estimation plots<a class="headerlink" href="#producing-estimation-plots" title="Permalink to this headline">¶</a></h2>
+</div></section>
+<section id="producing-estimation-plots">
+<h2>Producing estimation plots<a class="headerlink" href="#producing-estimation-plots" title="Permalink to this heading">¶</a></h2>
 <p>To produce a <strong>Gardner-Altman estimation plot</strong>, simply use the
 <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. You can read more about its genesis and design
 inspiration at <a class="reference internal" href="robust-beautiful.html"><span class="doc">Robust and Beautiful Statistical Visualization</span></a>.</p>
 <p>Every effect size instance has access to the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. This
 means you can quickly create plots for different effect sizes easily.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_27_0.png" src="_images/tutorial_27_0.png" />
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_28_0.png" src="_images/tutorial_28_0.png" />
 <p>Instead of a Gardner-Altman plot, you can produce a <strong>Cumming estimation
 plot</strong> by setting <code class="docutils literal notranslate"><span class="pre">float_contrast=False</span></code> in the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.
@@ -632,22 +578,10 @@ This will plot the bootstrap effect sizes below the raw data, and also
 displays the the mean (gap) and ± standard deviation of each group
 (vertical ends) as gapped lines. This design was inspired by Edward
 Tufte’s dictum to maximise the data-ink ratio.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">hedges_g</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_30_0.png" src="_images/tutorial_30_0.png" />
-<p>For paired data, we use
-<a class="reference external" href="https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk">slopegraphs</a>
-(another innovation from Edward Tufte) to connect paired observations.
-Both Gardner-Altman and Cumming plots support this.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_32_0.png" src="_images/tutorial_32_0.png" />
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">float_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_33_0.png" src="_images/tutorial_33_0.png" />
 <p>The <code class="docutils literal notranslate"><span class="pre">dabest</span></code> package also implements a range of estimation plot
 designs aimed at depicting common experimental designs.</p>
 <p>The <strong>multi-two-group estimation plot</strong> tiles two or more Cumming plots
@@ -656,57 +590,33 @@ horizontally, and is created by passing a <em>nested tuple</em> to <code class="
 <p>Thus, the lower axes in the Cumming plot is effectively a <a class="reference external" href="https://en.wikipedia.org/wiki/Forest_plot">forest
 plot</a>, used in
 meta-analyses to aggregate and compare data from different experiments.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,),</span>
-                                       <span class="p">(</span><span class="s2">&quot;Control 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 2&quot;</span><span class="p">)</span>
-                                     <span class="p">))</span>
-
-  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,),</span>
+<span class="linenos">2</span>                                       <span class="p">(</span><span class="s2">&quot;Control 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 2&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>                                     <span class="p">))</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_35_0.png" src="_images/tutorial_35_0.png" />
-<p>The multi-two-group design also accomodates paired comparisons.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group_paired</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span>
-                                             <span class="p">(</span><span class="s2">&quot;Control 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 2&quot;</span><span class="p">)</span>
-                                            <span class="p">),</span>
-                                    <span class="n">paired</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s2">&quot;ID&quot;</span>
-                                   <span class="p">)</span>
-
-  <span class="n">multi_2group_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_37_0.png" src="_images/tutorial_37_0.png" />
 <p>The <strong>shared control plot</strong> displays another common experimental
 paradigm, where several test samples are compared against a common
 reference sample.</p>
 <p>This type of Cumming plot is automatically generated if the tuple passed
 to <code class="docutils literal notranslate"><span class="pre">idx</span></code> has more than two data columns.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,</span>
-                                        <span class="s2">&quot;Test 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 3&quot;</span><span class="p">,</span>
-                                        <span class="s2">&quot;Test 4&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 5&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 6&quot;</span><span class="p">)</span>
-                               <span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">shared_control</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,</span>
+<span class="linenos">2</span>                                        <span class="s2">&quot;Test 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 3&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>                                        <span class="s2">&quot;Test 4&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 5&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 6&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>                               <span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">shared_control</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
-=============
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:12:54 2020.
+Good evening!
+The current time is Tue Aug 31 23:39:22 2021.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -719,62 +629,59 @@ Effect size(s) with 95% confidence intervals will be computed for:
 5000 resamples will be used to generate the effect size bootstraps.
 </pre></div>
 </div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
-</td></tr></table></div>
-<pre class="literal-block">DABEST v0.3.0
-=============
+</div>
+<pre class="literal-block">DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:12:58 2020.
+Good evening!
+The current time is Tue Aug 31 23:42:39 2021.
 
 The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.221, 0.768].
-The p-value of the two-sided permutation t-test is 0.001.
+The p-value of the two-sided permutation t-test is 0.001, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 1 and Test 2 is -0.542 [95%CI -0.914, -0.211].
-The p-value of the two-sided permutation t-test is 0.0042.
+The p-value of the two-sided permutation t-test is 0.0042, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 1 and Test 3 is 0.174 [95%CI -0.295, 0.628].
-The p-value of the two-sided permutation t-test is 0.479.
+The p-value of the two-sided permutation t-test is 0.479, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 1 and Test 4 is 0.79 [95%CI 0.306, 1.31].
-The p-value of the two-sided permutation t-test is 0.0042.
+The p-value of the two-sided permutation t-test is 0.0042, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 1 and Test 5 is 0.265 [95%CI 0.0137, 0.497].
-The p-value of the two-sided permutation t-test is 0.0404.
+The p-value of the two-sided permutation t-test is 0.0404, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 1 and Test 6 is 0.288 [95%CI -0.00441, 0.515].
-The p-value of the two-sided permutation t-test is 0.0324.
+The p-value of the two-sided permutation t-test is 0.0324, calculated for legacy purposes only.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
-The p-value(s) reported are the likelihood(s) of observing the effect size(s),
-if the null hypothesis of zero difference is true.
+Any p-value reported is the probability of observing theeffect size (or greater),
+assuming the null hypothesis ofzero difference is true.
 For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.mean_diff.statistical_tests</cite></pre>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">shared_control</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_42_0.png" src="_images/tutorial_42_0.png" />
 <p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> thus empowers you to robustly perform and elegantly present
 complex visualizations and statistics.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,),</span>
-                                       <span class="p">(</span><span class="s2">&quot;Control 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 2&quot;</span><span class="p">,</span><span class="s2">&quot;Test 3&quot;</span><span class="p">),</span>
-                                       <span class="p">(</span><span class="s2">&quot;Control 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 4&quot;</span><span class="p">,</span><span class="s2">&quot;Test 5&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 6&quot;</span><span class="p">)</span>
-                                     <span class="p">))</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_groups</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">((</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">,),</span>
+<span class="linenos">2</span>                                       <span class="p">(</span><span class="s2">&quot;Control 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 2&quot;</span><span class="p">,</span><span class="s2">&quot;Test 3&quot;</span><span class="p">),</span>
+<span class="linenos">3</span>                                       <span class="p">(</span><span class="s2">&quot;Control 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 4&quot;</span><span class="p">,</span><span class="s2">&quot;Test 5&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 6&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>                                     <span class="p">))</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_groups</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
-=============
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:12:58 2020.
+Good evening!
+The current time is Tue Aug 31 23:47:40 2021.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -787,45 +694,45 @@ Effect size(s) with 95% confidence intervals will be computed for:
 5000 resamples will be used to generate the effect size bootstraps.
 </pre></div>
 </div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
-</td></tr></table></div>
-<pre class="literal-block">DABEST v0.3.0
-=============
+</div>
+<pre class="literal-block">DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:13:02 2020.
+Good evening!
+The current time is Tue Aug 31 23:48:17 2021.
 
 The unpaired mean difference between Control 1 and Test 1 is 0.48 [95%CI 0.221, 0.768].
-The p-value of the two-sided permutation t-test is 0.001.
+The p-value of the two-sided permutation t-test is 0.001, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 2 and Test 2 is -1.38 [95%CI -1.93, -0.895].
-The p-value of the two-sided permutation t-test is 0.0.
+The p-value of the two-sided permutation t-test is 0.0, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 2 and Test 3 is -0.666 [95%CI -1.3, -0.103].
-The p-value of the two-sided permutation t-test is 0.0352.
+The p-value of the two-sided permutation t-test is 0.0352, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 3 and Test 4 is 0.362 [95%CI -0.114, 0.887].
-The p-value of the two-sided permutation t-test is 0.161.
+The p-value of the two-sided permutation t-test is 0.161, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 3 and Test 5 is -0.164 [95%CI -0.404, 0.0742].
-The p-value of the two-sided permutation t-test is 0.208.
+The p-value of the two-sided permutation t-test is 0.208, calculated for legacy purposes only.
 
 The unpaired mean difference between Control 3 and Test 6 is -0.14 [95%CI -0.398, 0.102].
-The p-value of the two-sided permutation t-test is 0.282.
+The p-value of the two-sided permutation t-test is 0.282, calculated for legacy purposes only.
 
 5000 bootstrap samples were taken; the confidence interval is bias-corrected and accelerated.
-The p-value(s) reported are the likelihood(s) of observing the effect size(s),
-if the null hypothesis of zero difference is true.
+Any p-value reported is the probability of observing theeffect size (or greater),
+assuming the null hypothesis ofzero difference is true.
 For each p-value, 5000 reshuffles of the control and test labels were performed.
 
 To get the results of all valid statistical tests, use <cite>.mean_diff.statistical_tests</cite></pre>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_groups</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_47_0.png" src="_images/tutorial_47_0.png" />
-<div class="section" id="using-long-aka-melted-data-frames">
-<h3>Using long (aka ‘melted’) data frames<a class="headerlink" href="#using-long-aka-melted-data-frames" title="Permalink to this headline">¶</a></h3>
+<section id="using-long-aka-melted-data-frames">
+<h3>Using long (aka ‘melted’) data frames<a class="headerlink" href="#using-long-aka-melted-data-frames" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> can also work with ‘melted’ or ‘long’ data. This term is so
 used because each row will now correspond to a single datapoint, with
 one column carrying the value and other columns carrying ‘metadata’
@@ -836,31 +743,20 @@ article</a>. The
 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html">pandas
 documentation</a>
 gives recipes for melting dataframes.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">x</span><span class="o">=</span><span class="s1">&#39;group&#39;</span>
-  <span class="n">y</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span>
-
-  <span class="n">value_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># select all but the &quot;Gender&quot; and &quot;ID&quot; columns.</span>
-
-  <span class="n">df_melted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
-                      <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">],</span>
-                      <span class="n">value_vars</span><span class="o">=</span><span class="n">value_cols</span><span class="p">,</span>
-                      <span class="n">value_name</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-                      <span class="n">var_name</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-
-  <span class="n">df_melted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># Gives the first five rows of `df_melted`.</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>  <span class="n">x</span><span class="o">=</span><span class="s1">&#39;group&#39;</span>
+<span class="linenos"> 2</span>  <span class="n">y</span><span class="o">=</span><span class="s1">&#39;metric&#39;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>  <span class="n">value_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># select all but the &quot;Gender&quot; and &quot;ID&quot; columns.</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>  <span class="n">df_melted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+<span class="linenos"> 7</span>                      <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">],</span>
+<span class="linenos"> 8</span>                      <span class="n">value_vars</span><span class="o">=</span><span class="n">value_cols</span><span class="p">,</span>
+<span class="linenos"> 9</span>                      <span class="n">value_name</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+<span class="linenos">10</span>                      <span class="n">var_name</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>  <span class="n">df_melted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># Gives the first five rows of `df_melted`.</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -925,20 +821,17 @@ gives recipes for melting dataframes.</p>
 </table>
 </div><p>When your data is in this format, you will need to specify the <code class="docutils literal notranslate"><span class="pre">x</span></code> and
 <code class="docutils literal notranslate"><span class="pre">y</span></code> columns in <code class="docutils literal notranslate"><span class="pre">dabest.load()</span></code>.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">analysis_of_long_df</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df_melted</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span>
-                                   <span class="n">x</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;metric&quot;</span><span class="p">)</span>
-
-  <span class="n">analysis_of_long_df</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">analysis_of_long_df</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">df_melted</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Test 1&quot;</span><span class="p">),</span>
+<span class="linenos">2</span>                                   <span class="n">x</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;metric&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>  <span class="n">analysis_of_long_df</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.3.0
-=============
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v2023.02.14
+==================
 
-Good afternoon!
-The current time is Mon Oct 19 17:13:03 2020.
+Good evening!
+The current time is Tue Aug 31 23:51:12 2021.
 
 Effect size(s) with 95% confidence intervals will be computed for:
 1. Test 1 minus Control 1
@@ -946,225 +839,13 @@ Effect size(s) with 95% confidence intervals will be computed for:
 5000 resamples will be used to generate the effect size bootstraps.
 </pre></div>
 </div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">analysis_of_long_df</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">analysis_of_long_df</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <img alt="_images/tutorial_52_0.png" src="_images/tutorial_52_0.png" />
-</div>
-<div class="section" id="controlling-plot-aesthetics">
-<h3>Controlling plot aesthetics<a class="headerlink" href="#controlling-plot-aesthetics" title="Permalink to this headline">¶</a></h3>
-<p>Changing the y-axes labels.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_label</span><span class="o">=</span><span class="s2">&quot;This is my</span><span class="se">\n</span><span class="s2">rawdata&quot;</span><span class="p">,</span>
-                                     <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;The bootstrap</span><span class="se">\n</span><span class="s2">distribtions!&quot;</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_55_0.png" src="_images/tutorial_55_0.png" />
-<p>Color the rawdata according to another column in the dataframe.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_57_0.png" src="_images/tutorial_57_0.png" />
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_58_0.png" src="_images/tutorial_58_0.png" />
-<p>Changing the palette used with <code class="docutils literal notranslate"><span class="pre">custom_palette</span></code>. Any valid matplotlib
-or seaborn color palette is accepted.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span> <span class="n">custom_palette</span><span class="o">=</span><span class="s2">&quot;Dark2&quot;</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_60_0.png" src="_images/tutorial_60_0.png" />
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="s2">&quot;Paired&quot;</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_61_0.png" src="_images/tutorial_61_0.png" />
-<p>You can also create your own color palette. Create a dictionary where
-the keys are group names, and the values are valid matplotlib colors.</p>
-<p>You can specify matplotlib colors in a <a class="reference external" href="https://matplotlib.org/users/colors.html">variety of
-ways</a>. Here, I demonstrate
-using named colors, hex strings (commonly used on the web), and RGB
-tuples.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">my_color_palette</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Control 1&quot;</span> <span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;Test 1&quot;</span>    <span class="p">:</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;Control 2&quot;</span> <span class="p">:</span> <span class="s2">&quot;#cb4b16&quot;</span><span class="p">,</span>     <span class="c1"># This is a hex string.</span>
-                      <span class="s2">&quot;Test 2&quot;</span>    <span class="p">:</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># This is a RGB tuple.</span>
-                     <span class="p">}</span>
-
-  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="n">my_color_palette</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_63_0.png" src="_images/tutorial_63_0.png" />
-<p>By default, <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> will
-<a class="reference external" href="https://en.wikipedia.org/wiki/Colorfulness#Saturation">desaturate</a>
-the color of the dots in the swarmplot by 50%. This draws attention to
-the effect size bootstrap curves.</p>
-<p>You can alter the default values with the <code class="docutils literal notranslate"><span class="pre">swarm_desat</span></code> and
-<code class="docutils literal notranslate"><span class="pre">halfviolin_desat</span></code> keywords.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="n">my_color_palette</span><span class="p">,</span>
-                              <span class="n">swarm_desat</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
-                              <span class="n">halfviolin_desat</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_65_0.png" src="_images/tutorial_65_0.png" />
-<p>You can also change the sizes of the dots used in the rawdata swarmplot,
-and those used to indicate the effect sizes.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">raw_marker_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-                              <span class="n">es_marker_size</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_67_0.png" src="_images/tutorial_67_0.png" />
-<p>Changing the y-limits for the rawdata axes, and for the contrast axes.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-                              <span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_69_0.png" src="_images/tutorial_69_0.png" />
-<p>If your effect size is qualitatively inverted (ie. a smaller value is a
-better outcome), you can simply invert the tuple passed to
-<code class="docutils literal notranslate"><span class="pre">contrast_ylim</span></code>.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span>
-                              <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;More negative is better!&quot;</span><span class="p">);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_71_0.png" src="_images/tutorial_71_0.png" />
-<p>You can add minor ticks and also change the tick frequency by accessing
-the axes directly.</p>
-<p>Each estimation plot produced by <code class="docutils literal notranslate"><span class="pre">dabest</span></code> has 2 axes. The first one
-contains the rawdata swarmplot; the second one contains the bootstrap
-effect size differences.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">Ticker</span>
-
-  <span class="n">f</span> <span class="o">=</span> <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-
-  <span class="n">rawswarm_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">contrast_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-
-  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_73_0.png" src="_images/tutorial_73_0.png" />
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">f</span> <span class="o">=</span> <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span>
-                                 <span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-
-  <span class="n">rawswarm_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">contrast_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-
-  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_74_0.png" src="_images/tutorial_74_0.png" />
-</div>
-<div class="section" id="creating-estimation-plots-in-existing-axes">
-<span id="inset-plot"></span><h3>Creating estimation plots in existing axes<a class="headerlink" href="#creating-estimation-plots-in-existing-axes" title="Permalink to this headline">¶</a></h3>
-<p><em>Implemented in v0.2.6 by Adam Nekimken</em>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dabest.plot</span></code> has an <code class="docutils literal notranslate"><span class="pre">ax</span></code> keyword that accepts any Matplotlib
-<code class="docutils literal notranslate"><span class="pre">Axes</span></code>. The entire estimation plot will be created in the specified
-<code class="docutils literal notranslate"><span class="pre">Axes</span></code>.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-  <span class="n">f</span><span class="p">,</span> <span class="n">axx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-                        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}</span> <span class="c1"># ensure proper width-wise spacing.</span>
-                       <span class="p">)</span>
-
-  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-
-  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-
-  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-
-  <span class="n">multi_2group_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_76_0.png" src="_images/tutorial_76_0.png" />
-<p>In this case, to access the individual rawdata axes, use
-<code class="docutils literal notranslate"><span class="pre">name_of_axes</span></code> to manipulate the rawdata swarmplot axes, and
-<code class="docutils literal notranslate"><span class="pre">name_of_axes.contrast_axes</span></code> to gain access to the effect size axes.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">topleft_axes</span> <span class="o">=</span> <span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">topleft_axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;New y-axis label for rawdata&quot;</span><span class="p">)</span>
-  <span class="n">topleft_axes</span><span class="o">.</span><span class="n">contrast_axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;New y-axis label for effect size&quot;</span><span class="p">)</span>
-
-  <span class="n">f</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_78_0.png" src="_images/tutorial_78_0.png" />
-</div>
-<div class="section" id="applying-style-sheets">
-<h3>Applying style sheets<a class="headerlink" href="#applying-style-sheets" title="Permalink to this headline">¶</a></h3>
-<p><em>Implemented in v0.2.0</em>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> can apply <a class="reference external" href="https://matplotlib.org/tutorials/introductory/customizing.html">matplotlib style
-sheets</a>
-to estimation plots. You can refer to this
-<a class="reference external" href="https://matplotlib.org/3.0.3/gallery/style_sheets/style_sheets_reference.html">gallery</a>
-of style sheets for reference.</p>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
-</pre></div>
-</td></tr></table></div>
-<img alt="_images/tutorial_81_0.png" src="_images/tutorial_81_0.png" />
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -1196,7 +877,12 @@ of style sheets for reference.</p>
 <li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotaesthetics.html">Tutorial: Controlling Plot Aesthetics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
@@ -1208,7 +894,7 @@ of style sheets for reference.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="getting-started.html" title="previous chapter">Getting Started</a></li>
-      <li>Next: <a href="release-notes.html" title="next chapter">Release Notes</a></li>
+      <li>Next: <a href="repeatedmeasures.html" title="next chapter">Tutorial: Repeated Measures</a></li>
   </ul></li>
 </ul>
 </div>
@@ -1216,12 +902,12 @@ of style sheets for reference.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -1235,10 +921,10 @@ of style sheets for reference.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017-2020, Joses W. Ho.
+      &copy;2016-2023, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

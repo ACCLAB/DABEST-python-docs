@@ -1,21 +1,21 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Robust and Beautiful Statistical Visualization &#8212; dabest 0.3.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -49,23 +49,23 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="robust-and-beautiful-statistical-visualization">
-<span id="robust-and-beautiful-visualization"></span><h1>Robust and Beautiful Statistical Visualization<a class="headerlink" href="#robust-and-beautiful-statistical-visualization" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="current-plots-do-not-work">
-<h2>Current plots do not work<a class="headerlink" href="#current-plots-do-not-work" title="Permalink to this headline">¶</a></h2>
+  <section id="robust-and-beautiful-statistical-visualization">
+<span id="robust-and-beautiful-visualization"></span><h1>Robust and Beautiful Statistical Visualization<a class="headerlink" href="#robust-and-beautiful-statistical-visualization" title="Permalink to this heading">¶</a></h1>
+<section id="current-plots-do-not-work">
+<h2>Current plots do not work<a class="headerlink" href="#current-plots-do-not-work" title="Permalink to this heading">¶</a></h2>
 <p>What is data visualization? Battle-Baptiste and Rusert (2018) give a
 cogent and compelling definition:</p>
 <blockquote>
 <div><p>[Data visualization is] the rendering of information in a visual
 format to help communicate data while also generating new patterns
-and knowledge through the act of visualization itself. <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+and knowledge through the act of visualization itself. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </div></blockquote>
 <p>Sadly, too many figures and visualizations in modern academic
 publications seemingly fail to “generate new patterns and knowledge
 through the act of visualization itself”. Here, we propose a solution:
 <em>the estimation plot</em>.</p>
-<div class="section" id="the-barplot-conceals-the-underlying-shape">
-<h3>The barplot conceals the underlying shape<a class="headerlink" href="#the-barplot-conceals-the-underlying-shape" title="Permalink to this headline">¶</a></h3>
+<section id="the-barplot-conceals-the-underlying-shape">
+<h3>The barplot conceals the underlying shape<a class="headerlink" href="#the-barplot-conceals-the-underlying-shape" title="Permalink to this heading">¶</a></h3>
 <p>By only displaying the mean and standard deviation, barplots do not
 accurately represent the underlying distribution of the data.</p>
 <img alt="_images/robust_5_1.png" src="_images/robust_5_1.png" />
@@ -83,9 +83,9 @@ fascinating to realise that the barplot is a <a class="reference external" href=
 invention</a> initially
 used to compare single values, not to compare summarized and aggregated
 data.</p>
-</div>
-<div class="section" id="the-boxplot-does-not-convey-sample-size">
-<h3>The boxplot does not convey sample size<a class="headerlink" href="#the-boxplot-does-not-convey-sample-size" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-boxplot-does-not-convey-sample-size">
+<h3>The boxplot does not convey sample size<a class="headerlink" href="#the-boxplot-does-not-convey-sample-size" title="Permalink to this heading">¶</a></h3>
 <p>Boxplots are another widely used visualization tool. They arguably do
 include more information for each sample (medians, quartiles, maxima,
 minima, and outliers), but they do not convey to the viewer the size of
@@ -100,10 +100,10 @@ plaguing statistical practices will remain unsolved. Null-hypothesis
 significance testing—the dominant statistical paradigm in basic
 research—does not indicate the <strong>effect size</strong>, or its <strong>confidence
 interval</strong>.</p>
-</div>
-</div>
-<div class="section" id="introducing-the-estimation-plot">
-<h2>Introducing the Estimation Plot<a class="headerlink" href="#introducing-the-estimation-plot" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="introducing-the-estimation-plot">
+<h2>Introducing the Estimation Plot<a class="headerlink" href="#introducing-the-estimation-plot" title="Permalink to this heading">¶</a></h2>
 <img alt="_images/robust_9_0.png" src="_images/robust_9_0.png" />
 <p>Shown above is a Gardner-Altman estimation plot. (The plot draws its name from
 <a class="reference external" href="https://www.independent.co.uk/news/people/obituary-professor-martin-gardner-1470261.html">Martin J. Gardner</a>
@@ -125,9 +125,9 @@ a graded sampling distribution.</p>
 <p>This is one important difference between estimation plots created by DABEST, and
 the original Gardner-Altman design. Here, the 95% CI is computed through
 parametric methods, and displayed as a vertical error bar.</p>
-<p>Read more about this technique at <a class="reference internal" href="bootstraps.html#bootstrap-confidence-intervals"><span class="std std-ref">Bootstrap Confidence Intervals</span></a>.</p>
-<div class="section" id="introducing-estimation-statistics">
-<h3>Introducing Estimation Statistics<a class="headerlink" href="#introducing-estimation-statistics" title="Permalink to this headline">¶</a></h3>
+<p>Read more about this technique at <a class="reference internal" href="bootstraps.html"><span class="doc">Bootstrap Confidence Intervals</span></a>.</p>
+<section id="introducing-estimation-statistics">
+<h3>Introducing Estimation Statistics<a class="headerlink" href="#introducing-estimation-statistics" title="Permalink to this heading">¶</a></h3>
 <p>Estimation plots emerge from <em>estimation statistics</em>, a simple
 <a class="reference external" href="https://thenewstatistics.com/itns/">framework</a> that avoids the
 <a class="reference external" href="https://www.nature.com/articles/nmeth.3288">pitfalls of significance
@@ -142,26 +142,26 @@ analysts to apply a false dichotomy on the experimental intervention.</p>
 the effect (the effect size) and its precision. This encourages analysts
 to gain a deeper understanding of the metrics used, and how they relate
 to the natural processes being studied.</p>
-</div>
-</div>
-<div class="section" id="an-estimation-plot-for-every-experimental-design">
-<h2>An Estimation Plot For Every Experimental Design<a class="headerlink" href="#an-estimation-plot-for-every-experimental-design" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="an-estimation-plot-for-every-experimental-design">
+<h2>An Estimation Plot For Every Experimental Design<a class="headerlink" href="#an-estimation-plot-for-every-experimental-design" title="Permalink to this heading">¶</a></h2>
 <p>For each of the most routine significance tests, there is an estimation
 replacement:</p>
-<div class="section" id="unpaired-students-t-test-two-group-estimation-plot">
-<h3>Unpaired Student’s t-test → Two-group estimation plot<a class="headerlink" href="#unpaired-students-t-test-two-group-estimation-plot" title="Permalink to this headline">¶</a></h3>
+<section id="unpaired-students-t-test-two-group-estimation-plot">
+<h3>Unpaired Student’s t-test → Two-group estimation plot<a class="headerlink" href="#unpaired-students-t-test-two-group-estimation-plot" title="Permalink to this heading">¶</a></h3>
 <img alt="_images/robust_12_0.png" src="_images/robust_12_0.png" />
-</div>
-<div class="section" id="paired-students-t-test-paired-estimation-plot">
-<h3>Paired Student’s t-test → Paired estimation plot<a class="headerlink" href="#paired-students-t-test-paired-estimation-plot" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="paired-students-t-test-paired-estimation-plot">
+<h3>Paired Student’s t-test → Paired estimation plot<a class="headerlink" href="#paired-students-t-test-paired-estimation-plot" title="Permalink to this heading">¶</a></h3>
 <p>The Gardner-Altman estimation plot can also display effect sizes for
 repeated measures (aka a paired experimental design) using a <a class="reference external" href="http://charliepark.org/slopegraphs/">Tufte
 slopegraph</a> instead of a
 swarmplot.</p>
 <img alt="_images/robust_14_0.png" src="_images/robust_14_0.png" />
-</div>
-<div class="section" id="one-way-anova-multiple-comparisons-multi-two-group-estimation-plot">
-<h3>One-way ANOVA + multiple comparisons → Multi two-group estimation plot<a class="headerlink" href="#one-way-anova-multiple-comparisons-multi-two-group-estimation-plot" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="one-way-anova-multiple-comparisons-multi-two-group-estimation-plot">
+<h3>One-way ANOVA + multiple comparisons → Multi two-group estimation plot<a class="headerlink" href="#one-way-anova-multiple-comparisons-multi-two-group-estimation-plot" title="Permalink to this heading">¶</a></h3>
 <p>For comparisons between 3 or more groups that typically employ analysis
 of variance (ANOVA) methods, one can use the <a class="reference external" href="https://en.wikipedia.org/wiki/Estimation_statistics#Cumming_plot">Cumming estimation
 plot</a>,
@@ -181,27 +181,21 @@ group. These are shown as gapped lines to the right of each group. The
 mean of each group is indicated as a gap in the line, adhering to Edward
 Tufte’s dictum to <a class="reference external" href="https://medium.com/&#64;plotlygraphs/maximizing-the-data-ink-ratio-in-dashboards-and-slide-deck-7887f7c1fab">keep the data-ink ratio
 low</a>.</p>
-</div>
-<div class="section" id="repeated-measures-anova-multi-paired-estimation-plot">
-<h3>Repeated measures ANOVA → Multi paired estimation plot<a class="headerlink" href="#repeated-measures-anova-multi-paired-estimation-plot" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="repeated-measures-anova-multi-paired-estimation-plot">
+<h3>Repeated measures ANOVA → Multi paired estimation plot<a class="headerlink" href="#repeated-measures-anova-multi-paired-estimation-plot" title="Permalink to this heading">¶</a></h3>
 <img alt="_images/robust_19_0.png" src="_images/robust_19_0.png" />
-</div>
-<div class="section" id="ordered-groups-anova-shared-control-estimation-plot">
-<h3>Ordered groups ANOVA → Shared-control estimation plot<a class="headerlink" href="#ordered-groups-anova-shared-control-estimation-plot" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ordered-groups-anova-shared-control-estimation-plot">
+<h3>Ordered groups ANOVA → Shared-control estimation plot<a class="headerlink" href="#ordered-groups-anova-shared-control-estimation-plot" title="Permalink to this heading">¶</a></h3>
 <img alt="_images/robust_21_0.png" src="_images/robust_21_0.png" />
-</div>
-</div>
-<div class="section" id="estimation-plots-the-way-forward">
-<h2>Estimation Plots: The Way Forward<a class="headerlink" href="#estimation-plots-the-way-forward" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="estimation-plots-the-way-forward">
+<h2>Estimation Plots: The Way Forward<a class="headerlink" href="#estimation-plots-the-way-forward" title="Permalink to this heading">¶</a></h2>
 <p>In summary, estimation plots offer five key benefits relative to
 conventional plots:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Barplot</p></th>
@@ -242,13 +236,12 @@ Bootstrap Estimation) packages, which are available in
 <a class="reference external" href="https://github.com/ACCLAB/DABEST-Matlab">Matlab</a>,
 <a class="reference external" href="https://github.com/ACCLAB/DABEST-python">Python</a>, and
 <a class="reference external" href="https://github.com/ACCLAB/dabestr">R</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference external" href="https://www.papress.com/html/product.details.dna?isbn=9781616897062">W. E. B. Du Bois’s Data Portraits: Visualizing Black America</a>. Edited by Whitney Battle-Baptiste and Britt Rusert, Princeton Architectural Press, 2018</p>
-</dd>
-</dl>
-</div>
-</div>
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.papress.com/html/product.details.dna?isbn=9781616897062">W. E. B. Du Bois’s Data Portraits: Visualizing Black America</a>. Edited by Whitney Battle-Baptiste and Britt Rusert, Princeton Architectural Press, 2018</p>
+</aside>
+</section>
+</section>
 
 
           </div>
@@ -280,7 +273,12 @@ Bootstrap Estimation) packages, which are available in
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotaesthetics.html">Tutorial: Controlling Plot Aesthetics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
@@ -300,12 +298,12 @@ Bootstrap Estimation) packages, which are available in
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -319,10 +317,10 @@ Bootstrap Estimation) packages, which are available in
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017-2020, Joses W. Ho.
+      &copy;2016-2023, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

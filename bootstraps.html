@@ -1,21 +1,21 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Bootstrap Confidence Intervals &#8212; dabest 0.3.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -49,10 +49,10 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="bootstrap-confidence-intervals">
-<span id="id1"></span><h1>Bootstrap Confidence Intervals<a class="headerlink" href="#bootstrap-confidence-intervals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="sampling-from-populations">
-<h2>Sampling from Populations<a class="headerlink" href="#sampling-from-populations" title="Permalink to this headline">¶</a></h2>
+  <section id="bootstrap-confidence-intervals">
+<span id="bootstraps"></span><h1>Bootstrap Confidence Intervals<a class="headerlink" href="#bootstrap-confidence-intervals" title="Permalink to this heading">¶</a></h1>
+<section id="sampling-from-populations">
+<h2>Sampling from Populations<a class="headerlink" href="#sampling-from-populations" title="Permalink to this heading">¶</a></h2>
 <p>In a typical scientific experiment, we are interested in two populations
 (Control and Test), and whether there is a difference between their means
 (µ <sub>Test</sub> - µ <sub>Control</sub>).</p>
@@ -64,15 +64,15 @@ from the test population.</p>
 estimate of the population effect size that we are interested in.</p>
 <p><strong>But how do we obtain a measure of precision and confidence about our estimate?
 Can we get a sense of how it relates to the population mean difference?</strong></p>
-</div>
-<div class="section" id="the-bootstrap-confidence-interval">
-<h2>The bootstrap confidence interval<a class="headerlink" href="#the-bootstrap-confidence-interval" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-bootstrap-confidence-interval">
+<h2>The bootstrap confidence interval<a class="headerlink" href="#the-bootstrap-confidence-interval" title="Permalink to this heading">¶</a></h2>
 <p>We want to obtain a 95% confidence interval (95% CI) around the our estimate of the mean difference. The 95% indicates that any such confidence interval will capture the population mean difference 95% of the time.</p>
 <p>In other words, if we repeated our experiment 100 times, gathering 100 independent sets of observations, and computing a 95% confidence interval for the mean difference each time, 95 of these intervals would capture the population mean difference. That is to say, we can be 95% confident the interval contains the true mean of the population.</p>
 <p>We can calculate the 95% CI of the mean difference with <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrap resampling</a>.</p>
-<div class="section" id="the-bootstrap-in-action">
-<h3>The bootstrap in action<a class="headerlink" href="#the-bootstrap-in-action" title="Permalink to this headline">¶</a></h3>
-<p>The bootstrap <a class="footnote-reference brackets" href="#id3" id="id2">1</a> is a simple but powerful technique. It was <a class="reference external" href="https://projecteuclid.org/euclid.aos/1176344552">first described</a> by <a class="reference external" href="https://statistics.stanford.edu/people/bradley-efron">Bradley Efron</a>.</p>
+<section id="the-bootstrap-in-action">
+<h3>The bootstrap in action<a class="headerlink" href="#the-bootstrap-in-action" title="Permalink to this heading">¶</a></h3>
+<p>The bootstrap <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is a simple but powerful technique. It was <a class="reference external" href="https://projecteuclid.org/euclid.aos/1176344552">first described</a> by <a class="reference external" href="https://statistics.stanford.edu/people/bradley-efron">Bradley Efron</a>.</p>
 <p>It creates multiple <em>resamples</em> (with replacement) from a single set of
 observations, and computes the effect size of interest on each of these
 resamples. The bootstrap resamples of the effect size can then be used to
@@ -93,10 +93,10 @@ bootstrap resamples of the mean difference, one can use the 25th value and the
 975th value of the ranked differences as boundaries of the 95% confidence
 interval. (This captures the central 95% of the distribution.) Such an interval
 construction is known as a <em>percentile interval</em>.</p>
-</div>
-</div>
-<div class="section" id="adjusting-for-asymmetrical-resampling-distributions">
-<h2>Adjusting for asymmetrical resampling distributions<a class="headerlink" href="#adjusting-for-asymmetrical-resampling-distributions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="adjusting-for-asymmetrical-resampling-distributions">
+<h2>Adjusting for asymmetrical resampling distributions<a class="headerlink" href="#adjusting-for-asymmetrical-resampling-distributions" title="Permalink to this heading">¶</a></h2>
 <p>While resampling distributions of the difference in means often have a normal
 distribution, it is not uncommon to encounter a skewed distribution. Thus, Efron
 developed the <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)#History">bias-corrected and accelerated bootstrap</a> (BCa
@@ -105,21 +105,20 @@ distribution.</p>
 <p>DABEST applies the BCa correction to the resampling bootstrap distributions of
 the effect size.</p>
 <img alt="_images/bootstrap-4.png" src="_images/bootstrap-4.png" />
-</div>
-<div class="section" id="estimation-plots-incorporate-bootstrap-resampling">
-<h2>Estimation plots incorporate bootstrap resampling<a class="headerlink" href="#estimation-plots-incorporate-bootstrap-resampling" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="estimation-plots-incorporate-bootstrap-resampling">
+<h2>Estimation plots incorporate bootstrap resampling<a class="headerlink" href="#estimation-plots-incorporate-bootstrap-resampling" title="Permalink to this heading">¶</a></h2>
 <p>The estimation plot produced by DABEST presents the rawdata and the bootstrap
 confidence interval of the effect size (the difference in means) side-by-side as
 a single integrated plot.</p>
 <img alt="_images/bootstrap-5.png" src="_images/bootstrap-5.png" />
 <p>It thus tightly couples visual presentation of the raw data with an indication of the population mean difference, and its confidence interval.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>The name is derived from the saying “<a class="reference external" href="https://en.wiktionary.org/wiki/pull_oneself_up_by_one%27s_bootstraps">pull oneself by one’s bootstraps</a>”, often used as an exhortation to achieve success without external help.</p>
-</dd>
-</dl>
-</div>
-</div>
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The name is derived from the saying “<a class="reference external" href="https://en.wiktionary.org/wiki/pull_oneself_up_by_one%27s_bootstraps">pull oneself by one’s bootstraps</a>”, often used as an exhortation to achieve success without external help.</p>
+</aside>
+</section>
+</section>
 
 
           </div>
@@ -151,7 +150,12 @@ a single integrated plot.</p>
 <li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotaesthetics.html">Tutorial: Controlling Plot Aesthetics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
@@ -171,12 +175,12 @@ a single integrated plot.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -190,10 +194,10 @@ a single integrated plot.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017-2020, Joses W. Ho.
+      &copy;2016-2023, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

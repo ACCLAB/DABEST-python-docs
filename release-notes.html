@@ -1,26 +1,26 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Release Notes &#8212; dabest 0.3.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
     <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="API" href="api.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Tutorial: Controlling Plot Aesthetics" href="plotaesthetics.html" />
 
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -49,10 +49,30 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="release-notes">
-<span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="v0-3-1">
-<h2>v0.3.1<a class="headerlink" href="#v0-3-1" title="Permalink to this headline">¶</a></h2>
+  <section id="release-notes">
+<span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h1>
+<section id="v2023-02-14">
+<h2>v2023.02.14<a class="headerlink" href="#v2023-02-14" title="Permalink to this heading">¶</a></h2>
+<p>This release introduces several new functions:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Repeated measures</strong>: Augments the prior function for plotting (independent) multiple test groups versus a shared control (<code class="docutils literal notranslate"><span class="pre">&quot;baseline&quot;</span></code>); it can now do the same for repeated-measures experimental designs (<code class="docutils literal notranslate"><span class="pre">&quot;sequential&quot;</span></code>). Thus, together, these two methods can be used to replace both flavors of the 1-way ANOVA with an estimation analysis.</dt><dd><ul>
+<li><p><strong>Deprecation notice:</strong> The <code class="docutils literal notranslate"><span class="pre">paired</span></code> argument for <code class="docutils literal notranslate"><span class="pre">dabest.load()</span></code> is no longer boolean, and now only accepts <code class="docutils literal notranslate"><span class="pre">&quot;baseline&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;sequential&quot;</span></code> as a string.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Proportional data</strong>: Generates proportional bar plots, proportional differences, and calculates Cohen’s <em>h</em>. Also enables plotting Sankey diagrams for paired binary data. This is the estimation equivalent to a bar chart with Fischer’s exact test.</p></li>
+<li><p><strong>The ∆∆ plot</strong>: Calculates the delta-delta (∆∆) for 2 × 2 experimental designs and plots the four groups with their relevant effect sizes. This design can be used as a replacement for the 2 × 2 ANOVA.</p></li>
+<li><p><strong>Mini-meta</strong>: Calculates and plots a weighted delta (∆) for meta-analysis of experimental replicates. Useful for summarizing data from multiple replicated experiments, for example by different scientists in the same lab, or the same scientist at different times. When the observed values are known (and share a common metric), this makes meta-analysis available as a routinely accessible tool.</p></li>
+</ul>
+<p>Please read the updated tutorials if you wish to use any of the above functions:</p>
+<p><a class="reference internal" href="repeatedmeasures.html"><span class="doc">Tutorial: Repeated Measures</span></a></p>
+<p><a class="reference internal" href="proportion-plot.html"><span class="doc">Tutorial: Proportion Plots</span></a></p>
+<p><a class="reference internal" href="minimetadelta.html"><span class="doc">Tutorial: Mini-Meta Delta</span></a></p>
+</section>
+<section id="v0-3-1">
+<h2>v0.3.1<a class="headerlink" href="#v0-3-1" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>This release updates the minimal Python version to 3.6 (as <a class="reference external" href="https://www.python.org/downloads/release/python-3510/">Python 3.5 is already an “end-of-life” release as of September 2020</a>), and also updates the package requirements to:</dt><dd><ul class="simple">
 <li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy</span></code>: 0.19</p></li>
@@ -65,21 +85,21 @@
 </dd>
 </dl>
 <p>All users are strongly encouraged to update.</p>
-</div>
-<div class="section" id="v0-3-0">
-<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Permalink to this heading">¶</a></h2>
 <p>This is a new major release that refactors the statistical test output. All users are strongly encouraged to update to this release.</p>
 <dl class="simple">
 <dt>Main Changes:</dt><dd><ul class="simple">
 <li><p>the Lq-Likelihood Ratio-Type test results are now computed only when the user calls the <cite>lqrt</cite> property of the <cite>dabest_object.effect_size</cite> <code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code> object. This refactor was done to mitigate the lengthy computation time the test took. See Issues <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/94">#94</a> and <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/91">#91</a>.</p></li>
-<li><p>The default hypothesis test reported by calling the <cite>dabest_object.effect_size</cite> <code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code> object is now the <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">non-parametric two-sided permutation t-test</a>. Conceptually, this hypothesis test mirrors the usage of the bootstrap (to obtain the 95% confidence intervals). Read more at <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a>. See Issue <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/92">#92</a> and PR <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/93">#93</a>.</p></li>
+<li><p>The default hypothesis test reported by calling the <cite>dabest_object.effect_size</cite> <code class="xref py py-class docutils literal notranslate"><span class="pre">EffectSizeDataFrame</span></code> object is now the <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">non-parametric two-sided permutation t-test</a>. Conceptually, this hypothesis test mirrors the usage of the bootstrap (to obtain the 95% confidence intervals). Read more at <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial: Basics</span></a>. See Issue <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/92">#92</a> and PR <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/93">#93</a>.</p></li>
 <li><p>The minimum version of <code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy</span></code> is now v0.17, which has an updated method of generating random samples. The resampling code used in <code class="xref py py-mod docutils literal notranslate"><span class="pre">dabest</span></code> has thus been updated as well.</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="v0-2-8">
-<h2>v0.2.8<a class="headerlink" href="#v0-2-8" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-8">
+<h2>v0.2.8<a class="headerlink" href="#v0-2-8" title="Permalink to this heading">¶</a></h2>
 <p>This release fixes minor bugs, and implements a new statistical test.</p>
 <dl class="simple">
 <dt>Feature Additions:</dt><dd><ul class="simple">
@@ -91,21 +111,21 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="v0-2-7">
-<h2>v0.2.7<a class="headerlink" href="#v0-2-7" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-7">
+<h2>v0.2.7<a class="headerlink" href="#v0-2-7" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>Bug-fixes:</dt><dd><ul class="simple">
 <li><p>Bug affecting display of Tufte gapped lines in Cumming plots if the supplied <code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> was in ‘wide’ format, but did not have equal number of Ns in the groups. (<a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/79">Issue #79</a>)</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="v0-2-6">
-<h2>v0.2.6<a class="headerlink" href="#v0-2-6" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-6">
+<h2>v0.2.6<a class="headerlink" href="#v0-2-6" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>Feature additions:</dt><dd><ul class="simple">
-<li><p>It is now possible to specify a pre-determined <code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code> to create the estimation plot in. See <a class="reference internal" href="tutorial.html#inset-plot"><span class="std std-ref">Creating estimation plots in existing axes</span></a> in the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a> (<a class="reference external" href="https://github.com/ACCLAB/DABEST-python/pull/73">Pull request #73</a>; thanks to Adam Nekimken (<a class="reference external" href="https://github.com/anekimken">&#64;anekimken</a>).</p></li>
+<li><p>It is now possible to specify a pre-determined <code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code> to create the estimation plot in. See <a class="reference internal" href="plotaesthetics.html#inset-plot"><span class="std std-ref">Creating estimation plots in existing axes</span></a> in the <a class="reference internal" href="plotaesthetics.html"><span class="doc">Tutorial: Controlling Plot Aesthetics</span></a> (<a class="reference external" href="https://github.com/ACCLAB/DABEST-python/pull/73">Pull request #73</a>; thanks to Adam Nekimken (<a class="reference external" href="https://github.com/anekimken">&#64;anekimken</a>).</p></li>
 <li></li>
 </ul>
 </dd>
@@ -115,9 +135,9 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="v0-2-5">
-<h2>v0.2.5<a class="headerlink" href="#v0-2-5" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-5">
+<h2>v0.2.5<a class="headerlink" href="#v0-2-5" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>Feature additions:</dt><dd><ul class="simple">
 <li><p>Adding Ns of each group to the results DataFrame. (<a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/45">Issue #45</a>)</p></li>
@@ -130,9 +150,9 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="v0-2-4">
-<h2>v0.2.4<a class="headerlink" href="#v0-2-4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-4">
+<h2>v0.2.4<a class="headerlink" href="#v0-2-4" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>This release fixes the following issues:</dt><dd><ul class="simple">
 <li><p>Misalignment of Gardner-Altman plots when the dataset loaded is wide, but has NaNs in a column. (<a class="reference external" href="https://github.com/ACCLAB/DABEST-python/issues/40">Issue #40</a>)</p></li>
@@ -141,31 +161,31 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="v0-2-3">
-<h2>v0.2.3<a class="headerlink" href="#v0-2-3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-3">
+<h2>v0.2.3<a class="headerlink" href="#v0-2-3" title="Permalink to this heading">¶</a></h2>
 <p>This release fixes a bug that did not handle when the supplied <code class="docutils literal notranslate"><span class="pre">x</span></code> was a <code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Categorical</span></code> object, but the <code class="docutils literal notranslate"><span class="pre">idx</span></code> did not include all the original categories.</p>
-</div>
-<div class="section" id="v0-2-2">
-<h2>v0.2.2<a class="headerlink" href="#v0-2-2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-2">
+<h2>v0.2.2<a class="headerlink" href="#v0-2-2" title="Permalink to this heading">¶</a></h2>
 <p>This release fixes a <a class="reference external" href="https://github.com/ACCLAB/DABEST-python/pull/30">bug</a> that has a mean difference or median difference of exactly 0. (<a class="reference external" href="https://github.com/ACCLAB/DABEST-python/pull/73">Pull request #73</a>; thanks to Mason Malone (<a class="reference external" href="https://github.com/MasonM">&#64;MasonM</a>).</p>
-</div>
-<div class="section" id="v0-2-1">
-<h2>v0.2.1<a class="headerlink" href="#v0-2-1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-1">
+<h2>v0.2.1<a class="headerlink" href="#v0-2-1" title="Permalink to this heading">¶</a></h2>
 <p>This release fixes a bug that misplotted the gapped summary lines in Cumming plots when the <em>x</em>-variable was a <code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas</span></code> <code class="xref py py-class docutils literal notranslate"><span class="pre">Categorical</span></code> object.</p>
-</div>
-<div class="section" id="v0-2-0">
-<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Permalink to this heading">¶</a></h2>
 <p>We have redesigned the interface from the ground up. This allows speed and flexibility to compute different effect sizes (including Cohen’s <em>d</em>, Hedges’ <em>g</em>, and Cliff’s delta). Statistical arguments are now parsed differently from graphical arguments.</p>
 <p>In short, any code relying on v0.1.x will <strong>not work with v0.2.0, and must be upgraded.</strong></p>
 <p>Now, every analysis session begins with <code class="docutils literal notranslate"><span class="pre">dabest.load()</span></code>.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_dataframe</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_data</span> <span class="o">=</span> <span class="n">dabest</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_dataframe</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>This creates a <code class="xref py py-class docutils literal notranslate"><span class="pre">Dabest</span></code> object with effect sizes as instances.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>which prints out:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DABEST v0.2.0
 =============
@@ -181,29 +201,25 @@ if the null hypothesis of zero difference is true.
 </pre></div>
 </div>
 <p>The following are valid effect sizes:</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span>
-<span class="n">my_data</span><span class="o">.</span><span class="n">median_diff</span>
-<span class="n">my_data</span><span class="o">.</span><span class="n">cohens_d</span>
-<span class="n">my_data</span><span class="o">.</span><span class="n">hedges_g</span>
-<span class="n">my_data</span><span class="o">.</span><span class="n">cliffs_delta</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span>
+<span class="linenos">2</span><span class="n">my_data</span><span class="o">.</span><span class="n">median_diff</span>
+<span class="linenos">3</span><span class="n">my_data</span><span class="o">.</span><span class="n">cohens_d</span>
+<span class="linenos">4</span><span class="n">my_data</span><span class="o">.</span><span class="n">hedges_g</span>
+<span class="linenos">5</span><span class="n">my_data</span><span class="o">.</span><span class="n">cliffs_delta</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>To produce an estimation plot, each effect size instance has a <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_data</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
-<p>See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a>  and <a class="reference internal" href="api.html"><span class="doc">API</span></a> for more details, including keyword options for the <code class="docutils literal notranslate"><span class="pre">load()</span></code> and <code class="docutils literal notranslate"><span class="pre">plot()</span></code> methods.</p>
 </div>
-<div class="section" id="v0-1-7">
-<h2>v0.1.7<a class="headerlink" href="#v0-1-7" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial: Basics</span></a>  and <a class="reference internal" href="api.html"><span class="doc">API</span></a> for more details, including keyword options for the <code class="docutils literal notranslate"><span class="pre">load()</span></code> and <code class="docutils literal notranslate"><span class="pre">plot()</span></code> methods.</p>
+</section>
+<section id="v0-1-7">
+<h2>v0.1.7<a class="headerlink" href="#v0-1-7" title="Permalink to this heading">¶</a></h2>
 <p>The keyword <code class="docutils literal notranslate"><span class="pre">cumming_vertical_spacing</span></code> has been added to tweak the vertical spacing between the rawdata swarm axes and the contrast axes in Cumming estimation plots.</p>
-</div>
-<div class="section" id="v0-1-6">
-<h2>v0.1.6<a class="headerlink" href="#v0-1-6" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-1-6">
+<h2>v0.1.6<a class="headerlink" href="#v0-1-6" title="Permalink to this heading">¶</a></h2>
 <p>Several keywords have been added to allow more fine-grained control over a selection of plot elements.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">swarm_dotsize</span></code></p></li>
@@ -212,14 +228,14 @@ if the null hypothesis of zero difference is true.
 <li><p><code class="docutils literal notranslate"><span class="pre">summary_linewidth</span></code></p></li>
 </ul>
 <p>The new keyword <code class="docutils literal notranslate"><span class="pre">context</span></code> allows you to set the plotting context as defined by seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.plotting_context.html">plotting_context()</a> .</p>
-<p>Now, if <code class="docutils literal notranslate"><span class="pre">paired=True</span></code>, you will need to supply an <code class="docutils literal notranslate"><span class="pre">id_col</span></code>, which is a column in the DataFrame which specifies which sample the datapoint belongs to. See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a> for more details.</p>
-</div>
-<div class="section" id="v0-1-5">
-<h2>v0.1.5<a class="headerlink" href="#v0-1-5" title="Permalink to this headline">¶</a></h2>
+<p>Now, if <code class="docutils literal notranslate"><span class="pre">paired=True</span></code>, you will need to supply an <code class="docutils literal notranslate"><span class="pre">id_col</span></code>, which is a column in the DataFrame which specifies which sample the datapoint belongs to. See the <a class="reference internal" href="tutorial.html"><span class="doc">Tutorial: Basics</span></a> for more details.</p>
+</section>
+<section id="v0-1-5">
+<h2>v0.1.5<a class="headerlink" href="#v0-1-5" title="Permalink to this heading">¶</a></h2>
 <p>Fix bug that wasn’t updating the seaborn version upon setup and install.</p>
-</div>
-<div class="section" id="v0-1-4">
-<h2>v0.1.4<a class="headerlink" href="#v0-1-4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-1-4">
+<h2>v0.1.4<a class="headerlink" href="#v0-1-4" title="Permalink to this heading">¶</a></h2>
 <p>Update dependencies to</p>
 <ul class="simple">
 <li><p>numpy 1.15</p></li>
@@ -231,9 +247,9 @@ if the null hypothesis of zero difference is true.
 <ul class="simple">
 <li><p>add <code class="docutils literal notranslate"><span class="pre">tick_length</span></code> and <code class="docutils literal notranslate"><span class="pre">tick_pad</span></code> arguments to allow tweaking of the axes tick lengths, and padding of the tick labels, respectively.</p></li>
 </ul>
-</div>
-<div class="section" id="v0-1-3">
-<h2>v0.1.3<a class="headerlink" href="#v0-1-3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-1-3">
+<h2>v0.1.3<a class="headerlink" href="#v0-1-3" title="Permalink to this heading">¶</a></h2>
 <p>Update dependencies to</p>
 <ul class="simple">
 <li><p>pandas v0.23</p></li>
@@ -243,9 +259,9 @@ if the null hypothesis of zero difference is true.
 <li><p>fix bug that did not label <code class="docutils literal notranslate"><span class="pre">swarm_label</span></code> if raw data was in tidy form</p></li>
 <li><p>fix bug that did not dropnans for unpaired diff</p></li>
 </ul>
-</div>
-<div class="section" id="v0-1-2">
-<h2>v0.1.2<a class="headerlink" href="#v0-1-2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-1-2">
+<h2>v0.1.2<a class="headerlink" href="#v0-1-2" title="Permalink to this heading">¶</a></h2>
 <p>Update dependencies to</p>
 <ul class="simple">
 <li><p>numpy v1.13</p></li>
@@ -253,12 +269,12 @@ if the null hypothesis of zero difference is true.
 <li><p>pandas v0.22</p></li>
 <li><p>seaborn v0.8</p></li>
 </ul>
-</div>
-<div class="section" id="v0-1-1">
-<h2>v0.1.1<a class="headerlink" href="#v0-1-1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="v0-1-1">
+<h2>v0.1.1<a class="headerlink" href="#v0-1-1" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ACCLAB/DABEST-python/commit/615c4cbb9145cf7b9451bf1840a20475ebcb2e99">Update LICENSE to BSD-3 Clear.</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -290,7 +306,12 @@ if the null hypothesis of zero difference is true.
 <li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotaesthetics.html">Tutorial: Controlling Plot Aesthetics</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
@@ -301,7 +322,7 @@ if the null hypothesis of zero difference is true.
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
+      <li>Previous: <a href="plotaesthetics.html" title="previous chapter">Tutorial: Controlling Plot Aesthetics</a></li>
       <li>Next: <a href="api.html" title="next chapter">API</a></li>
   </ul></li>
 </ul>
@@ -310,12 +331,12 @@ if the null hypothesis of zero difference is true.
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -329,10 +350,10 @@ if the null hypothesis of zero difference is true.
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017-2020, Joses W. Ho.
+      &copy;2016-2023, Joses W. Ho.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
