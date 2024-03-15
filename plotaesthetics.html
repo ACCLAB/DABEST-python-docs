@@ -3,10 +3,11 @@
 
 <html lang="en">
   <head>
+    <meta http-equiv="refresh" content="3; URL=https://acclab.github.io/DABEST-python/" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Tutorial: Controlling Plot Aesthetics &#8212; dabest 2023.02.14 documentation</title>
+    <title>DABEST &#8212; dabest 2023.02.14 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/alabaster-custom.css" />
@@ -17,8 +18,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Release Notes" href="release-notes.html" />
-    <link rel="prev" title="Tutorial: Delta - Delta" href="deltadelta.html" />
+    <link rel="next" title="Robust and Beautiful Statistical Visualization" href="robust-beautiful.html" />
 
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -47,288 +47,11 @@
 
           <div class="body" role="main">
             
-  <section id="tutorial-controlling-plot-aesthetics">
-<span id="controlling-plot-aesthetics-tutorial"></span><h1>Tutorial: Controlling Plot Aesthetics<a class="headerlink" href="#tutorial-controlling-plot-aesthetics" title="Permalink to this heading">¶</a></h1>
-<section id="controlling-plot-aesthetics">
-<h2>Controlling plot aesthetics<a class="headerlink" href="#controlling-plot-aesthetics" title="Permalink to this heading">¶</a></h2>
-<p>Changing the y-axes labels.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_label</span><span class="o">=</span><span class="s2">&quot;This is my</span><span class="se">\n</span><span class="s2">rawdata&quot;</span><span class="p">,</span>
-<span class="linenos">2</span>                                     <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;The bootstrap</span><span class="se">\n</span><span class="s2">distribtions!&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_55_0.png" src="_images/tutorial_55_0.png" />
-<p>Color the rawdata according to another column in the dataframe.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_57_0.png" src="_images/tutorial_57_0.png" />
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">two_groups_paired_baseline</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_58_0.png" src="_images/tutorial_58_0.png" />
-<p>Changing the palette used with <code class="docutils literal notranslate"><span class="pre">custom_palette</span></code>. Any valid matplotlib
-or seaborn color palette is accepted.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color_col</span><span class="o">=</span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span> <span class="n">custom_palette</span><span class="o">=</span><span class="s2">&quot;Dark2&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_60_0.png" src="_images/tutorial_60_0.png" />
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="s2">&quot;Paired&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_61_0.png" src="_images/tutorial_61_0.png" />
-<p>You can also create your own color palette. Create a dictionary where
-the keys are group names, and the values are valid matplotlib colors.</p>
-<p>You can specify matplotlib colors in a <a class="reference external" href="https://matplotlib.org/users/colors.html">variety of
-ways</a>. Here, I demonstrate
-using named colors, hex strings (commonly used on the web), and RGB
-tuples.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">my_color_palette</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Control 1&quot;</span> <span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
-<span class="linenos">2</span>                      <span class="s2">&quot;Test 1&quot;</span>    <span class="p">:</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
-<span class="linenos">3</span>                      <span class="s2">&quot;Control 2&quot;</span> <span class="p">:</span> <span class="s2">&quot;#cb4b16&quot;</span><span class="p">,</span>     <span class="c1"># This is a hex string.</span>
-<span class="linenos">4</span>                      <span class="s2">&quot;Test 2&quot;</span>    <span class="p">:</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># This is a RGB tuple.</span>
-<span class="linenos">5</span>                     <span class="p">}</span>
-<span class="linenos">6</span>
-<span class="linenos">7</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="n">my_color_palette</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_63_0.png" src="_images/tutorial_63_0.png" />
-<p>By default, <code class="docutils literal notranslate"><span class="pre">dabest.plot()</span></code> will
-<a class="reference external" href="https://en.wikipedia.org/wiki/Colorfulness#Saturation">desaturate</a>
-the color of the dots in the swarmplot by 50%. This draws attention to
-the effect size bootstrap curves.</p>
-<p>You can alter the default values with the <code class="docutils literal notranslate"><span class="pre">swarm_desat</span></code> and
-<code class="docutils literal notranslate"><span class="pre">halfviolin_desat</span></code> keywords.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">custom_palette</span><span class="o">=</span><span class="n">my_color_palette</span><span class="p">,</span>
-<span class="linenos">2</span>                              <span class="n">swarm_desat</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
-<span class="linenos">3</span>                              <span class="n">halfviolin_desat</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_65_0.png" src="_images/tutorial_65_0.png" />
-<p>You can also change the sizes of the dots used in the rawdata swarmplot,
-and those used to indicate the effect sizes.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">raw_marker_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-<span class="linenos">2</span>                              <span class="n">es_marker_size</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_67_0.png" src="_images/tutorial_67_0.png" />
-<p>Changing the y-limits for the rawdata axes, and for the contrast axes.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-<span class="linenos">2</span>                              <span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_69_0.png" src="_images/tutorial_69_0.png" />
-<p>If your effect size is qualitatively inverted (ie. a smaller value is a
-better outcome), you can simply invert the tuple passed to
-<code class="docutils literal notranslate"><span class="pre">contrast_ylim</span></code>.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span>
-<span class="linenos">2</span>                              <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;More negative is better!&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_71_0.png" src="_images/tutorial_71_0.png" />
-<p>The contrast axes share the same y-limits as that of the delta - delta plot
-and thus the y axis of the delta - delta plot changes as well.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">paired_delta2</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span>
-<span class="linenos">2</span>                               <span class="n">contrast_label</span><span class="o">=</span><span class="s2">&quot;More negative is better!&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_112_0.png" src="_images/tutorial_112_0.png" />
-<p>You can also change the y-limits and y-label for the delta - delta plot.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">paired_delta2</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta2_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span>
-<span class="linenos">2</span>                               <span class="n">delta2_label</span><span class="o">=</span><span class="s2">&quot;More negative is better!&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_111_0.png" src="_images/tutorial_111_0.png" />
-<p>You can add minor ticks and also change the tick frequency by accessing
-the axes directly.</p>
-<p>Each estimation plot produced by <code class="docutils literal notranslate"><span class="pre">dabest</span></code> has 2 axes. The first one
-contains the rawdata swarmplot; the second one contains the bootstrap
-effect size differences.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>  <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">Ticker</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span>  <span class="n">f</span> <span class="o">=</span> <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span>  <span class="n">rawswarm_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="linenos"> 6</span>  <span class="n">contrast_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span>  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="linenos"> 9</span>  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span>  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-<span class="linenos">12</span>  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_73_0.png" src="_images/tutorial_73_0.png" />
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>  <span class="n">f</span> <span class="o">=</span> <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span>
-<span class="linenos"> 2</span>                                 <span class="n">contrast_ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span>  <span class="n">rawswarm_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="linenos"> 5</span>  <span class="n">contrast_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="linenos"> 8</span>  <span class="n">rawswarm_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span>  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-<span class="linenos">11</span>  <span class="n">contrast_axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">Ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_74_0.png" src="_images/tutorial_74_0.png" />
-<p>For mini-meta plots, you can hide the weighted avergae plot by setting
-<code class="docutils literal notranslate"><span class="pre">show_mini_meta=False</span></code> in the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">mini_meta_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show_mini_meta</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_102_0.png" src="_images/tutorial_102_0.png" />
-<p>Similarly, you can also hide the delta-delta plot by setting
-<code class="docutils literal notranslate"><span class="pre">show_delta2=False</span></code> in the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">paired_delta2</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show_delta2</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_113_0.png" src="_images/tutorial_113_0.png" />
-</section>
-<section id="creating-estimation-plots-in-existing-axes">
-<span id="inset-plot"></span><h2>Creating estimation plots in existing axes<a class="headerlink" href="#creating-estimation-plots-in-existing-axes" title="Permalink to this heading">¶</a></h2>
-<p><em>Implemented in v0.2.6 by Adam Nekimken</em>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dabest.plot</span></code> has an <code class="docutils literal notranslate"><span class="pre">ax</span></code> keyword that accepts any Matplotlib
-<code class="docutils literal notranslate"><span class="pre">Axes</span></code>. The entire estimation plot will be created in the specified
-<code class="docutils literal notranslate"><span class="pre">Axes</span></code>.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="linenos"> 2</span>  <span class="n">f</span><span class="p">,</span> <span class="n">axx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="linenos"> 3</span>                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-<span class="linenos"> 4</span>                        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}</span> <span class="c1"># ensure proper width-wise spacing.</span>
-<span class="linenos"> 5</span>                       <span class="p">)</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>  <span class="n">two_groups_unpaired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span>  <span class="n">two_groups_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span>  <span class="n">multi_2group_paired</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_76_0.png" src="_images/tutorial_76_0.png" />
-<p>In this case, to access the individual rawdata axes, use
-<code class="docutils literal notranslate"><span class="pre">name_of_axes</span></code> to manipulate the rawdata swarmplot axes, and
-<code class="docutils literal notranslate"><span class="pre">name_of_axes.contrast_axes</span></code> to gain access to the effect size axes.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">topleft_axes</span> <span class="o">=</span> <span class="n">axx</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="linenos">2</span>  <span class="n">topleft_axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;New y-axis label for rawdata&quot;</span><span class="p">)</span>
-<span class="linenos">3</span>  <span class="n">topleft_axes</span><span class="o">.</span><span class="n">contrast_axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;New y-axis label for effect size&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span>  <span class="n">f</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_78_0.png" src="_images/tutorial_78_0.png" />
-</section>
-<section id="applying-style-sheets">
-<h2>Applying style sheets<a class="headerlink" href="#applying-style-sheets" title="Permalink to this heading">¶</a></h2>
-<p><em>Implemented in v0.2.0</em>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dabest</span></code> can apply <a class="reference external" href="https://matplotlib.org/tutorials/introductory/customizing.html">matplotlib style
-sheets</a>
-to estimation plots. You can refer to this
-<a class="reference external" href="https://matplotlib.org/3.0.3/gallery/style_sheets/style_sheets_reference.html">gallery</a>
-of style sheets for reference.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">2</span>  <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>  <span class="n">multi_2group</span><span class="o">.</span><span class="n">mean_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
-</pre></div>
-</div>
-<img alt="_images/tutorial_81_0.png" src="_images/tutorial_81_0.png" />
-</section>
-</section>
-
-
-          </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">dabest</a></h1>
-
-
-
-
-
-
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=ACCLAB&repo=DABEST-python&type=star&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-</p>
-
-
-
-
-
-<p>
-<a href="https://pypi.python.org/pypi/dabest/"><img src="https://badge.fury.io/py/dabest.svg" alt="PyPI version" height="18"></a>
-</p><h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="robust-beautiful.html">Robust and Beautiful Statistical Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bootstraps.html">Bootstrap Confidence Intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="repeatedmeasures.html">Tutorial: Repeated Measures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proportion-plot.html">Tutorial: Proportion Plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minimetadelta.html">Tutorial: Mini-Meta Delta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deltadelta.html">Tutorial: Delta - Delta</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial: Controlling Plot Aesthetics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing DABEST</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="deltadelta.html" title="previous chapter">Tutorial: Delta - Delta</a></li>
-      <li>Next: <a href="release-notes.html" title="next chapter">Release Notes</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016-2023, Joses W. Ho.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
-      
-      |
-      <a href="_sources/plotaesthetics.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-    <a href="https://github.com/ACCLAB/DABEST-python" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
-    </a>
-    
-
+  <section id="dabest">
+<h1>DABEST<a class="headerlink" href="#dabest" title="Permalink to this heading">¶</a></h1>
+<section id="update">
+<p><strong>DABEST Docs have been moved: </strong>
+<a href="https://acclab.github.io/DABEST-python/"><span class="doc"> Go here instead</span></a>!</p>
     
   </body>
 </html>
